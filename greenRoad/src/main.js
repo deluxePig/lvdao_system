@@ -14,11 +14,11 @@ import 'babel-polyfill' // 兼容IE11
 import 'url-search-params-polyfill' // 兼容IE11
 import './utils/iconfont/iconfont.css'//引入字体图标
 import _public from "./utils/public";//引入公共方法
-import VueAMap from 'vue-amap'; //引入高德地图
+/*import VueAMap from 'vue-amap'; //引入高德地图*/
 
 Vue.use(Element)
 Vue.use(animated)
-Vue.use(VueAMap)
+/*Vue.use(VueAMap)*/
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 Vue.prototype.$http=axios
