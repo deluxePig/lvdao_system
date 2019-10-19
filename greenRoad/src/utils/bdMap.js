@@ -6,8 +6,8 @@ class bdMap{
     //初始化地图
     begin(map){
         this.baseMap = map;
-        this.getBoundary()
-        this.setMapLib()
+       // this.getBoundary()
+        //this.setMapLib()
     }
     //地图上标点
     printArea(_this) {
@@ -59,7 +59,7 @@ class bdMap{
     //清除地图上的项目
     clean(){
         this.baseMap.clearOverlays();
-        this.getBoundary()
+        //this.getBoundary()
     }
     //返回初始状态
     returnPoint(){

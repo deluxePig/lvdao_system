@@ -13,6 +13,13 @@
       "unicode_decimal": 59029
     },
     {
+      "icon_id": "397733",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
       "icon_id": "592090",
       "name": "柱状图",
       "font_class": "zhuzhuangtu",
@@ -60,6 +67,13 @@
       "font_class": "bingtu",
       "unicode": "e689",
       "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "1100385",
+      "name": "搜索",
+      "font_class": "sousuo1",
+      "unicode": "e684",
+      "unicode_decimal": 59012
     },
     {
       "icon_id": "1134330",
@@ -137,6 +151,13 @@
       "font_class": "suvqiche",
       "unicode": "e676",
       "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "3829845",
+      "name": "搜索",
+      "font_class": "sousuo2",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
     },
     {
       "icon_id": "3865239",

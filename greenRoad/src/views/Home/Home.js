@@ -13,7 +13,11 @@ export default {
                             {title:"金东区",cityCode:"01-1"},
                             {title:"婺城区",cityCode:"01-2"},
                             {title:"开发区",cityCode:"01-3"},
-                        ]}
+                        ]},
+                        {title:"温州市",cityCode:"02",childrenNav:[
+                                {title:"A区",cityCode:"02-1"},
+                                {title:"B区",cityCode:"02-2"}
+                            ]}
                     ],routerLink:"everyday"},
                 {title:"运营统计",childrenNav:[],routerLink:"operatStatistic"},
                 {title:"违规处罚",childrenNav:[],routerLink:"punishesCases"},

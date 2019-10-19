@@ -1,3 +1,113 @@
 #operat_statistic{
-
+  padding:10px;
+  .operat_top{
+    width:100%;
+    height:45%;
+  }
+  .operat_bottom{
+    width:100%;
+    height:55%;
+  }
+  .operatGroupBox{
+    width:calc(~"50% - 0.16rem");
+    height:calc(~"100% - 0.16rem");
+    background:#fff;
+    float:left;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 3px 3px 3px #ddd;
+    -moz-box-shadow: 3px 3px 3px  #ddd;
+    box-shadow: 3px 3px 3px  #ddd;
+    margin:0.08rem;
+    padding:8px;
+    position: relative;
+    .operatGroupTitle{
+      position: absolute;
+      left:0.1rem;
+      top:5px;
+      font-size:0.2rem;
+      color:#333;
+      font-weight:700;
+      .ico{
+        display: inline-block;
+        width:0.2rem;
+        height:0.2rem;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        border:4px solid #31B6FF;
+        background:#fff;
+        margin-right:5px;
+        vertical-align: text-bottom;
+      }
+    }
+    .operatGroupPage{
+      width:100%;
+      height:100%;
+    }
+    .timeChooseBox{
+      position: absolute;
+      right:7px;
+      top:0.2rem;
+      z-index:999;
+      .timeChooseBtn{
+        display: inline-block;
+        width:0.6rem;
+        line-height: 0.25rem;
+        color:#bbb;
+        border:1px solid #ddd;
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
+        border-radius: 9px;
+        margin:0 5px;
+        cursor: pointer;
+      }
+      .timeChooseBtn:hover,
+      .timeChooseBtn.active{
+        color:#1ba0ff;
+        border:1px solid #1ba0ff;
+      }
+    }
+  }
+  .usageBox{
+    width:calc(~"70% - 0.16rem");
+  }
+  .maxUsageBox{
+    width:calc(~"30% - 0.16rem");
+    .maxUsageListBox{
+      width:100%;
+      height:100%;
+      overflow-y: auto;
+      padding-top:0.35rem;
+      ul{
+        width:100%;
+        li{
+          width:100%;
+          line-height: 0.5rem;
+          font-size:0.2rem;
+          color:#bbb;
+          .title{
+            display: inline-block;
+            width:30%;
+            text-align: center;
+          }
+          .addres{
+            display: inline-block;
+            width:70%;
+            text-align: left;
+          }
+        };
+        li.first{
+          color:#fb6169;
+        }
+        li.second{
+          color:#ffa306;
+        }
+        li.third{
+          color:#3ab36e;
+        }
+      }
+    }
+  }
 }

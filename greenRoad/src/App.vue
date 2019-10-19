@@ -100,36 +100,13 @@
         computed:{
         },
         created:function(){
-            this.setUrlrequest()
+
         },
         mounted(){
             setRem()
         },
         methods:{
-            /*获取门户筛选器url的参数设置到store的全局变量*/
-            setUrlrequest(){
-                let urlrequest=$public.urlRequest()//获取url的参数
-                console.log("url参数::")
-                console.log(urlrequest)
-                this.$store.state.urlRequest={
-                    group:urlrequest.JT_MI, //集团集合
-                    business_division:urlrequest.SYB_MI, //事业部集合
-                    business_group:urlrequest.SYBFZ_MI, //事业部分组集合
-                    firm:urlrequest.COMCODE_MI, //企业集合
-                    userpkid:urlrequest.userpkid, //用户ID
-                    benchmarking:urlrequest.benchmarking,//标杆层级
-                }
-                console.log(this.$store.state.urlRequest)
-              //  let urlRequestString=JSON.stringify(this.$store.state.urlRequest)
-                // console.log("密文")
-                // console.log(urlRequestString)
-              //  let ss=$public.encryptDes(urlRequestString,12345678)//DES加密
-                // console.log("加密::")
-                // console.log(ss)
-              //  let jm=$public.decryptDes(ss,12345678)//DES解密
-                // console.log("解密::")
-                // console.log(jm)
-            }
+
         },
     }
   window.onresize=function(){

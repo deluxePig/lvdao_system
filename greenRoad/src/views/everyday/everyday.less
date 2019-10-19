@@ -1,7 +1,183 @@
 #everydayPage{
+  position: relative;
   #bdMap {
     width: 100%;
     height: 100%;
+  }
+  .mapSearchBox{
+    width:3.5rem;
+    height:0.4rem;
+    position: absolute;
+    left:0.3rem;
+    top:0.15rem;
+    z-index:90;
+    .mapSearchCon{
+      width:100%;
+      height:100%;
+      position: relative;
+      .seerchInput{
+        width:100%;
+        height:100%;
+        padding-left:9px;
+        padding-right:0.6rem;
+        text-align: left;
+        border:1px solid #ddd;
+      }
+      .searchBtnBox{
+        width:0.6rem;
+        height:100%;
+        background:#6babcf;
+        position: absolute;
+        right:0;
+        top:0;
+        line-height: 0.4rem;
+        color:#fff;
+        font-size:0.15rem;
+        cursor: pointer;
+      }
+    }
+  }
+  .mapPopBox{
+    width:calc(~"50% - 0.8rem");
+    height:4rem;
+    background:#fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    position: absolute;
+    right:0.2rem;
+    bottom:0.2rem;
+    padding:0.12rem 0.18rem;
+    .popHeadBox{
+      width:100%;
+      height:0.4rem;
+      border-bottom:1px solid #ddd;
+      font-size:0.19rem;
+      font-weight:700;
+      text-align: left;
+    }
+    .popConBox{
+      width:100%;
+      height:calc(~"100% - 0.4rem");
+    }
+  }
+  .statisticsBox{
+    position: absolute;
+    left:0.2rem;
+    bottom:0.2rem;
+    .popConBox{
+      .groupBox{
+        width:50%;
+        height:100%;
+        float:left;
+        .totalBox{
+          width:100%;
+          height:0.5rem;
+          font-size:0.2rem;
+          color:#333;
+          line-height: 0.5rem;
+          font-weight:700;
+          text-align: left;
+        }
+        .seaticListBox{
+          width:100%;
+          height:calc(~"100% - 0.5rem");
+          overflow-y: auto;
+          ul{
+            width:100%;
+            li{
+              width:100%;
+              height:0.4rem;
+              line-height: 0.4rem;
+              color:#bbb;
+              font-size:0.16rem;
+              text-align: left;
+              .title{
+                display: inline-block;
+                width:0.8rem;
+                height:100%;
+                text-align: left;
+              }
+              .value{
+                display: inline-block;
+                width:1rem;
+              }
+              .look{
+                cursor: pointer;
+                color:#1a7bb2;
+              }
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+  .newsBox{
+    ul{
+      width:100%;
+      li{
+        width:100%;
+        height:0.5rem;
+        line-height: 0.5rem;
+        color:#bbb;
+        font-size:0.16rem;
+        text-align: left;
+        .time{
+          display: inline-block;
+          width:1.8rem;
+          height:100%;
+          text-align: left;
+        }
+        .addres{
+          display: inline-block;
+          width:calc(~"100% - 4.6rem");
+        }
+        .num{
+          display: inline-block;
+          width:0.8rem;
+        }
+        .tip{
+          display: inline-block;
+          width:1.5rem;
+        }
+        .detail{
+          display: inline-block;
+          width:0.5rem;
+          cursor: pointer;
+          color:#1a7bb2;
+        }
+      }
+    }
+  }
+  .mapControlBox{
+    width:0.4rem;
+    height:auto;
+    position: absolute;
+    right:0.1rem;
+    bottom:4.3rem;
+    background:#fff;
+    .mapBtn{
+      width:100%;
+      height:0.4rem;
+      line-height: 0.4rem;
+      text-align: center;
+      font-size:0.3rem;
+      color:#666;
+      cursor: pointer;
+      .con{
+        display: inline-block;
+        width:85%;
+        height:100%;
+        margin:0 auto;
+        border-bottom:1px solid #ddd;
+      }
+    }
+    .mapBtn:hover{
+      background:#1a7bb2;
+      color:#fff;
+    }
   }
 }
 .anchorBL{
