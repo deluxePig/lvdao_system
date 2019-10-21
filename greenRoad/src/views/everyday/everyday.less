@@ -55,6 +55,15 @@
       font-size:0.19rem;
       font-weight:700;
       text-align: left;
+      position: relative;
+      .ico{
+        font-size:0.22rem;
+        color:#bbb;
+        position: absolute;
+        right:5px;
+        top:0;
+        cursor: pointer;
+      }
     }
     .popConBox{
       width:100%;
@@ -114,6 +123,14 @@
 
     }
   }
+  .statisticsBox.statisticsHidden{
+    width:2rem;
+    height:auto;
+    .popConBox{
+      width:100%;
+      height:1px;
+    }
+  }
   .newsBox{
     ul{
       width:100%;
@@ -151,6 +168,14 @@
       }
     }
   }
+  .newsBox.newsHidden{
+    width:2rem;
+    height:auto;
+    .popConBox{
+      width:100%;
+      height:1px;
+    }
+  }
   .mapControlBox{
     width:0.4rem;
     height:auto;
@@ -178,6 +203,9 @@
       background:#1a7bb2;
       color:#fff;
     }
+  }
+  .mapControlBox.mapControlDown{
+    bottom:1rem;
   }
 }
 .anchorBL{

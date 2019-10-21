@@ -6,6 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isload:0, // 是否显示loading
+    userinfo:{ // 用户信息
+
+    }
   },
   mutations: {
 

@@ -12,11 +12,13 @@
         </div>
       </div>
       <!--统计区-->
-      <div class="statisticsBox mapPopBox">
+      <div class="statisticsBox mapPopBox" :class="{statisticsHidden:statisticsShow==0}">
          <div class="popHeadBox">
             统计区
+             <span class="ico iconfont small" v-if="statisticsShow==1" @click="statisticsShow=0">&#xe7af;</span>
+             <span class="ico iconfont biger" v-else  @click="statisticsShow=1">&#xe72f;</span>
          </div>
-          <div class="popConBox">
+          <div class="popConBox"  v-show="statisticsShow==1">
               <div class="groupBox">
                 <div class="totalBox">
                     共享单车总量：{{bicycle.total}}
@@ -48,11 +50,13 @@
           </div>
       </div>
       <!--消息区-->
-      <div class="newsBox mapPopBox">
+      <div class="newsBox mapPopBox"  :class="{newsHidden:newsShow==0}">
           <div class="popHeadBox">
               消息区
+              <span class="ico iconfont small" v-if="newsShow==1" @click="newsShow=0">&#xe7af;</span>
+              <span class="ico iconfont biger" v-else  @click="newsShow=1">&#xe72f;</span>
           </div>
-          <div class="popConBox">
+          <div class="popConBox"  v-show="newsShow==1">
               <ul>
                   <li v-for="(item,index) in newsList">
                       <span class="time">{{item.time}}</span>
@@ -65,12 +69,12 @@
           </div>
       </div>
       <!--地图控件-->
-      <div class="mapControlBox">
+      <div class="mapControlBox"  :class="{mapControlDown:newsShow==0}">
         <div class="mapBtn mapBig" @click="mapBiger()">
-            <span class="con">+</span>
+            <span class="con iconfont">&#xe61d;</span>
         </div>
           <div class="mapBtn smallBig" @click="mapSmall()">
-              <span class="con">-</span>
+              <span class="con iconfont">&#xe622;</span>
           </div>
       </div>
   </div>

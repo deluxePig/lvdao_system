@@ -35,7 +35,7 @@ axios.interceptors.request.use(function (config) {
     console.log(strcondata)
     let cc=$public.encryptDes(strcondata,DESKEY)//DES加密
     config.data=cc*/
-    store.state.isload=1
+   // store.state.isload=1
     return config
 }, function (error) {
     // 对请求错误做些什么
@@ -44,11 +44,11 @@ axios.interceptors.request.use(function (config) {
 // 添加respone拦截器
 axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    let datalist = response.data.data
-/*    datalist = $public.decryptDes(datalist,DESKEY)//DES解密*/
-    datalist=JSON.parse(datalist)
-    response.data.data=datalist
-    store.state.isload=0
+//     let datalist = response.data.data
+// /*    datalist = $public.decryptDes(datalist,DESKEY)//DES解密*/
+//     datalist=JSON.parse(datalist)
+//     response.data.data=datalist
+//    // store.state.isload=0
     return Promise.resolve(response)
 }, function (error) {
     // 对响应错误做点什么

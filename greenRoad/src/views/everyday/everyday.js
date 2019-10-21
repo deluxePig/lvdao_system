@@ -24,7 +24,9 @@ export default {
             newsList:[ // 消息列表
                 {time:"2019.09.08 12:15",addres:"时代广场",num:3,tip:"数量较少",newsId:"n01"},
                 {time:"2019.09.08 12:15",addres:"时代广场",num:3,tip:"数量较少",newsId:"n02"},
-            ]
+            ],
+            statisticsShow:1 ,//统计区是否展开
+            newsShow:1 ,//消息区是否展开
         }
     },
     created:function(){
