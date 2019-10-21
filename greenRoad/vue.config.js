@@ -55,6 +55,7 @@ module.exports = {
                 'components': '@/components',
                 'views': '@/views',
                 'utils': '@/utils',
+                'api': '@/utils',
             }
         },
         plugins: [
@@ -90,18 +91,18 @@ module.exports = {
         open: true,
         compress:true,//热跟新
         inline: true, // 实时刷新
-        proxy: {
-            "/api": {
-                //代理路径 例如 https://baidu.com
-                target:  "http://101.132.107.110:8080/DAP/",
-                // 将主机标头的原点更改为目标URL
-                changeOrigin: true,
-                ws: true,
-                pathRewrite: {
-                    "^/api": ""
-                }
-            }
-        }
+        // proxy: {
+        //     "/api": {
+        //         //代理路径 例如 https://baidu.com
+        //         target:  "http://101.132.107.110:8080/DAP/",
+        //         // 将主机标头的原点更改为目标URL
+        //         changeOrigin: true,
+        //         ws: true,
+        //         pathRewrite: {
+        //             "^/api": ""
+        //         }
+        //     }
+        // }
 
     }
 

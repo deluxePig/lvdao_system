@@ -19,7 +19,7 @@
                           <i class="el-icon-s-help common"></i>
                           <el-input v-model="passWord" type="password"
                                     class="login-password"
-                                    @keyup.enter.native="handleLogin"
+                                    @keyup.enter.native="onLogin()"
                                     placeholder="请输入登录密码">
                           </el-input>
                       </div>
@@ -28,7 +28,7 @@
                           <el-input v-model="code" type="text"
                                     class="fl login-cord"
                                     :maxlength="4"
-                                    @keyup.enter.native="handleLogin"
+                                    @keyup.enter.native="onLogin()"
                                     placeholder="请输入验证码">
                           </el-input>
                           <div id="v_container" class="fr"></div>
@@ -38,7 +38,7 @@
                       </el-checkbox-group>
                       <div class="input-items" style="margin: 20px 0 0 0;">
                           <el-button type="primary" style="width:100%; height: 40px;font-family: PingFangSC-Medium;"
-                                     @click.native="handleLogin"
+                                     @click.native="onLogin()"
                                      :loading="load">
                               登&nbsp;录
                           </el-button>

@@ -1,4 +1,6 @@
 import 'utils/gVerify'
+import api from '@/api'
+import md5 from 'md5'
 
 export default {
     name: 'login',
@@ -19,6 +21,11 @@ export default {
     mounted() {
         const verifyCode = new GVerify("v_container")
     },
-    methods: {},
+    methods: {
+        onLogin() {
+            api.account.login(this.account, md5(this.passWord))
+        }
+
+    },
     watch: {}
 }

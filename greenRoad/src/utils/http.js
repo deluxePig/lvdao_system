@@ -93,9 +93,11 @@ function _axios(options) {
             method: 'post',
             data: params,
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;',
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                'version': '1.0',
+                'terminal': 'pc'
             },
-            withCredentials: true,
+            withCredentials: false,
         }).then(response => {
             resolve(response.data);
         }).catch(error => {
