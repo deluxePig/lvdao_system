@@ -42,7 +42,7 @@ router.beforeEach(async function(to, from, next) {
         return next()
     }
 
-    let user = sessionStorage.getItem('gr_ss_user')
+    const user = sessionStorage.getItem('gr_ss_user')
 
     if (!user) {
         next({ path: '/login' })

@@ -7,6 +7,8 @@ import $public from "@/utils/public";//引入公共方法
 const DESKEY=12345678
 //const BASE_URL = process.env.VUE_APP_API_URL // 第二节配置的url 可以读取 一定要VUE_APP_A为前缀
 const BASE_URL = process.env.NODE_ENV === "production" ? window.location.protocol + '//' + window.location.host : process.env.VUE_APP_API_URL // 第二节配置的url 可以读取 一定要VUE_APP_A为前缀
+//ss中的用户信息
+const user = sessionStorage.getItem('gr_ss_user') || {}
 
 // 创建axios实例
 const http = axios.create({
@@ -94,6 +96,8 @@ function _axios(options) {
             data: params,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                'userId': user.id,
+                'token': user.token,
                 'version': '1.0',
                 'terminal': 'pc'
             },
