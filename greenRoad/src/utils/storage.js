@@ -1,0 +1,1 @@
+/** * 导入 vue-ls模块 */import Vue from 'vue'import Storage from 'vue-ls'Vue.use({...Storage}, {    namespace: 'gr_ss_', // storage 前缀    name: 'ss', // 注入vue中的别名，this.$ss    storage: 'session'})Vue.use({...Storage}, {    namespace: 'gr_', // storage 前缀    name: 'ls', // 注入vue中的别名，this.$ls,    storage: 'local' // storage name session, local, memory})

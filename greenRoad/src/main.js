@@ -15,6 +15,7 @@ import 'url-search-params-polyfill' // 兼容IE11
 import './utils/iconfont/iconfont.css'//引入字体图标
 import _public from "./utils/public";//引入公共方法
 /*import VueAMap from 'vue-amap'; //引入高德地图*/
+import 'utils/storage'
 
 Vue.use(Element)
 Vue.use(animated)

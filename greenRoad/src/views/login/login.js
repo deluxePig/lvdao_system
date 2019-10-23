@@ -22,10 +22,27 @@ export default {
         const verifyCode = new GVerify("v_container")
     },
     methods: {
-        onLogin() {
-            api.account.login(this.account, md5(this.passWord))
+         onLogin () {
+            api.account.login(this.account, md5(this.passWord)).then(res => {
+                console.log(1,res)
+                this.onLoginLogic(res)
+            })
+        },
+        //登录后的业务逻辑
+        onLoginLogic(res) {
+            if(res.code === 200) {
+                this.$ss.set('user', res.data)
+                this.$router.replace('home')
+                // 登录成功信息
+                // this.$message({
+                //     message: res.message,
+                //     type: 'success'
+                // });
+            } else {
+                //登录失败信息
+                this.$message.error(res.message);
+            }
         }
-
     },
     watch: {}
 }
