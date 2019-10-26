@@ -12,7 +12,7 @@
                         width="150"
                         trigger="hover">
                     <div class="homeHeadRight-pop">
-                        <p><i class="el-icon-s-unfold"></i>退出登录</p>
+                        <p @click="onLogout"><i class="el-icon-s-unfold"></i>退出登录</p>
                     </div>
                     <div slot="reference" class="userInfoWindow"></div>
                 </el-popover>

@@ -1,4 +1,6 @@
 import router from "../../router";
+import api from '@/api'
+import md5 from "md5";
 
 export default {
     name: 'home',
@@ -46,6 +48,34 @@ export default {
         locationChoose(itemChild){
             console.log("选择城市区域::")
             console.log(itemChild)
+        },
+        // 退出登录
+        onLogout() {
+            this.$confirm('请确认是否退出当前账号？', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                api.account.logout().then(res => {
+                    console.log(1,res)
+                    this.onLogoutLogic(res)
+                })
+            });
+        },
+        // 退出登录逻辑
+        onLogoutLogic(res) {
+            if(res.code === 200) {
+                // 退出成功信息
+                this.$message({
+                    message: res.message,
+                    type: 'success'
+                });
+                this.$ss.remove('user');
+                this.$router.replace('/login')
+            } else {
+                //退出失败信息
+                this.$message.error(res.message);
+            }
         }
     },
     watch:{

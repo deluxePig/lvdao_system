@@ -2,13 +2,13 @@ import axios from 'axios'
 import store from '../store'
 import QS from 'qs'; // 引入qs模块，用来序列化post类型的数据，
 import Vue from 'vue'
-import { Message } from 'element-ui' // element-ui
+import {Message} from 'element-ui' // element-ui
 import $public from "@/utils/public";//引入公共方法
-const DESKEY=12345678
+const DESKEY = 12345678
 //const BASE_URL = process.env.VUE_APP_API_URL // 第二节配置的url 可以读取 一定要VUE_APP_A为前缀
 const BASE_URL = process.env.NODE_ENV === "production" ? window.location.protocol + '//' + window.location.host : process.env.VUE_APP_API_URL // 第二节配置的url 可以读取 一定要VUE_APP_A为前缀
-//ss中的用户信息
-const user = sessionStorage.getItem('gr_ss_user') || {}
+// 实例化Vue
+let vm = new Vue()
 
 // 创建axios实例
 const http = axios.create({
@@ -31,13 +31,13 @@ function endLoading() {
 // 添加request请求拦截器
 axios.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
- /*   console.log("config::")
-    console.log(config)
-    let strcondata=JSON.stringify(config.data)
-    console.log(strcondata)
-    let cc=$public.encryptDes(strcondata,DESKEY)//DES加密
-    config.data=cc*/
-   // store.state.isload=1
+    /*   console.log("config::")
+       console.log(config)
+       let strcondata=JSON.stringify(config.data)
+       console.log(strcondata)
+       let cc=$public.encryptDes(strcondata,DESKEY)//DES加密
+       config.data=cc*/
+    // store.state.isload=1
     return config
 }, function (error) {
     // 对请求错误做些什么
@@ -87,9 +87,11 @@ function post(url, data = {}) {
 function _axios(options) {
     return new Promise((resolve, reject) => {
         let params = new URLSearchParams();
-        for(let i in options.data){
-            params.append(i,options.data[i]);
+        for (let i in options.data) {
+            params.append(i, options.data[i]);
         }
+        // ss中的用户信息
+        const user = vm.$ss.get('user') || {}
         axios({
             url: BASE_URL + options.url,
             method: 'post',
@@ -111,8 +113,7 @@ function _axios(options) {
 }
 
 
-
 export default {
-    get, post,_axios
+    get, post, _axios
 }
 
