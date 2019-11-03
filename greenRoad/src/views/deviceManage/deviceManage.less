@@ -1,3 +1,40 @@
-#deviceManage{
+#deviceManage {
+  .deviceManage {
+    &-box {
+      padding: 10px;
+      line-height: 30px;
+    }
 
+    &-title {
+      font-size: 16px;
+      line-height: 50px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    &-header {
+      background: #E9E9E9;
+    }
+
+    &-items {
+      width: calc(~"100% - 0.16rem");
+      height: calc(~"100% - 0.16rem");
+      background: #fff;
+      float: left;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: 3px 3px 3px #ddd;
+      -moz-box-shadow: 3px 3px 3px #ddd;
+      box-shadow: 3px 3px 3px #ddd;
+      margin: 0.08rem;
+      padding: 8px;
+      position: relative;
+
+      .device-content {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }
