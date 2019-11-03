@@ -29,7 +29,7 @@
                         legendDataX:'left',
                         valueType:'',
                         name:'访问来源',
-                        unit:'%',
+                        unit:'',
                         colorList:['#fd5277', '#8476d5', '#fcd578', '#4bd0a3','#2bcdfc','#1ba0ff','#bdbdbd'],
                         seriesData:[
                             {value:335,ratio:"30", name:'哈罗',id:'111'},
@@ -66,9 +66,9 @@
                         trigger: 'item',
                         // formatter: "{b} : {c}"+that.indexAll.unit+" ({d}%)"
                         formatter: function(param){
-                            console.log("param::")
-                            console.log(param)
-                            return param.data.name+':'+param.percent+that.indexAll.unit
+                            // console.log("param::")
+                            // console.log(param)
+                            return param.data.name+':'+param.value+that.indexAll.unit+param.percent+'%'
                         }
                     },
                     legend: {
@@ -181,7 +181,7 @@
         z-index:80;
     }
     .echartLableBox{
-        width:45%;
+        width:50%;
         height:60%;
         position: absolute;
         right:0;

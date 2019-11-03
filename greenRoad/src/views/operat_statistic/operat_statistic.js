@@ -10,31 +10,28 @@ export default {
     data (){
         return{
             brandTimeChooseList:[ //品牌占比时间选择列表
-                {name:"日",value:1},
-                {name:"周",value:2},
-                {name:"月",value:3},
-                {name:"年",value:4},
+                {name:"日",value:0},
+                {name:"周",value:1},
+                {name:"月",value:2},
+                {name:"年",value:3},
             ],
-            brandTimeChoose:1,//品牌占比选中的时间
+            brandTimeChoose:0,//品牌占比选中的时间
             indexPieData:{ // 品牌占比数据
                 id:'pie',
-                legendData:['哈罗','膜拜','滴滴','青桔'],
+                legendData:[],
                 legendDataX:'left',
                 valueType:'',
                 name:'访问来源',
-                unit:'%',
+                unit:'辆',
                 colorList:['#fd5277', '#8476d5', '#fcd578', '#4bd0a3','#2bcdfc','#1ba0ff','#bdbdbd'],
                 seriesData:[
-                    {value:335,ratio:"30", name:'哈罗',id:'111'},
-                    {value:310,ratio:"30", name:'膜拜',id:'222'},
-                    {value:234,ratio:"30", name:'滴滴',id:'333'},
-                    {value:135,ratio:"30", name:'青桔',id:'444'},
+
                 ],
             },
             indexLinedata:{ //潮汐统计
                 id:'line1',
                 legendData:['潮汐统计'],
-                unit:"%",
+                unit:"",
                 colorList:['#58b9ff', 'rgba(154,181,200,.8)', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
                 xAxis:["06-01","06-02","06-03","06-04","06-05","06-06","06-07"],
                 seriesData:[
@@ -72,7 +69,7 @@ export default {
 
     },
     mounted(){
-
+        this.$api.operatStatis.getbrandData(this)
     },
     methods:{
         /*品牌占比时间选择*/
@@ -85,6 +82,11 @@ export default {
         },
     },
     watch:{
-
+        brandTimeChoose:{
+            handler(newvalue,oldvalue){
+                this.$api.operatStatis.getbrandData(this)
+            },
+            deep:true
+        }
     }
 }

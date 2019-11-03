@@ -10,6 +10,7 @@
                 <span class="timeChooseBtn" :class="{active:brandTimeChoose==item.value}" v-for="(item,index) in brandTimeChooseList" @click="brandTimeClick(item)">{{item.name}}</span>
             </div>
             <div class="operatGroupPage">
+                <h3 class="noneTip" v-if="indexPieData.seriesData.length<=0">暂无数据！！</h3>
                 <basePie :indexPie="indexPieData"></basePie>
             </div>
         </div>

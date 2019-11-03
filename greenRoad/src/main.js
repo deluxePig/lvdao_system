@@ -16,6 +16,8 @@ import './utils/iconfont/iconfont.css'//引入字体图标
 import _public from "./utils/public";//引入公共方法
 /*import VueAMap from 'vue-amap'; //引入高德地图*/
 import 'utils/storage'
+import layer from 'vue-layer' //layer.js
+import 'vue-layer/lib/vue-layer.css';
 
 Vue.use(Element)
 Vue.use(animated)
@@ -25,6 +27,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http=axios
 Vue.prototype.$api = api; // 将api挂载到vue的原型上
 Vue.prototype.$public = _public; // 将公共方法挂载到vue的原型上
+Vue.prototype.$layer = layer(Vue);
 
 new Vue({
   router,

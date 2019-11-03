@@ -9,26 +9,38 @@ class bdMap{
        // this.getBoundary()
         //this.setMapLib()
     }
-    //地图上标点
+    //地图上标点(站点)
     printArea(_this) {
         let that=this;
-        let img= require("@/assets/images/markpoint.gif");
+        let img= require("@/assets/images/pointP.gif");
+        let opts = {
+            boxStyle:{
+                width: "280px",
+                height: "195px"
+            }
+            ,enableAutoPan: true,
+            closeIconUrl:'icon/close.png',
+            closeIconMargin:'0px',
+            closeIconZIndex:1,
+            closeIconWidth:'15px'
+        }
+
         $.each(_this, function (c, t) {
-            if(t.pos_x_baidu != ""){
+            if(t.siteLon != ""){
                 let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
-                let marker = new BMap.Marker(new BMap.Point(t.pos_x_baidu,t.pos_y_baidu),{icon:myIcon});   // 创建标注business_number
-                let content = '<div>商户名：'+t.business_name+'</div><div>联系人：'+t.relation_name+'</div><div>联系电话：'+t.business_number+'</div><div>地址：'+t.business_address+'</div><div>所属支行：'+t.name+'</div><div>客户经理：'+t.contact_name+'</div><div>POS机ID：'+t.pos_id+'</div>';
+                let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
+                let content = '<div>站点名称：'+t.siteName+'</div><div>站点编号：'+t.siteId+'</div><div>创建时间：'+t.siteCreateTime+'</div><div>站点车辆：'+t.siteCeiling+'</div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
-                let title='商户信息'
-                that.addClickHandler(title,content,marker)
+                let title='站点信息:'
+                that.addClickHandler(title,content,marker,opts)
             }
         })
-        this.baseMap.setCenter(new BMap.Point(_this[0].pos_x_baidu,_this[0].pos_y_baidu))
+        //this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
     }
     //地图上拜访记录标点
     printVisit(_this){
         let that=this;
-        let img= require("@/assets/images/markpoint.gif");
+        let img= require("@/assets/images/pointP.gif");
         $.each(_this, function (c, t) {
             if(t.startx_baidu != ""){
                 let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
@@ -63,7 +75,7 @@ class bdMap{
     }
     //返回初始状态
     returnPoint(){
-        this.baseMap.setCenter(new BMap.Point(119.996351,30.548961))
+        this.baseMap.setCenter(new BMap.Point(119.653872,29.084135))
     }
     /* 信息窗口 */
     addClickHandler(title,content,marker){
@@ -290,6 +302,23 @@ class bdMap{
             // 捕获错误异常
             console.log(e)
         }
+    }
+    // 地址解析，根据地名查询坐标
+    Geocoder(cityName,streeName,_this){
+       // console.log('地址解析，根据地名查询坐标',cityName,streeName)
+        let that=this;
+        // 创建地址解析器实例
+        let myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint(streeName, function(point){
+            console.log('坐标',point)
+            if (point) {
+                that.baseMap.centerAndZoom(point, 16);
+               // that.baseMap.addOverlay(new BMap.Marker(point));
+            }else{
+                _this.$message.error('您选择地址没有解析到结果');
+            }
+        }, cityName);
     }
 }
 export default new bdMap()

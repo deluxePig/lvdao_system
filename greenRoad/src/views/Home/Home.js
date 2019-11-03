@@ -11,15 +11,18 @@ export default {
             /*导航*/
             navList:[
                 {title:"日常值守",childrenNav:[
-                    {title:"金华市",cityCode:"01",childrenNav:[
-                            {title:"金东区",cityCode:"01-1"},
-                            {title:"婺城区",cityCode:"01-2"},
-                            {title:"开发区",cityCode:"01-3"},
-                        ]},
-                        {title:"温州市",cityCode:"02",childrenNav:[
-                                {title:"A区",cityCode:"02-1"},
-                                {title:"B区",cityCode:"02-2"}
-                            ]}
+                       /* {
+                            id: 330100,
+                            name: "杭州市",
+                            pid: 330000,
+                            areas: [
+                                {
+                                    id: 330102,
+                                    name: "上城区",
+                                    pid: 330100,
+                                }
+                            ],
+                        },*/
                     ],routerLink:"everyday"},
                 {title:"运营统计",childrenNav:[],routerLink:"operatStatistic"},
                 {title:"违规处罚",childrenNav:[],routerLink:"punishesCases"},
@@ -34,20 +37,46 @@ export default {
 
     },
     mounted(){
-        this.$router.push({name:"everyday"})
+         this.$router.push({name:"everyday"})
+        this.getUserCity()
+        this.$router.push({
+            path: '/home/everyday',
+            query: {
+             /*   id: this.navList.childrenNav[0].areas[0].id,
+                name: this.navList.childrenNav[0].areas[0].name,
+                parentName: this.navList.childrenNav[0].name*/
+            }
+        })
     },
     methods:{
-        /*导航*/
+        /*导航——打开*/
         handleOpen(key, keyPath) {
-            console.log(key, keyPath);
+           // console.log("打开",key, keyPath);
         },
+        /*导航——关闭*/
         handleClose(key, keyPath) {
-            console.log(key, keyPath);
+           // console.log("关闭",key, keyPath);
         },
         /*选择城市区域*/
-        locationChoose(itemChild){
-            console.log("选择城市区域::")
-            console.log(itemChild)
+        locationChoose(itemChild,itemThirdChild){
+           // console.log("选择城市区域::")
+            // console.log(itemChild)
+            // console.log(itemThirdChild)
+            this.$router.push({
+                path: '/home/everyday',
+                query: {
+                    id: itemThirdChild.id,
+                    name: itemThirdChild.name,
+                    pId: itemChild.name,
+                    pName: itemChild.name
+                }
+            })
+           /* this.$router.push({
+                name: 'everyday',
+                params: {
+                    id: itemChild.id
+                }
+            })*/
         },
         // 退出登录
         onLogout() {
@@ -76,6 +105,10 @@ export default {
                 //退出失败信息
                 this.$message.error(res.message);
             }
+        },
+        /*获取用户城市区域*/
+        getUserCity(){
+            api.article.getUserCity(this)
         }
     },
     watch:{

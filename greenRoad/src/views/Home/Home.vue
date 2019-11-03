@@ -37,11 +37,11 @@
                             </template>
                             <el-submenu v-for="(itemChild,inedxChild) in item.childrenNav"
                                         :index="(index+1).toString()+'-'+(inedxChild+1).toString()">
-                                <template slot="title">{{itemChild.title}}</template>
-                                <el-menu-item v-for="(itemThirdChild,inedxThirdChild) in itemChild.childrenNav"
-                                              @click="locationChoose(itemThirdChild)"
+                                <template slot="title">{{itemChild.name}}</template>
+                                <el-menu-item v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
+                                              @click="locationChoose(itemChild,itemThirdChild)"
                                               :index="(index+1).toString()+'-'+(inedxChild+1).toString()+'-'+(inedxThirdChild+1).toString()">
-                                    {{itemThirdChild.title}}
+                                    {{itemThirdChild.name}}
                                 </el-menu-item>
                             </el-submenu>
                         </el-submenu>
