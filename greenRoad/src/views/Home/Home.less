@@ -1,93 +1,118 @@
-#homePageBox{
-  width:100%;
-  height:100%;
-  background:#efefef;
-  .homeHeadBox{
-    width:100%;
-    height:0.9rem;
+#homePageBox {
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+
+  .homeHeadBox {
+    width: 100%;
+    height: 0.9rem;
     text-align: left;
-    background:#333;
+    background: #333;
     line-height: 0.9rem;
-    color:#fff;
-    padding:0 9px;
-    .logoTitleox{
-      width:50%;
-      height:100%;
-      .logoImg{
-        width:0.7rem;
-        height:0.7rem;
-        margin-right:3px;
+    color: #fff;
+    padding: 0 9px;
+
+    .logoTitleox {
+      width: 50%;
+      height: 100%;
+
+      .logoImg {
+        width: 0.7rem;
+        height: 0.7rem;
+        margin-right: 3px;
       }
-      .title{
-        font-size:0.24rem;
-        font-weight:700;
+
+      .title {
+        font-size: 0.24rem;
+        font-weight: 700;
       }
     }
-    .homeHeadRight{
-      width:50%;
-      height:100%;
-      .userInfoWindow{
-        float:right;
-        width:0.6rem;
-        height:0.6rem;
-        background:#ccc;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        margin-top:0.15rem;
+
+    .homeHeadRight {
+      width: 50%;
+      height: 100%;
+
+      .userInfoWindow {
+        padding: 0 16px;
+        float: right;
+
+        &:hover {
+          background: #545B64;
+        }
+
+        i.el-icon-user-solid, i.el-icon-setting {
+          margin-right: 6px;
+        }
+
+        i.el-icon-caret-bottom {
+          margin-left: 4px;
+        }
       }
     }
   }
+<<<<<<< Updated upstream
   .homePageBody{
     width:100%;
     height:calc(~"100% - 0.9rem");
     min-width: 950px;
+=======
+
+  .homePageBody {
+    width: 100%;
+    height: calc(~"100% - 0.9rem");
+>>>>>>> Stashed changes
     overflow: hidden;
-    .navListBox{
-      width:2.4rem;
-      height:100%;
-      background:#545b64;
-      float:left;
+
+    .navListBox {
+      width: 2.4rem;
+      height: 100%;
+      background: #545b64;
+      float: left;
       overflow: hidden;
-      a{
-        color:#fff;
+
+      a {
+        color: #fff;
       }
     }
-    .homePageCon{
-      width:calc(~"100% - 2.4rem");
-      height:100%;
-      background:#eee;
-      float:left;
+
+    .homePageCon {
+      width: calc(~"100% - 2.4rem");
+      height: 100%;
+      background: #eee;
+      float: left;
     }
   }
 }
 
 .homeHeadRight-pop {
-  i{
+  i {
     margin-right: .2rem;
   }
+
   p:hover {
     font-weight: 600;
     color: #1a7bb2;
   }
 }
-
-.pageBox{
-  width:100%;
-  height:100%;
+.setting-p {
+    p {
+      line-height: 36px;
+      border-bottom: 1px solid #eee;
+    }
 }
 
-.el-submenu__title{
-  padding-left:0 !important;
-}
-.el-submenu .el-menu-item{
-  padding-left:10px !important;
+.pageBox {
+  width: 100%;
+  height: 100%;
 }
 
+.el-submenu__title {
+  padding-left: 0 !important;
+}
 
-
-
-
+.el-submenu .el-menu-item {
+  padding-left: 10px !important;
+}
 
 
 //以下为公用样式
