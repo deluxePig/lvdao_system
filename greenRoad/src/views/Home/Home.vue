@@ -9,12 +9,38 @@
             <div class="homeHeadRight lf">
                 <el-popover
                         placement="bottom"
-                        width="150"
                         trigger="hover">
                     <div class="homeHeadRight-pop">
-                        <p @click="onLogout"><i class="el-icon-s-unfold"></i>退出登录</p>
+                        <p @click="onLogout"><i class="el-icon-switch-button"></i>退出登录</p>
                     </div>
-                    <div slot="reference" class="userInfoWindow"></div>
+                    <div slot="reference" class="userInfoWindow"><i class="el-icon-user-solid"></i>欢迎，13333333333<i
+                            class="el-icon-caret-bottom"></i></div>
+                </el-popover>
+
+                <el-popover
+                        placement="bottom"
+                        trigger="click">
+                    <div class="homeHeadRight-pop">
+                        <p @click=""><i class="el-icon-warning-outline"></i>这里是告警</p>
+                    </div>
+                    <div slot="reference" class="userInfoWindow">
+                        <el-badge :value="1" style="line-height: 25px;margin: 6px 12px 0 10px;">
+                            <i class="el-icon-bell" style="font-size: 16px"></i>
+                        </el-badge>
+                    </div>
+                </el-popover>
+
+                <el-popover
+                        placement="bottom"
+                        trigger="click">
+                    <div class="homeHeadRight-pop setting-p">
+                        <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>
+                        <p @click=""><i class="el-icon-user"></i>账号管理</p>
+                        <p @click=""><i class="el-icon-bicycle"></i>单车管理</p>
+                    </div>
+                    <div slot="reference" class="userInfoWindow">
+                        <i class="el-icon-setting" style="font-size: 16px"></i>设置
+                    </div>
                 </el-popover>
             </div>
         </div>
