@@ -33,35 +33,31 @@ export default {
                 legendData:['潮汐统计'],
                 unit:"",
                 colorList:['#58b9ff', 'rgba(154,181,200,.8)', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
-                xAxis:["06-01","06-02","06-03","06-04","06-05","06-06","06-07"],
+                xAxis:[],
                 seriesData:[
-                    [45,45,63,55,25,76,45],
                 ],
             },
             indexBarData:{ //使用量统计
                 id:'bar1',
-                legendData:['上月','本月','净利润率'],
+                legendData:['上月','本月'],
                 unit:"次",
                 colorList:['#95d4ff', '#1ba0ff', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
                 xAxis:["06-01","06-02","06-03","06-04","06-05","06-06","06-07"],
                 seriesData:[
-                    [45,45,63,55,25,76,45],
-                    [22,33,23,34,77,76,34],
+                    [45,45,63,55,25,76,45], //上月的数据
+                    [22,33,23,34,77,76,34], //本月的数据
                 ],
             },
             usageTimeChooseList:[ //使用量统计时间选择列表
-                {name:"日",value:1},
-                {name:"周",value:2},
-                {name:"月",value:3},
-                {name:"年",value:4},
+                {name:"日",value:0},
+                {name:"周",value:1},
+                {name:"月",value:2},
+                {name:"年",value:3},
             ],
-            usageTimeChoose:1,//使用量统计选中的时间
+            usageTimeChoose:0,//使用量统计选中的时间
             maxUsageList:[ //最大使用量站点列表
-                {name:"人民广场"},
-                {name:"高铁站北"},
-                {name:"高铁站北2"},
-                {name:"高铁站北3"},
-                {name:"高铁站北4"},
+                {statisticsSiteName:"人民广场"},
+
             ]
         }
     },
@@ -70,23 +66,29 @@ export default {
     },
     mounted(){
         this.$api.operatStatis.getbrandData(this)
+        this.$api.operatStatis.tidalStatistics(this)
+        this.$api.operatStatis.usedStatic(this)
+        this.$api.operatStatis.maxUsedStatic(this)
     },
     methods:{
         /*品牌占比时间选择*/
         brandTimeClick:function (data) {
             this.brandTimeChoose=data.value
+            this.$api.operatStatis.getbrandData(this)
         },
         /*使用量统计时间选择*/
         usageTimeClick:function (data) {
             this.usageTimeChoose=data.value
+            this.$api.operatStatis.usedStatic(this)
         },
     },
     watch:{
-        brandTimeChoose:{
+       /* brandTimeChoose:{
             handler(newvalue,oldvalue){
                 this.$api.operatStatis.getbrandData(this)
             },
             deep:true
-        }
+        },*/
+
     }
 }

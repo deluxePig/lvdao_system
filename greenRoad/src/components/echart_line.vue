@@ -80,19 +80,18 @@
                         }*/
                     },
                     legend: {
-                        show:that.lengendShow==1?true:false,
+                        show:true,
                         data: that.indexAll.legendData,
                         textStyle: {
                             color: '#333'
                         },
-                        top:'5%',
-                        right:"7%"
+                        top:'1%',
+                        right:"4%"
                     },
                     grid:{
-                        x:'30',
-                        width:'96%',
-                        y:'9%',
-                        top:"30px",
+                        x:'50',
+                        right:'30px',
+                        top:"40px",
                         bottom: '30px', // 与容器底部的距离
                     },
                     xAxis: {

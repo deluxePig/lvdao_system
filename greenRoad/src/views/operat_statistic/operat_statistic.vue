@@ -43,7 +43,7 @@
                 <ul>
                     <li v-for="(item,index) in maxUsageList" :class="{first:index==0,second:index==1,third:index==2,}">
                         <span class="title">NO.{{index+1}}</span>
-                        <span class="addres">{{item.name}}</span>
+                        <span class="addres">{{item.statisticsSiteName}}</span>
                     </li>
                 </ul>
               </div>
