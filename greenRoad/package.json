@@ -19,6 +19,7 @@
     "url-search-params-polyfill": "^7.0.0",
     "vue": "^2.6.10",
     "vue-amap": "^0.5.10",
+    "vue-layer": "^1.1.5",
     "vue-ls": "^3.2.1",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
