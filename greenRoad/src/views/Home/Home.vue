@@ -35,7 +35,7 @@
                         trigger="click">
                     <div class="homeHeadRight-pop setting-p">
                         <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>
-                        <p @click=""><i class="el-icon-user"></i>账号管理</p>
+                        <p @click="onJumpPage"><i class="el-icon-user"></i>账号管理</p>
                         <p @click=""><i class="el-icon-bicycle"></i>单车管理</p>
                     </div>
                     <div slot="reference" class="userInfoWindow">

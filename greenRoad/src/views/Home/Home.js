@@ -109,6 +109,9 @@ export default {
         /*获取用户城市区域*/
         getUserCity(){
             api.article.getUserCity(this)
+        },
+        onJumpPage() {
+            this.$router.push('/home/accountManage')
         }
     },
     watch:{
