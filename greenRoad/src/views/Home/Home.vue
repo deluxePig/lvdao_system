@@ -32,7 +32,7 @@
 
                 <el-popover
                         placement="bottom"
-                        trigger="click">
+                        trigger="hover">
                     <div class="homeHeadRight-pop setting-p">
                         <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>
                         <p @click="onJumpPage"><i class="el-icon-user"></i>账号管理</p>

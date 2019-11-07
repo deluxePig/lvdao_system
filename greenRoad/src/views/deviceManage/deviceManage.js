@@ -20,6 +20,8 @@ export default {
                 if (res.code === 200 && res.data) {
                     this.deviceList = res.data
                     // console.log('设备接口', this.deviceList)
+                } else {
+                    this.$message.error(res.message);
                 }
             })
         },

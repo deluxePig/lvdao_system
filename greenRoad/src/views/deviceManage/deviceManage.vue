@@ -7,9 +7,9 @@
                 <el-row>
                     <el-col :span="3"><div>站点名称</div></el-col>
                     <el-col :span="3"><div>站点编号</div></el-col>
-                    <el-col :span="2"><div>蓝牙信标数量</div></el-col>
+                    <el-col :span="3"><div>蓝牙信标数量</div></el-col>
                     <el-col :span="3"><div>MAC地址</div></el-col>
-                    <el-col :span="3"><div>信号强度</div></el-col>
+                    <el-col :span="2"><div>信号强度</div></el-col>
                     <el-col :span="3"><div>电池电量</div></el-col>
                     <el-col :span="3"><div>上线时间</div></el-col>
                     <el-col :span="2"><div>经度</div></el-col>
@@ -90,7 +90,7 @@
                     <el-col :span="3">
                         <div>{{item.siteId}}</div>
                     </el-col>
-                    <el-col :span="2">
+                    <el-col :span="3">
                         <div>{{item.siteCeiling}}</div>
                     </el-col>
                     <el-col :span="3">
@@ -98,7 +98,7 @@
                             <p>{{equipment.equipmentMac}}</p>
                         </div>
                     </el-col>
-                    <el-col :span="3">
+                    <el-col :span="2">
                         <div v-for="(equipment, i) in item.equipments" :key="i">
                             <p>{{equipment.equipmentSignal}}</p>
                         </div>
