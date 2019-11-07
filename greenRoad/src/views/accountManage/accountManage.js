@@ -5,6 +5,15 @@ export default {
     components: {},
     data() {
         return {
+            user: {
+                userName: '',
+                password: '',
+                mobile: '',
+                roleId: '',
+                cityId: '',
+                areaId: '',
+                meid: ''
+            },
             userData: {
                 list: [],
                 currentPage: 1,
@@ -47,6 +56,21 @@ export default {
             this.pageNum = val
             this.onGetList()
             // console.log(`当前页: ${val}`);
+        },
+        handleEdit(index, row) {
+            console.log(index, row);
+        },
+        handleDelete(index, row) {
+            console.log(index, row);
+        },
+        onAddAccount() {
+            if(this.user.userName && this.user.password && this.user.roleId) {
+                api.account.addAccount(this.user).then(res => {
+                    console.log('创建用户', res)
+                })
+            } else {
+                this.$message.error('请填写必填项...');
+            }
         }
     },
     watch: {}
