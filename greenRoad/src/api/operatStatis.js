@@ -88,7 +88,7 @@ const operatStatis ={
         let reqData = {
             url:'/superviseServer/statistics/brand/get',
             data:{
-                type:that.brandTimeChoose,
+                type:that.usageTimeChoose,
                 date:''
             }
         };
@@ -96,7 +96,48 @@ const operatStatis ={
             console.log("使用量统计",response)
             if(response.code == "200"){
                 let dataList=response.data
+                let xAxis=[],legendData=[],seriesData=[[],[]]
+                if(that.usageTimeChoose==0){
+                    legendData=['本月近7天','上月近7天']
+                    seriesData=[[],[]]
+                }else if(that.usageTimeChoose==1){
+                    legendData=['当前周']
+                    seriesData=[[]]
+                }else if(that.usageTimeChoose==3){
+                    legendData=['本年','去年']
+                    seriesData=[[],[]]
+                }else{
+                    legendData=['本月','上月']
+                    seriesData=[[],[]]
+                }
+                $.each(dataList,function (i,n) {
+                    if(that.usageTimeChoose==1){
+                        xAxis.push(n.weekOfYear)
+                    }else{
+                        xAxis.push(n.statisticsDate)
+                    }
 
+                    seriesData[0].push(n.statisticsNum)
+                    if(n.lastStatisticsNum && n.lastStatisticsNum!=null){
+                        seriesData[1].push(n.lastStatisticsNum)
+                    }else{
+                        if(that.usageTimeChoose!=1){
+                            seriesData[1].push('')
+                        }
+
+                    }
+                })
+                // console.log(xAxis)
+                // console.log(legendData)
+                // console.log(seriesData)
+                that.indexBarData={ //使用量统计
+                    id:'bar1',
+                        legendData:legendData,
+                        unit:"次",
+                        colorList:['#95d4ff', '#1ba0ff', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
+                        xAxis:xAxis,
+                        seriesData:seriesData
+                }
             }
         })
     },
