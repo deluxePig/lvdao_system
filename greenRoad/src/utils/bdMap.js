@@ -28,11 +28,19 @@ class bdMap{
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
                 let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
+                console.log('百度long',t.siteLon)
+                console.log('百度lat',t.siteLat)
                 let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
                 let content = '<div>站点名称：'+t.siteName+'</div><div>站点编号：'+t.siteId+'</div><div>创建时间：'+t.siteCreateTime+'</div><div>站点车辆：'+t.siteCeiling+'</div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title='站点信息:'
                 that.addClickHandler(title,content,marker,opts)
+              /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
+                    console.log('long',getbaidu.lng)
+                    console.log('lat',getbaidu.lat)
+
+                })*/
+
             }
         })
         //this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
@@ -114,26 +122,26 @@ class bdMap{
         return new Promise((resolve, reject) => {
             /*GPS坐标转换百度坐标*/
             //GPS坐标
-            var ggPoint = new BMap.Point(longitude,latitude);
+          var ggPoint = new BMap.Point(longitude,latitude);
             //地图初始化
-            var bm = new BMap.Map("baiduMap");
+           /*   var bm = new BMap.Map("bdMap");
             bm.centerAndZoom(ggPoint, 15);
-            bm.addControl(new BMap.NavigationControl());
+            bm.addControl(new BMap.NavigationControl());*/
 
             //添加gps marker和label
-            var markergg = new BMap.Marker(ggPoint);
+         /*   var markergg = new BMap.Marker(ggPoint);
             bm.addOverlay(markergg); //添加GPS marker
             var labelgg = new BMap.Label("未转换的GPS坐标（错误）",{offset:new BMap.Size(20,-10)});
-            markergg.setLabel(labelgg); //添加GPS label
-
+            markergg.setLabel(labelgg); //添加GPS label*/
             //坐标转换完之后的回调函数
             let translateCallback = function (data){
                 if(data.status === 0) {
-                    var marker = new BMap.Marker(data.points[0]);
+                   /* var marker = new BMap.Marker(data.points[0]);
                     bm.addOverlay(marker);
                     var label = new BMap.Label("转换后的百度坐标（正确）",{offset:new BMap.Size(20,-10)});
                     marker.setLabel(label); //添加百度label
-                    bm.setCenter(data.points[0]);
+                    bm.setCenter(data.points[0]);*/
+                    // console.log("datapoints",data.points[0])
                     resolve(data.points[0])
                 }
             }

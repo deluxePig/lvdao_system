@@ -11,10 +11,10 @@ const everyday ={
             data:{}
         };
         $http._axios(reqData).then(response => {
-            //console.log("获取站点列表",response)
+            console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
-                /* dataList=[
+               /*  dataList=[
                                   {
                                       siteCeiling: 2,
                                       siteCreateTime: "2019-10-21 10:22:38.0",
