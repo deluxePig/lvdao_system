@@ -4,7 +4,7 @@
         <div class="accountManage-box">
             <div class="accountManage-title">账号管理</div>
             <div class="accountManage-add">
-                <el-button size="small" type="primary" @click="onAddAccount()">新增账号</el-button>
+                <el-button size="small" type="primary" @click="onJumpPage()">新增账号</el-button>
             </div>
             <div class="accountManage-table">
                 <el-table :header-cell-style="{background:'#FAFAFA',color:'#555'}"

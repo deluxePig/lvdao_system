@@ -4,62 +4,64 @@ import md5 from "md5";
 
 export default {
     name: 'home',
-    components: {
-    },
-    data (){
-        return{
+    components: {},
+    data() {
+        return {
             /*导航*/
-            navList:[
-                {title:"日常值守",childrenNav:[
-                       /* {
-                            id: 330100,
-                            name: "杭州市",
-                            pid: 330000,
-                            areas: [
-                                {
-                                    id: 330102,
-                                    name: "上城区",
-                                    pid: 330100,
-                                }
-                            ],
-                        },*/
-                    ],routerLink:"everyday"},
-                {title:"运营统计",childrenNav:[],routerLink:"operatStatistic"},
-                {title:"违规处罚",childrenNav:[],routerLink:"punishesCases"},
-                {title:"设备管理",childrenNav:[],routerLink:"deviceManage"},
-                {title:"评分评价",childrenNav:[],routerLink:"grade"},
+            navList: [
+                {
+                    title: "日常值守", childrenNav: [
+                        /* {
+                             id: 330100,
+                             name: "杭州市",
+                             pid: 330000,
+                             areas: [
+                                 {
+                                     id: 330102,
+                                     name: "上城区",
+                                     pid: 330100,
+                                 }
+                             ],
+                         },*/
+                    ], routerLink: "everyday"
+                },
+                {title: "运营统计", childrenNav: [], routerLink: "operatStatistic"},
+                {title: "违规处罚", childrenNav: [], routerLink: "punishesCases"},
+                {title: "设备管理", childrenNav: [], routerLink: "deviceManage"},
+                {title: "评分评价", childrenNav: [], routerLink: "grade"},
             ],
             /*选中的路由*/
-            homePageRouter:"everyday"
+            homePageRouter: "everyday",
+            userName: ''
         }
     },
-    created:function(){
-
+    created: function () {
+        this.userName = this.$ss.get('user').userName || ''
     },
-    mounted(){
-         this.$router.push({name:"everyday"})
+    mounted() {
+        this.$router.push({name: "everyday"})
         this.getUserCity()
         this.$router.push({
             path: '/home/everyday',
             query: {
-             /*   id: this.navList.childrenNav[0].areas[0].id,
-                name: this.navList.childrenNav[0].areas[0].name,
-                parentName: this.navList.childrenNav[0].name*/
+                /*   id: this.navList.childrenNav[0].areas[0].id,
+                   name: this.navList.childrenNav[0].areas[0].name,
+                   parentName: this.navList.childrenNav[0].name*/
             }
         })
     },
-    methods:{
+    methods: {
         /*导航——打开*/
         handleOpen(key, keyPath) {
-           // console.log("打开",key, keyPath);
+            // console.log("打开",key, keyPath);
         },
         /*导航——关闭*/
         handleClose(key, keyPath) {
-           // console.log("关闭",key, keyPath);
+            // console.log("关闭",key, keyPath);
         },
         /*选择城市区域*/
-        locationChoose(itemChild,itemThirdChild){
-           // console.log("选择城市区域::")
+        locationChoose(itemChild, itemThirdChild) {
+            // console.log("选择城市区域::")
             // console.log(itemChild)
             // console.log(itemThirdChild)
             this.$router.push({
@@ -71,12 +73,12 @@ export default {
                     pName: itemChild.name
                 }
             })
-           /* this.$router.push({
-                name: 'everyday',
-                params: {
-                    id: itemChild.id
-                }
-            })*/
+            /* this.$router.push({
+                 name: 'everyday',
+                 params: {
+                     id: itemChild.id
+                 }
+             })*/
         },
         // 退出登录
         onLogout() {
@@ -86,14 +88,14 @@ export default {
                 type: 'warning'
             }).then(() => {
                 api.account.logout().then(res => {
-                    console.log(1,res)
+                    console.log(1, res)
                     this.onLogoutLogic(res)
                 })
             });
         },
         // 退出登录逻辑
         onLogoutLogic(res) {
-            if(res.code === 200) {
+            if (res.code === 200) {
                 // 退出成功信息
                 this.$message({
                     message: res.message,
@@ -107,14 +109,16 @@ export default {
             }
         },
         /*获取用户城市区域*/
-        getUserCity(){
+        getUserCity() {
             api.article.getUserCity(this)
         },
-        onJumpPage() {
-            this.$router.push('/home/accountManage')
+        onJumpPage(type) {
+            if(type) {
+                this.$router.push('/home/bikeManage')
+            } else {
+                this.$router.push('/home/accountManage')
+            }
         }
     },
-    watch:{
-
-    }
+    watch: {}
 }

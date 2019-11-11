@@ -13,8 +13,7 @@
                     <div class="homeHeadRight-pop">
                         <p @click="onLogout"><i class="el-icon-switch-button"></i>退出登录</p>
                     </div>
-                    <div slot="reference" class="userInfoWindow"><i class="el-icon-user-solid"></i>欢迎，13333333333<i
-                            class="el-icon-caret-bottom"></i></div>
+                    <div slot="reference" class="userInfoWindow"><i class="el-icon-user-solid"></i>欢迎，{{userName}}</div>
                 </el-popover>
 
                 <el-popover
@@ -34,9 +33,9 @@
                         placement="bottom"
                         trigger="hover">
                     <div class="homeHeadRight-pop setting-p">
-                        <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>
+<!--                        <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>-->
                         <p @click="onJumpPage"><i class="el-icon-user"></i>账号管理</p>
-                        <p @click=""><i class="el-icon-bicycle"></i>单车管理</p>
+                        <p @click="onJumpPage(1)"><i class="el-icon-bicycle"></i>单车管理</p>
                     </div>
                     <div slot="reference" class="userInfoWindow">
                         <i class="el-icon-setting" style="font-size: 16px"></i>设置

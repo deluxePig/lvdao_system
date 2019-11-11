@@ -5,15 +5,6 @@ export default {
     components: {},
     data() {
         return {
-            user: {
-                userName: '',
-                password: '',
-                mobile: '',
-                roleId: '',
-                cityId: '',
-                areaId: '',
-                meid: ''
-            },
             userData: {
                 list: [],
                 currentPage: 1,
@@ -35,7 +26,7 @@ export default {
             api.account.getList(this.pageNum, this.pageSize).then(res => {
                 if (res.code === 200) {
                     this.userData = res.data
-                    console.log('用户列表', this.userData)
+                    // console.log('用户列表', this.userData)
                 } else {
                     this.$message.error(res.message);
                 }
@@ -59,17 +50,33 @@ export default {
         },
         handleEdit(index, row) {
             console.log(index, row);
+            this.onJumpPage(row.id)
         },
         handleDelete(index, row) {
             console.log(index, row);
+            this.$confirm('此操作将永久删除该账户, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.onDeleteUser(row.id)
+            });
         },
-        onAddAccount() {
-            if(this.user.userName && this.user.password && this.user.roleId) {
-                api.account.addAccount(this.user).then(res => {
-                    console.log('创建用户', res)
-                })
+        onDeleteUser(id) {
+            api.account.deleteUser(id).then(res => {
+                if (res.code === 200) {
+                    this.$message.success(res.message);
+                    this.onGetList()
+                } else {
+                    this.$message.error(res.message);
+                }
+            })
+        },
+        onJumpPage(id) {
+            if(id) {
+                this.$router.push({path: '/home/addAccount', query: {id: id}})
             } else {
-                this.$message.error('请填写必填项...');
+                this.$router.push('/home/addAccount')
             }
         }
     },

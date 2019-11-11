@@ -32,6 +32,7 @@ export default {
         onLoginLogic(res) {
             if(res.code === 200) {
                 this.$ss.set('user', res.data)
+                this.fullScreen()   //全屏
                 this.$router.replace('home')
                 // 登录成功信息
                 // this.$message({
@@ -42,6 +43,14 @@ export default {
                 //登录失败信息
                 this.$message.error(res.message);
             }
+        },
+        fullScreen() {
+            const el = document.documentElement;
+            const rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+            if (typeof rfs != "undefined" && rfs) {
+                rfs.call(el);
+            }
+            return
         }
     },
     watch: {}
