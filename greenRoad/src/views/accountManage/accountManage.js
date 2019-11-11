@@ -5,6 +5,7 @@ export default {
     components: {},
     data() {
         return {
+            myRole: '',
             userData: {
                 list: [],
                 currentPage: 1,
@@ -16,7 +17,7 @@ export default {
         }
     },
     created: function () {
-
+        this.myRole = this.$ss.get('user').roleId || ''
     },
     mounted() {
         this.onGetList()    //获取用户列表
@@ -78,6 +79,9 @@ export default {
             } else {
                 this.$router.push('/home/addAccount')
             }
+        },
+        onJump(url) {
+            this.$router.push(`/home/${url}`)
         }
     },
     watch: {}

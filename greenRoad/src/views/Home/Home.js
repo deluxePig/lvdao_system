@@ -32,11 +32,23 @@ export default {
             ],
             /*选中的路由*/
             homePageRouter: "everyday",
-            userName: ''
+            userName: '',
+            userModule: []  //权限
+        }
+    },
+    computed: {
+        navListModule: function () {
+            if (this.userModule.length) {
+                const arr = this.onInitList()
+                return arr
+            } else {
+                return this.navList.slice(0, 1)
+            }
         }
     },
     created: function () {
         this.userName = this.$ss.get('user').userName || ''
+        this.userModule = (this.$ss.get('user').module || '').split(',')
     },
     mounted() {
         this.$router.push({name: "everyday"})
@@ -51,6 +63,15 @@ export default {
         })
     },
     methods: {
+        onInitList() {
+            let newNavList = {}
+            for(let index in this.userModule) {
+                newNavList[index] = this.navList.filter(item => item.title == this.userModule[index])
+            }
+            console.log(newNavList)
+            console.log(Object.values(newNavList).reduce((a,b) => [...a, ...b], []))
+            return Object.values(newNavList).reduce((a,b) => [...a, ...b], [])
+        },
         /*导航——打开*/
         handleOpen(key, keyPath) {
             // console.log("打开",key, keyPath);

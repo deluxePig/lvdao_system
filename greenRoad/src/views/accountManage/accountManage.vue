@@ -4,6 +4,7 @@
         <div class="accountManage-box">
             <div class="accountManage-title">账号管理</div>
             <div class="accountManage-add">
+                <el-button v-if="myRole === 1" size="small" type="primary" @click="onJump('roleManage')">角色权限修改</el-button>
                 <el-button size="small" type="primary" @click="onJumpPage()">新增账号</el-button>
             </div>
             <div class="accountManage-table">

@@ -34,7 +34,7 @@
                         trigger="hover">
                     <div class="homeHeadRight-pop setting-p">
 <!--                        <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>-->
-                        <p @click="onJumpPage"><i class="el-icon-user"></i>账号管理</p>
+                        <p @click="onJumpPage()"><i class="el-icon-user"></i>账号管理</p>
                         <p @click="onJumpPage(1)"><i class="el-icon-bicycle"></i>单车管理</p>
                     </div>
                     <div slot="reference" class="userInfoWindow">
@@ -55,7 +55,7 @@
                             background-color="#545c64"
                             text-color="#fff"
                             active-text-color="#ffd04b">
-                        <el-submenu v-for="(item,index) in navList" :index="(index+1).toString()">
+                        <el-submenu v-for="(item,index) in navListModule" :index="(index+1).toString()">
                             <template slot="title">
                                 <i class="el-icon-location"></i>
                                 <span><router-link :to="{name:item.routerLink}">{{item.title}}</router-link></span>
