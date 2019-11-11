@@ -9,6 +9,16 @@ const area = {
             }
         }
         return $http._axios(reqData)
+    },
+    cautionList:(num, size) => {
+        let reqData = {
+            url: '/superviseServer/caution/list',
+            data: {
+                pageNum: num,
+                pageSize: size
+            }
+        }
+        return $http._axios(reqData)
     }
 }
 

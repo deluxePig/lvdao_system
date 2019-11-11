@@ -33,6 +33,11 @@ export default {
             /*选中的路由*/
             homePageRouter: "everyday",
             userName: '',
+            caution: {},
+            reData: {
+                'return':'还车异常',
+                'rent':'租车异常'
+            },
             userModule: []  //权限
         }
     },
@@ -51,6 +56,9 @@ export default {
         this.userModule = (this.$ss.get('user').module || '').split(',')
     },
     mounted() {
+        setTimeout(() => {
+            this.onCautionList()
+        }, 10000);
         this.$router.push({name: "everyday"})
         this.getUserCity()
         this.$router.push({
@@ -71,6 +79,15 @@ export default {
             console.log(newNavList)
             console.log(Object.values(newNavList).reduce((a,b) => [...a, ...b], []))
             return Object.values(newNavList).reduce((a,b) => [...a, ...b], [])
+        },
+        onCautionList(){
+            api.area.cautionList(1, 5).then(res => {
+                if (res.code === 200) {
+                    this.caution = res.data
+                } else {
+                    this.$message.error(res.message);
+                }
+            })
         },
         /*导航——打开*/
         handleOpen(key, keyPath) {
@@ -109,7 +126,7 @@ export default {
                 type: 'warning'
             }).then(() => {
                 api.account.logout().then(res => {
-                    console.log(1, res)
+                    // console.log(1, res)
                     this.onLogoutLogic(res)
                 })
             });
@@ -139,6 +156,9 @@ export default {
             } else {
                 this.$router.push('/home/accountManage')
             }
+        },
+        onJump(url) {
+            this.$router.push(`/home/${url}`)
         }
     },
     watch: {}

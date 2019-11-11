@@ -18,12 +18,25 @@
 
                 <el-popover
                         placement="bottom"
-                        trigger="click">
-                    <div class="homeHeadRight-pop">
-                        <p @click=""><i class="el-icon-warning-outline"></i>这里是告警</p>
+                        trigger="hover">
+                    <div class="homeHeadRight-jg">
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>异常单车告警</span>
+                                <el-button style="float: right; padding: 3px 0" type="text" @click="onJump('cautionInfo')">历史详情</el-button>
+                            </div>
+                            <div v-for="o in caution.list" :key="o.id" class="text item">
+                                <el-row>
+                                    <el-col :span="12"><div>{{o.cautionCreateTime}}</div></el-col>
+                                    <el-col :span="3"><div>{{o.cautionBrand}}</div></el-col>
+                                    <el-col :span="4"><div>{{o.siteName}}</div></el-col>
+                                    <el-col :span="5"><div>{{reData[o.cautionType]}}</div></el-col>
+                                </el-row>
+                            </div>
+                        </el-card>
                     </div>
                     <div slot="reference" class="userInfoWindow">
-                        <el-badge :value="1" style="line-height: 25px;margin: 6px 12px 0 10px;">
+                        <el-badge :value="caution.totalNumber" style="line-height: 25px;margin: 6px 12px 0 10px;">
                             <i class="el-icon-bell" style="font-size: 16px"></i>
                         </el-badge>
                     </div>
