@@ -31,7 +31,7 @@ class bdMap{
                 //console.log('百度long',t.siteLon)
                 //console.log('百度lat',t.siteLat)
                 let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
-                let content = '<div>站点名称：'+t.siteName+'</div><div>站点编号：'+t.siteId+'</div><div>创建时间：'+t.siteCreateTime+'</div><div>站点车辆：'+t.siteCeiling+'</div>';
+                let content = '<div>站点名称：'+t.siteName+'</div><div>站点编号：'+t.siteId+'</div><div>创建时间：'+t.siteCreateTime+'</div><div>设备数量：'+t.siteCeiling+'</div><div>设备上限数量：'+t.siteCeiling+'</div><div>单车数量：'+t.currentNum+'</div><div>单车上限数量：'+t.siteBikeCeiling+'</div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title='站点信息:'
                 that.addClickHandler(title,content,marker,opts)

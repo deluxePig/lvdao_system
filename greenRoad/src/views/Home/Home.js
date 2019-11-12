@@ -10,20 +10,7 @@ export default {
             /*导航*/
             navList: [
                 {
-                    title: "日常值守", childrenNav: [
-                        /* {
-                             id: 330100,
-                             name: "杭州市",
-                             pid: 330000,
-                             areas: [
-                                 {
-                                     id: 330102,
-                                     name: "上城区",
-                                     pid: 330100,
-                                 }
-                             ],
-                         },*/
-                    ], routerLink: "everyday"
+                    title: "日常值守", childrenNav: this.$store.state.sysCityList, routerLink: "everyday"
                 },
                 {title: "运营统计", childrenNav: [], routerLink: "operatStatistic"},
                 {title: "违规处罚", childrenNav: [], routerLink: "punishesCases"},
@@ -39,7 +26,8 @@ export default {
                 'rent':'租车异常'
             },
             timer: '',
-            userModule: []  //权限
+            userModule: [],  //权限
+            sysCityList:this.$store.state.sysCityList
         }
     },
     computed: {
@@ -153,15 +141,25 @@ export default {
             api.article.getUserCity(this)
         },
         onJumpPage(type) {
-            if(type) {
+            if(type ==1) {
                 this.$router.push('/home/bikeManage')
-            } else {
+            } else if(type==2) {
                 this.$router.push('/home/accountManage')
+            }else{
+                this.$router.push('/home/cityManage')
             }
         },
         onJump(url) {
             this.$router.push(`/home/${url}`)
         }
     },
-    watch: {}
+    watch: {
+        sysCityList:{
+            handler(newvalue,oldvalue){
+               //console.log("拥有的城市区域11",newvalue)
+                this.navList[0].childrenNav=newvalue
+            },
+            deep:true
+        }
+    }
 }

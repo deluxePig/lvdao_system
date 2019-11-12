@@ -8,10 +8,11 @@ import everyday from '@/api/everyday';// 日常值守的接口
 import operatStatis from '@/api/operatStatis';
 import area from "@/api/area";// 区域
 import brand from "@/api/brand";// 单车
+import cityManage from "@/api/cityManage";// 城市区域管理
 // 运营统计的接口
 
 
 // 导出接口
 export default {
-    article, account, area, brand, everyday, operatStatis, equipment
+    article, account, area, brand, everyday, operatStatis, equipment,cityManage
 }

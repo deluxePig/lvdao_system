@@ -8,7 +8,8 @@ export default new Vuex.Store({
     isload:0, // 是否显示loading
     userinfo:{ // 用户信息
 
-    }
+    },
+    sysCityList:[]//系统拥有的城市
   },
   mutations: {
 

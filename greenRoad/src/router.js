@@ -13,6 +13,7 @@ import roleManage from './views/roleManage/roleManage.vue' //修改角色权限
 import grade from './views/grade/grade.vue' //评分评价
 import login from './views/login/login.vue' //登录页
 import cautionInfo from './views/cautionInfo/cautionInfo.vue' //异常历史
+import cityManage from './views/cityManage/cityManage.vue' //城市区域管理
 
 
 Vue.use(Router)
@@ -36,7 +37,8 @@ const router = new Router({
                 {path: 'bikeManage', name: 'bikeManage', component: bikeManage},
                 {path: 'addBike', name: 'addBike', component: addBike},
                 {path: 'cautionInfo', name: 'cautionInfo', component: cautionInfo},
-                {path: 'roleManage', name: 'roleManage', component: roleManage}
+                {path: 'roleManage', name: 'roleManage', component: roleManage},
+                {path: 'cityManage', name: 'cityManage', component: cityManage}
             ]
         },
         {

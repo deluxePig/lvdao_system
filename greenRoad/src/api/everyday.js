@@ -7,11 +7,11 @@ const everyday ={
     getSiteList(that){
        // console.log('获取站点列表',that.cityID)
         let reqData = {
-            url:'/superviseServer/site/list',
+            url:'/superviseServer/only/site/list',
             data:{}
         };
         $http._axios(reqData).then(response => {
-            //console.log("获取站点列表",response)
+            console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
                /*  dataList=[

@@ -18,11 +18,13 @@ const article ={
             data:{}
         };
         $http._axios(reqData).then(response => {
-           // console.log("获取用户城市区域",response)
+          //  console.log("获取用户城市区域",response)
             if(response.code == "200"){
                 let dataList=response.data
                 if(that.navList[0].title=="日常值守"){
-                    that.navList[0].childrenNav=dataList
+                    that.$store.state.sysCityList=dataList
+                    that.sysCityList=that.$store.state.sysCityList
+                  //  that.navList[0].childrenNav=that.$store.sysCityList
                 }
             }
         })
