@@ -8,7 +8,7 @@ const article ={
             data:{}
         };
         $http._axios(reqData).then(response => {
-            console.log(response)
+            //console.log(response)
         })
     },
     /*获取用户城市区域*/

@@ -28,15 +28,15 @@ class bdMap{
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
                 let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
-                console.log('百度long',t.siteLon)
-                console.log('百度lat',t.siteLat)
+                //console.log('百度long',t.siteLon)
+                //console.log('百度lat',t.siteLat)
                 let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
                 let content = '<div>站点名称：'+t.siteName+'</div><div>站点编号：'+t.siteId+'</div><div>创建时间：'+t.siteCreateTime+'</div><div>站点车辆：'+t.siteCeiling+'</div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title='站点信息:'
                 that.addClickHandler(title,content,marker,opts)
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
-                    console.log('long',getbaidu.lng)
+                    //console.log('long',getbaidu.lng)
                     console.log('lat',getbaidu.lat)
 
                 })*/
@@ -319,7 +319,7 @@ class bdMap{
         let myGeo = new BMap.Geocoder();
         // 将地址解析结果显示在地图上,并调整地图视野
         myGeo.getPoint(streeName, function(point){
-            console.log('坐标',point)
+            //console.log('坐标',point)
             if (point) {
                 that.baseMap.centerAndZoom(point, 16);
                // that.baseMap.addOverlay(new BMap.Marker(point));

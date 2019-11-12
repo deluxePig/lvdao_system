@@ -24,7 +24,7 @@ export default {
     methods: {
          onLogin () {
             api.account.login(this.account, md5(this.passWord)).then(res => {
-                console.log(1,res)
+                //console.log(1,res)
                 this.onLoginLogic(res)
             })
         },

@@ -76,8 +76,8 @@ export default {
             for(let index in this.userModule) {
                 newNavList[index] = this.navList.filter(item => item.title == this.userModule[index])
             }
-            console.log(newNavList)
-            console.log(Object.values(newNavList).reduce((a,b) => [...a, ...b], []))
+            //console.log(newNavList)
+            //console.log(Object.values(newNavList).reduce((a,b) => [...a, ...b], []))
             return Object.values(newNavList).reduce((a,b) => [...a, ...b], [])
         },
         onCautionList(){

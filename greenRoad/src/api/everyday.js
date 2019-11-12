@@ -11,7 +11,7 @@ const everyday ={
             data:{}
         };
         $http._axios(reqData).then(response => {
-            console.log("获取站点列表",response)
+            //console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
                /*  dataList=[
@@ -71,7 +71,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-            //console.log("获取站点消息",response)
+           // console.log("获取站点消息",response)
             if(response.code == "200"){
                 let dataList=response.data
                 that.newsList=dataList
@@ -126,7 +126,7 @@ const everyday ={
                 that.$layer.confirm(cont,{
                     type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     title: dataList[0].siteName+'消息详情',
-                    area: 'auto',
+                    area:['650px', '440px'], //宽高
                     offset: 'auto',
 
                 });

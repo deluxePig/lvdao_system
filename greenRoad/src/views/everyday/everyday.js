@@ -67,7 +67,7 @@ export default {
         /*获取导航选中的城市信息*/
         getNavCityData(){
              let that=this
-            console.log('获取导航选中的城市信息',this.$route.query)
+            //console.log('获取导航选中的城市信息',this.$route.query)
             /* this.cityID=this.$route.query.id &&this.$route.query.id!="undefined"?this.$route.query.id:"";*/
             if(this.$route.query.id &&this.$route.query.id!="undefined"){
                 bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
@@ -124,7 +124,7 @@ export default {
             that.$layer.confirm(cont,{
                 type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                 title: data.brandName+'详情',
-                area: 'auto',
+                area:['650px', '440px'], //宽高
                 offset: 'auto',
 
             });
