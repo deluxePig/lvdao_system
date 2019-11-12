@@ -3,7 +3,7 @@ import $http from "@/utils/http";
 const area = {
     getAreaList:(pid) => {
         let reqData = {
-            url: '/superviseServer/region',
+            url: '/superviseServer/region/system',
             data: {
                 pid: pid
             }

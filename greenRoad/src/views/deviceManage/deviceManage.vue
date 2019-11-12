@@ -82,7 +82,7 @@
 <!--                </el-row>-->
 <!--            </div>-->
 
-            <div class="deviceManage-items" v-for="item in deviceList" :key="item.siteId">
+            <div class="deviceManage-items" v-for="item in deviceData.list" :key="item.siteId">
                 <el-row class="device-content">
                     <el-col :span="3">
                         <div>{{item.siteName}}</div>
@@ -114,16 +114,23 @@
                         </div>
                     </el-col>
                     <el-col :span="2">
-                        <div v-for="(equipment, i) in item.equipments" :key="i">
-                            <p>{{equipment.equipmentLon}}</p>
-                        </div>
+                        <div>{{item.siteLon}}</div>
                     </el-col>
                     <el-col :span="2">
-                        <div v-for="(equipment, i) in item.equipments" :key="i">
-                            <p>{{equipment.equipmentLat}}</p>
-                        </div>
+                        <div>{{item.siteLat}}</div>
                     </el-col>
                 </el-row>
+            </div>
+            <div class="deviceManage-pagination">
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="deviceData.currentPage"
+                        :page-sizes="[5, 10, 30, 50, 80, 100]"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="deviceData.totalNumber">
+                </el-pagination>
             </div>
         </div>
     </div>

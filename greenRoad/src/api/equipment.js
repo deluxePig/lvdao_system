@@ -1,10 +1,13 @@
 import $http from "@/utils/http";
 
 const equipment = {
-    getList:() => {
+    getList:(num, size) => {
         let reqData = {
             url: '/superviseServer/site/list',
-            data: {}
+            data: {
+                pageNum: num,
+                pageSize: size
+            }
         };
         return $http._axios(reqData)
     }

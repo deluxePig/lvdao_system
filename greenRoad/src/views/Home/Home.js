@@ -38,6 +38,7 @@ export default {
                 'return':'还车异常',
                 'rent':'租车异常'
             },
+            timer: '',
             userModule: []  //权限
         }
     },
@@ -56,9 +57,7 @@ export default {
         this.userModule = (this.$ss.get('user').module || '').split(',')
     },
     mounted() {
-        setTimeout(() => {
-            this.onCautionList()
-        }, 10000);
+        this.timer = setInterval(this.onCautionList, 10000);
         this.$router.push({name: "everyday"})
         this.getUserCity()
         this.$router.push({
@@ -69,6 +68,9 @@ export default {
                    parentName: this.navList.childrenNav[0].name*/
             }
         })
+    },
+    beforeDestroy() {
+        clearInterval(this.timer);
     },
     methods: {
         onInitList() {
@@ -139,12 +141,12 @@ export default {
                     message: res.message,
                     type: 'success'
                 });
-                this.$ss.remove('user');
-                this.$router.replace('/login')
             } else {
                 //退出失败信息
                 this.$message.error(res.message);
             }
+            this.$ss.remove('user');
+            this.$router.replace('/login')
         },
         /*获取用户城市区域*/
         getUserCity() {
