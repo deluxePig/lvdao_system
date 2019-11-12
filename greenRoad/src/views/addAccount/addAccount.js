@@ -114,7 +114,7 @@ export default {
     },
     methods: {
         onCityList() {
-            api.area.getAreaList(1).then(res => {
+            api.area.getAreaList(330000).then(res => {
                 if (res.code === 200) {
                     this.cityOptions = res.data.map(o => {
                         return {value: o.id, label: o.name}
