@@ -42,7 +42,7 @@ const everyday ={
         let reqData = {
             url:'/superviseServer/brand/all',
             data:{
-                date:"20191029"
+                date:''
             }
         };
         $http._axios(reqData).then(response => {
