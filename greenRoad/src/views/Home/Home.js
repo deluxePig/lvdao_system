@@ -74,6 +74,10 @@ export default {
             api.area.cautionList(1, 5).then(res => {
                 if (res.code === 200) {
                     this.caution = res.data
+                } else if (res.code === 20112){
+                    this.$message.error(res.message);
+                    this.$ss.remove('user');
+                    this.$router.replace('/login')
                 } else {
                     this.$message.error(res.message);
                 }
