@@ -59,7 +59,7 @@ export default {
                 }
                 this.$ss.set('user', res.data)
                 this.fullScreen()   //全屏
-                this.$router.replace('home')
+                this.$router.replace('/home')
                 // 登录成功信息
                 // this.$message({
                 //     message: res.message,
