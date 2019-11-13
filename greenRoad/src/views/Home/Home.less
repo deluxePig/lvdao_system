@@ -11,11 +11,17 @@
     line-height: 0.9rem;
     color: #fff;
     padding: 0 9px;
-
+    position: relative;
     .logoTitleox {
       width: 50%;
       height: 100%;
-
+      position: absolute;
+      left:0;
+      right:0;
+      top:0;
+      bottom:0;
+      margin:0 auto;
+      text-align: center;
       .logoImg {
         width: 0.7rem;
         height: 0.7rem;
@@ -23,7 +29,7 @@
       }
 
       .title {
-        font-size: 0.24rem;
+        font-size: 22px;
         font-weight: 700;
       }
     }
@@ -55,17 +61,37 @@
     width:100%;
     height:calc(~"100% - 0.9rem");
     min-width: 950px;
+    position: relative;
     //overflow: hidden;
     .navListBox {
       width: 2.4rem;
       height: 100%;
       background: #545b64;
       float: left;
-      overflow: hidden;
+      position: relative;
+      overflow-y:auto;
+      overflow-x: hidden;
+
       a{
         color:#fff;
         display: inline-block;
       }
+    }
+    .navChangeBtn{
+      width:12px;
+      height:90px;
+      position: absolute;
+      left:2.4rem;
+      top:17%;
+      z-index:90;
+      cursor: pointer;
+      img{
+        width:100%;
+        height:auto;
+      }
+    }
+    .navHiddenBtn{
+      left:0;
     }
 
     .homePageCon {
@@ -74,6 +100,9 @@
       background: #eee;
       float: left;
       overflow-x: hidden;
+    }
+    .homePageCon.showall{
+      width:100%;
     }
   }
 }
@@ -168,4 +197,22 @@
 
 .fr {
   float: right;
+}
+
+.el-submenu__title{
+  text-align: left;
+}
+.elchildren{
+  .el-submenu__title{
+   padding-left:25px !important;
+  }
+  .elthirdchild{
+    padding-left:0px !important;
+  }
+}
+#app .el-submenu__icon-arrow{
+  display: none;
+}
+#app .showNavIco .el-submenu__icon-arrow{
+  display: inline-block;
 }

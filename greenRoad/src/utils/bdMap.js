@@ -12,7 +12,7 @@ class bdMap{
     //地图上标点(站点)
     printArea(_this) {
         let that=this;
-        let img= require("@/assets/images/pointP.gif");
+        let img= require("@/assets/images/markpoint.gif");
         let opts = {
             boxStyle:{
                 width: "280px",
@@ -48,7 +48,7 @@ class bdMap{
     //地图上拜访记录标点
     printVisit(_this){
         let that=this;
-        let img= require("@/assets/images/pointP.gif");
+        let img= require("@/assets/images/markpoint.gif");
         $.each(_this, function (c, t) {
             if(t.startx_baidu != ""){
                 let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))

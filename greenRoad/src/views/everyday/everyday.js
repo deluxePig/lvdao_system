@@ -29,8 +29,8 @@ export default {
             },
             newsList:[ // 消息列表
             ],
-            statisticsShow:1 ,//统计区是否展开
-            newsShow:1 ,//消息区是否展开
+            statisticsShow:0 ,//统计区是否展开
+            newsShow:0 ,//消息区是否展开
             statisticsPopData:{}, //查看单车详情数据
         }
     },
@@ -87,7 +87,7 @@ export default {
         },
         /*查看单车*/
         getbicycleDtail(data){
-          //  console.log("查看单车",data)
+            console.log("查看单车",data)
             this.statisticsPopData=data
             let that=this
            // let cont=$("#statisticsPop").html()
@@ -119,12 +119,15 @@ export default {
                 '          <div class="detailPoplist">\n' +
                 '              <span class="title">电动车投放数量：</span><span>'+data.brandTrolleyBikeNum+'</span>\n' +
                 '          </div>\n' +
+                '          <div class="detailPoplist">\n' +
+                '              <span class="title">核定投放量：</span><span>'+data.brandBikeNum+'</span>\n' +
+                '          </div>\n' +
                 '      </div>'
          //   console.log(cont)
             that.$layer.confirm(cont,{
                 type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                 title: data.brandName+'详情',
-                area:['650px', '440px'], //宽高
+                area:['700px', '440px'], //宽高
                 offset: 'auto',
 
             });

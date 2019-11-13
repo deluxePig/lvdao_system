@@ -39,7 +39,7 @@
   }
   .mapPopBox{
     width:calc(~"50% - 0.8rem");
-    height:4rem;
+    height:3.2rem;
     background:#fff;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -48,12 +48,11 @@
     right:0.2rem;
     bottom:0.2rem;
     padding:0.12rem 0.18rem;
-    overflow: auto;
     .popHeadBox{
       width:100%;
-      height:0.4rem;
+      line-height:35px;
       border-bottom:1px solid #ddd;
-      font-size:0.19rem;
+      font-size:18px;
       font-weight:700;
       text-align: left;
       position: relative;
@@ -69,6 +68,7 @@
     .popConBox{
       width:100%;
       height:calc(~"100% - 0.4rem");
+      overflow-y: auto;
     }
   }
   .statisticsBox{
@@ -76,45 +76,52 @@
     left:0.2rem;
     bottom:0.2rem;
     .popConBox{
-      .groupBox{
-        width:50%;
-        height:100%;
-        float:left;
+      .totalBigBox{
+        width:100%;
+        height:35px;
         .totalBox{
-          width:100%;
-          height:0.5rem;
-          font-size:0.2rem;
+          width:50%;
+          font-size:15px;
           color:#333;
-          line-height: 0.5rem;
+          line-height: 35px;
           font-weight:700;
           text-align: left;
+          float:left;
         }
-        .seaticListBox{
-          width:100%;
-          height:calc(~"100% - 0.5rem");
-          overflow-y: auto;
-          ul{
+      }
+      .groupBigBox{
+        width:100%;
+        height:calc(~"100% - 35px");
+        overflow-y: auto;
+        .groupBox{
+          width:50%;
+          height:100%;
+          float:left;
+          .seaticListBox{
             width:100%;
-            li{
+            height:100%;
+            ul{
               width:100%;
-              height:0.4rem;
-              line-height: 0.4rem;
-              color:#bbb;
-              font-size:0.16rem;
-              text-align: left;
-              .title{
-                display: inline-block;
-                width:0.8rem;
-                height:100%;
+              li{
+                width:100%;
+                line-height: 35px;
+                color:#bbb;
+                font-size:14px;
                 text-align: left;
-              }
-              .value{
-                display: inline-block;
-                width:1rem;
-              }
-              .look{
-                cursor: pointer;
-                color:#1a7bb2;
+                .title{
+                  display: inline-block;
+                  width:0.8rem;
+                  height:100%;
+                  text-align: left;
+                }
+                .value{
+                  display: inline-block;
+                  width:1rem;
+                }
+                .look{
+                  cursor: pointer;
+                  color:#1a7bb2;
+                }
               }
             }
           }
@@ -137,10 +144,9 @@
       width:100%;
       li{
         width:100%;
-        height:0.5rem;
-        line-height: 0.5rem;
+        line-height: 35px;
         color:#bbb;
-        font-size:0.16rem;
+        font-size:14px;
         text-align: left;
         white-space: nowrap;
         .time{
@@ -231,13 +237,17 @@
   .detailPoplist{
     line-height: 0.5rem;
     border-bottom:1px dashed #cdcbcb;
+    font-size:13px;
     .newslist{
       display: inline-block;
       padding:5px;
       min-width: 36px;
-      width:23%;
+      width:19%;
     }
     .newslist:first-child{
+      width:31%;
+    }
+    .newslist.siteName{
       width:31%;
     }
     .newslist.tip{

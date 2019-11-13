@@ -2,11 +2,11 @@
     <div id="homePageBox">
         <!--顶部head-->
         <div class="homeHeadBox">
-            <div class="logoTitleox lf">
+            <div class="logoTitleox">
                 <img class="logoImg" src="" alt="">
                 <span class="title">共享单车监管系统</span>
             </div>
-            <div class="homeHeadRight lf">
+            <div class="homeHeadRight rt">
                 <el-popover
                         placement="bottom"
                         trigger="hover">
@@ -60,7 +60,7 @@
         <!--主题部分-->
         <div class="homePageBody">
             <!--导航-->
-            <div class="navListBox">
+            <div class="navListBox" v-show="navIsShow">
                 <el-col :span="24" style="width:101%;">
                     <el-menu
                             class="el-menu-vertical-demo"
@@ -69,15 +69,15 @@
                             background-color="#545c64"
                             text-color="#fff"
                             active-text-color="#ffd04b">
-                        <el-submenu v-for="(item,index) in navListModule" :index="(index+1).toString()">
+                        <el-submenu v-for="(item,index) in navListModule" :index="(index+1).toString()" :class="{showNavIco:index==0}">
                             <template slot="title">
                                 <i :class="{'el-icon-location':index==0,'el-icon-s-order':index==1,'el-icon-link':index==2,'el-icon-folder-checked':index==3,'el-icon-edit-outline':index==4}"></i>
                                 <span><router-link :to="{name:item.routerLink}">{{item.title}}</router-link></span>
                             </template>
-                            <el-submenu v-for="(itemChild,inedxChild) in item.childrenNav"
+                            <el-submenu v-if="index==0" class="elchildren" v-for="(itemChild,inedxChild) in item.childrenNav"
                                         :index="(index+1).toString()+'-'+(inedxChild+1).toString()">
                                 <template slot="title">{{itemChild.name}}</template>
-                                <el-menu-item v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
+                                <el-menu-item class="elthirdchild" v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
                                               @click="locationChoose(itemChild,itemThirdChild)"
                                               :index="(index+1).toString()+'-'+(inedxChild+1).toString()+'-'+(inedxThirdChild+1).toString()">
                                     {{itemThirdChild.name}}
@@ -86,9 +86,14 @@
                         </el-submenu>
                     </el-menu>
                 </el-col>
+
+            </div>
+            <div class="navChangeBtn " @click="navIsShow=!navIsShow" :class="{navHiddenBtn:navIsShow==0}">
+                <img v-if="navIsShow" src="../../assets/images/navhiddenBtn.png" alt="">
+                <img v-else src="../../assets/images/navshowBtn.png" alt="">
             </div>
             <!--主体页面-->
-            <div class="homePageCon">
+            <div class="homePageCon" :class="{showall:navIsShow==0}">
                 <!-- <router-link v-bind:to="homePageRouter">路由</router-link>-->
                 <router-view></router-view>
             </div>

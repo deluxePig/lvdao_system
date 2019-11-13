@@ -119,7 +119,7 @@ const everyday ={
 
                     con=con+'  <div class="detailPoplist">' +
                         '<span class="newslist">'+n.createTime+'</span>' +
-                        '<span class="newslist">'+n.siteName+'</span>' +
+                        '<span class="newslist siteName">'+n.siteName+'</span>' +
                         '<span class="newslist">'+n.bikeNum+'辆</span>'+tipcont+'</div>'
                 })
                 let cont=' <div class="detailPopBox">'+con+'</div>'

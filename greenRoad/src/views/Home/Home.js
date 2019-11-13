@@ -12,13 +12,14 @@ export default {
                 {
                     title: "日常值守", childrenNav: this.$store.state.sysCityList, routerLink: "everyday"
                 },
+                {title: "设备管理", childrenNav: [], routerLink: "deviceManage"},
                 {title: "运营统计", childrenNav: [], routerLink: "operatStatistic"},
                 {title: "违规处罚", childrenNav: [], routerLink: "punishesCases"},
-                {title: "设备管理", childrenNav: [], routerLink: "deviceManage"},
                 {title: "评分评价", childrenNav: [], routerLink: "grade"},
             ],
             /*选中的路由*/
             homePageRouter: "everyday",
+            navIsShow:1,//导航是否显示
             userName: '',
             caution: {},
             reData: {

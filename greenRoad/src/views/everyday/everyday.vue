@@ -19,34 +19,45 @@
              <span class="ico iconfont biger" v-else  @click="statisticsShow=1">&#xe72f;</span>
          </div>
           <div class="popConBox"  v-show="statisticsShow==1">
-              <div class="groupBox">
-                <div class="totalBox">
-                    共享单车总量：{{bicycle.total}}
-                </div>
-                  <div class="seaticListBox bicycleListBox">
-                      <ul>
-                          <li v-for="(list,index) in bicycle.list">
-                              <span class="title">{{list.brandName}}:</span>
-                              <span class="value">{{list.brandRealityNum}}</span>
-                              <span class="look" @click="getbicycleDtail(list)">查看</span>
-                          </li>
-                      </ul>
+              <div class="totalBigBox">
+                  <div class="totalBox">
+                      共享单车总量：{{bicycle.total}}
                   </div>
-              </div>
-              <div class="groupBox">
                   <div class="totalBox">
                       电动车总量：{{electrocarList.total}}
                   </div>
-                  <div class="seaticListBox electrocarListBox">
-                      <ul>
-                          <li v-for="(list,index) in electrocarList.list">
-                              <span class="title">{{list.brandName}}:</span>
-                              <span class="value">{{list.brandTrolleyBikeNum}}</span>
-                              <span class="look" @click="getbicycleDtail(list)">查看</span>
-                          </li>
-                      </ul>
+              </div>
+              <div class="groupBigBox">
+                  <div class="groupBox">
+                      <!--   <div class="totalBox">
+                             共享单车总量：{{bicycle.total}}
+                         </div>-->
+                      <div class="seaticListBox bicycleListBox">
+                          <ul>
+                              <li v-for="(list,index) in bicycle.list">
+                                  <span class="title">{{list.brandName}}:</span>
+                                  <span class="value">{{list.brandRealityNum}}</span>
+                                  <span class="look" @click="getbicycleDtail(list)">查看</span>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="groupBox">
+                      <!--  <div class="totalBox">
+                            电动车总量：{{electrocarList.total}}
+                        </div>-->
+                      <div class="seaticListBox electrocarListBox">
+                          <ul>
+                              <li v-for="(list,index) in electrocarList.list">
+                                  <span class="title">{{list.brandName}}:</span>
+                                  <span class="value">{{list.brandTrolleyBikeNum}}</span>
+                                  <span class="look" @click="getbicycleDtail(list)">查看</span>
+                              </li>
+                          </ul>
+                      </div>
                   </div>
               </div>
+
           </div>
       </div>
       <!--消息区-->
