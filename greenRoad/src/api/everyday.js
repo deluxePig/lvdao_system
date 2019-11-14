@@ -5,10 +5,12 @@ import  bdMapObj from '@/utils/bdMap';//引入地图方法
 const everyday ={
     /*获取站点列表*/
     getSiteList(that){
-       // console.log('获取站点列表',that.cityID)
+       // console.log('获取站点列表参数',that.chooseCityData.id)
         let reqData = {
-            url:'/superviseServer/only/site/list',
-            data:{}
+            url:'/superviseServer/site/area',
+            data:{
+                id:that.chooseCityData.id
+            }
         };
         $http._axios(reqData).then(response => {
             console.log("获取站点列表",response)
@@ -33,7 +35,13 @@ const everyday ={
                                   }
                               ]*/
                 bdMapObj.clean()
-                bdMapObj.printArea(dataList)
+                if(dataList.length>0){
+                    bdMapObj.printArea(dataList)
+                }else{
+                    bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
+                }
+
+
             }
         })
     },
@@ -101,7 +109,7 @@ const everyday ={
             url:'/superviseServer/message/site/get',
             data:{
                 siteId:siteId,
-                num:99,
+                num:20,
             }
         };
         $http._axios(reqData).then(response => {
@@ -126,7 +134,7 @@ const everyday ={
                 that.$layer.confirm(cont,{
                     type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     title: dataList[0].siteName+'消息详情',
-                    area:['650px', '440px'], //宽高
+                    area:['700px', '440px'], //宽高
                     offset: 'auto',
 
                 });

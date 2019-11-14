@@ -39,7 +39,6 @@ export default {
     },
     mounted(){
         this.creatMap() //初始化地图
-        this.getSiteList() //获取站点列表
         this.getSitestatisticsData() //获取站点统计数据
         this.getSiteNewsData() //获取站点消息数据
     },
@@ -48,7 +47,7 @@ export default {
         creatMap:function () {
             var bdmap = new BMap.Map("bdMap",{minZoom:9,maxZoom:20}); // 创建Map实例,设置地图允许的最小/大级别
             var point = new BMap.Point(119.653872,29.084135);
-            bdmap.centerAndZoom(point, 15);
+            bdmap.centerAndZoom(point, 14);
             bdmap.enableScrollWheelZoom(true)
             bdMapObj.begin(bdmap);
         },
@@ -70,7 +69,8 @@ export default {
             //console.log('获取导航选中的城市信息',this.$route.query)
             /* this.cityID=this.$route.query.id &&this.$route.query.id!="undefined"?this.$route.query.id:"";*/
             if(this.$route.query.id &&this.$route.query.id!="undefined"){
-                bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
+
+                that.getSiteList() //获取站点列表
             }
         },
         /*获取站点统计数据*/
@@ -148,7 +148,7 @@ export default {
         },
         chooseCityData:{
             handler(newvalue,oldvalue){
-              // console.log("监听区域ID",newvalue)
+               console.log("监听区域ID",newvalue)
                 this.getNavCityData()
             },
             deep:true

@@ -49,14 +49,7 @@ export default {
         this.timer = setInterval(this.onCautionList, 10000);
         this.$router.push({name: "everyday"})
         this.getUserCity()
-        this.$router.push({
-            path: '/home/everyday',
-            query: {
-                /*   id: this.navList.childrenNav[0].areas[0].id,
-                   name: this.navList.childrenNav[0].areas[0].name,
-                   parentName: this.navList.childrenNav[0].name*/
-            }
-        })
+
     },
     beforeDestroy() {
         clearInterval(this.timer);
@@ -102,7 +95,7 @@ export default {
                 query: {
                     id: itemThirdChild.id,
                     name: itemThirdChild.name,
-                    pId: itemChild.name,
+                    pId: itemChild.pid,
                     pName: itemChild.name
                 }
             })

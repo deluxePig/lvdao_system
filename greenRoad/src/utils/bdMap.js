@@ -14,11 +14,9 @@ class bdMap{
         let that=this;
         let img= require("@/assets/images/markpoint.gif");
         let opts = {
-            boxStyle:{
-                width: "280px",
-                height: "195px"
-            }
-            ,enableAutoPan: true,
+            width : 350,     // 信息窗口宽度
+            height: 400,     // 信息窗口高度
+            enableAutoPan: true,
             closeIconUrl:'icon/close.png',
             closeIconMargin:'0px',
             closeIconZIndex:1,
@@ -30,10 +28,19 @@ class bdMap{
                 let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
                 //console.log('百度long',t.siteLon)
                 //console.log('百度lat',t.siteLat)
+                let siteBikeCeiling="— —"
+                if(t.siteBikeCeiling && t.siteBikeCeiling!=null){
+                    siteBikeCeiling=t.siteBikeCeiling
+                }
                 let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
-                let content = '<div>站点名称：'+t.siteName+'</div><div>站点编号：'+t.siteId+'</div><div>创建时间：'+t.siteCreateTime+'</div><div>设备数量：'+t.siteCeiling+'</div><div>设备上限数量：'+t.siteCeiling+'</div><div>单车数量：'+t.currentNum+'</div><div>单车上限数量：'+t.siteBikeCeiling+'</div';
+                let content = '<div class="bdInfoList">站点编号：'+t.siteId+'</div><div class="bdInfoList">创建时间：'+t.siteCreateTime+'</div>' +
+                    '<div class="bdInfoList">道钉数量：'+t.siteCeiling+'</div>' +
+                    '<div class="bdInfoList">车位数量：'+siteBikeCeiling+'</div>' +
+                    '<div class="bdInfoList">现有单车数量：</div>' +
+                    '<div class="bdInfoList"><span class="title">自行车</span><span class="title">电动车</span></div>' +
+                    '<div class="bdInfoList bickbigBox"><div class="bickBox"></div><div class="bickBox"></div></div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
-                let title='站点信息:'
+                let title=t.siteName+':'
                 that.addClickHandler(title,content,marker,opts)
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
                     //console.log('long',getbaidu.lng)
@@ -43,7 +50,7 @@ class bdMap{
 
             }
         })
-        //this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
+        this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
     }
     //地图上拜访记录标点
     printVisit(_this){
@@ -85,16 +92,16 @@ class bdMap{
     returnPoint(){
         this.baseMap.setCenter(new BMap.Point(119.653872,29.084135))
     }
+    //定位到某个点
+    toPoint(lon,lat){
+        this.baseMap.setCenter(new BMap.Point(lon,lat))
+    }
     /* 信息窗口 */
     addClickHandler(title,content,marker){
-        let hei=200
-        if(title == "拜访记录"){
-            hei=260
-        }
         let that=this;
         let opts = {
-            width : 290,     // 信息窗口宽度
-            height: hei,     // 信息窗口高度
+            width : 350,     // 信息窗口宽度
+            height: 300,     // 信息窗口高度
             title : title , // 信息窗口标题
             enableMessage:false//设置允许信息窗发送短息
         }
@@ -321,7 +328,7 @@ class bdMap{
         myGeo.getPoint(streeName, function(point){
             //console.log('坐标',point)
             if (point) {
-                that.baseMap.centerAndZoom(point, 16);
+                that.baseMap.centerAndZoom(point, 14);
                // that.baseMap.addOverlay(new BMap.Marker(point));
             }else{
                 _this.$message.error('您选择地址没有解析到结果');
