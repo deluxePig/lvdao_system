@@ -13,7 +13,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("获取站点列表",response)
+           // console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
                /*  dataList=[
@@ -35,7 +35,7 @@ const everyday ={
                                   }
                               ]*/
                 bdMapObj.clean()
-                if(dataList.length>0){
+                if(dataList.length>0 && dataList[0].siteLon && dataList[0].siteLon!=''){
                     bdMapObj.printArea(dataList)
                 }else{
                     bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
@@ -113,7 +113,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("点击消息详情查看该站点详情",response)
+          //  console.log("点击消息详情查看该站点详情",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let con=''
@@ -124,11 +124,19 @@ const everyday ={
                     }else if(n.content == '满桩'){
                         tipcont= '<span class="newslist tip3">'+n.content+'</span>'
                     }
+                    let bikeSit=""
+                    if(n.brands && n.brands.length >0){
+                        $.each(n.brands,function (c,t) {
+                            bikeSit=bikeSit+'<div class="bikesiteBox"><span class="title">'+t.bikeBrand+'：</span><span class="num">'+t.brandTotal+'辆</span><span class="peo">联系人：'+t.brandMobile+'</span></div>'
+                        })
 
-                    con=con+'  <div class="detailPoplist">' +
+                    }
+                    con=con+'  <div class="detailPoplist"><div>' +
                         '<span class="newslist">'+n.createTime+'</span>' +
                         '<span class="newslist siteName">'+n.siteName+'</span>' +
-                        '<span class="newslist">'+n.bikeNum+'辆</span>'+tipcont+'</div>'
+                        '<span class="newslist">总数：'+n.bikeNum+'辆</span>'+tipcont+'</div>' +
+                        '<div class="bikeIteaBox">'+bikeSit+'</div>' +
+                        '</div>'
                 })
                 let cont=' <div class="detailPopBox">'+con+'</div>'
                 that.$layer.confirm(cont,{

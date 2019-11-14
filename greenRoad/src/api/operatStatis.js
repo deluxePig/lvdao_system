@@ -12,7 +12,7 @@ const operatStatis ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("获取品牌占比",response)
+           // console.log("获取品牌占比",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let total=0
@@ -51,7 +51,7 @@ const operatStatis ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("潮汐统计",response)
+           // console.log("潮汐统计",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let xAxis=[],legendData=[],seriesData=[]
@@ -93,7 +93,7 @@ const operatStatis ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("使用量统计",response)
+          //  console.log("使用量统计",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let xAxis=[],legendData=[],seriesData=[[],[]]
@@ -150,7 +150,7 @@ const operatStatis ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("最大使用量站点",response)
+           // console.log("最大使用量站点",response)
             if(response.code == "200"){
                 let dataList=response.data
                 that.maxUsageList=dataList

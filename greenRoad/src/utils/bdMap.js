@@ -25,12 +25,19 @@ class bdMap{
 
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
-                let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
+                let myIcon = new BMap.Icon(img, new BMap.Size(30, 34))
                 //console.log('百度long',t.siteLon)
                 //console.log('百度lat',t.siteLat)
                 let siteBikeCeiling="— —"
                 if(t.siteBikeCeiling && t.siteBikeCeiling!=null){
                     siteBikeCeiling=t.siteBikeCeiling
+                }
+                let bikeHtm='',bikeEleHtm=''
+                if(t.brands.length >0){
+                    $.each(t.brands,function (y,z) {
+                        bikeHtm=bikeHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.brandTotal+'</span></div>'
+                        bikeEleHtm=bikeEleHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.bikeEleTotal+'</span></div>'
+                    })
                 }
                 let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
                 let content = '<div class="bdInfoList">站点编号：'+t.siteId+'</div><div class="bdInfoList">创建时间：'+t.siteCreateTime+'</div>' +
@@ -38,7 +45,7 @@ class bdMap{
                     '<div class="bdInfoList">车位数量：'+siteBikeCeiling+'</div>' +
                     '<div class="bdInfoList">现有单车数量：</div>' +
                     '<div class="bdInfoList"><span class="title">自行车</span><span class="title">电动车</span></div>' +
-                    '<div class="bdInfoList bickbigBox"><div class="bickBox"></div><div class="bickBox"></div></div>';
+                    '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title=t.siteName+':'
                 that.addClickHandler(title,content,marker,opts)

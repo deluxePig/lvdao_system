@@ -50,11 +50,11 @@ export default {
             // console.log(`当前页: ${val}`);
         },
         handleEdit(index, row) {
-            console.log(index, row);
+           // console.log(index, row);
             this.onJumpPage(row.id)
         },
         handleDelete(index, row) {
-            console.log(index, row);
+          //  console.log(index, row);
             this.$confirm('此操作将永久删除该账户, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',

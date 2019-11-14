@@ -87,7 +87,7 @@ export default {
         },
         /*查看单车*/
         getbicycleDtail(data){
-            console.log("查看单车",data)
+           // console.log("查看单车",data)
             this.statisticsPopData=data
             let that=this
            // let cont=$("#statisticsPop").html()
@@ -148,7 +148,7 @@ export default {
         },
         chooseCityData:{
             handler(newvalue,oldvalue){
-               console.log("监听区域ID",newvalue)
+              // console.log("监听区域ID",newvalue)
                 this.getNavCityData()
             },
             deep:true

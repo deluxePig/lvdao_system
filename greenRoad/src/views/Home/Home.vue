@@ -4,7 +4,7 @@
         <div class="homeHeadBox">
             <div class="logoTitleox">
                 <img class="logoImg" src="" alt="">
-                <span class="title">共享单车监管平台</span>
+                <span class="title">共 享 单 车 监 管 平 台</span>
             </div>
             <div class="homeHeadRight rt">
                 <el-popover

@@ -19,7 +19,7 @@ export default {
             api.brand.getBrandList().then(res => {
                 if (res.code === 200) {
                     this.bikeList = res.data
-                    console.log('单车列表', this.bikeList)
+                  //  console.log('单车列表', this.bikeList)
                 } else {
                     this.$message.error(res.message);
                 }
@@ -32,11 +32,11 @@ export default {
             return '';
         },
         handleEdit(index, row) {
-            console.log(index, row);
+           // console.log(index, row);
             this.onJumpPage(row.brandId)
         },
         handleDelete(index, row) {
-            console.log(index, row);
+          //  console.log(index, row);
             this.$confirm('此操作将永久删除该单车品牌, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
