@@ -43,7 +43,7 @@ class bdMap{
                 let content = '<div class="bdInfoList">站点编号：'+t.siteId+'</div><div class="bdInfoList">创建时间：'+t.siteCreateTime+'</div>' +
                     '<div class="bdInfoList">道钉数量：'+t.siteCeiling+'</div>' +
                     '<div class="bdInfoList">车位数量：'+siteBikeCeiling+'</div>' +
-                    '<div class="bdInfoList">现有单车数量：</div>' +
+                    '<div class="bdInfoList">现有单车数量：'+t.currentNum+'</div>' +
                     '<div class="bdInfoList"><span class="title">自行车</span><span class="title">电动车</span></div>' +
                     '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中

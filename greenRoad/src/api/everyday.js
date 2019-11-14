@@ -13,7 +13,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-           // console.log("获取站点列表",response)
+            console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
                /*  dataList=[
@@ -35,8 +35,13 @@ const everyday ={
                                   }
                               ]*/
                 bdMapObj.clean()
-                if(dataList.length>0 && dataList[0].siteLon && dataList[0].siteLon!=''){
-                    bdMapObj.printArea(dataList)
+                if(dataList.length>0){
+                    if(dataList[0].siteLon && dataList[0].siteLon!=''){
+                        bdMapObj.printArea(dataList)
+                    }else{
+                        bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
+                    }
+
                 }else{
                     bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
                 }
