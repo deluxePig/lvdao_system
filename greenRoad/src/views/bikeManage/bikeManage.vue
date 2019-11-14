@@ -43,7 +43,7 @@
                     </el-table-column>
                     <el-table-column
                             prop="brandAddress" :show-overflow-tooltip='true'
-                            label="品牌地址" width="250">
+                            label="品牌地址">
                     </el-table-column>
                     <el-table-column fixed="right" label="操作" width="150">
                         <template slot-scope="scope">

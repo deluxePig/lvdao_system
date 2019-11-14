@@ -5,7 +5,7 @@
           <div class="login-head">
               <div class="login-bg"></div>
               <div class="head-info">
-                  <div class="head-title">共享单车监管系统</div>
+                  <div class="head-title">共享单车监管平台</div>
                   <div class="login-container">
                       <div class="title">用户登录</div>
                       <div class="input-items">
@@ -45,7 +45,7 @@
                       </div>
                   </div>
                   <div class="login-footer">
-                      <span>主办单位：******** &nbsp;&nbsp; 技术支持：****</span><br>
+                      <span>主办单位：金华市治堵办，技术支持：浙江助简科技有限公司</span><br>
                       <span>建议IE10 1024*768以上分辨率浏览本网站</span>
                   </div>
               </div>

@@ -1,14 +1,14 @@
 import 'utils/gVerify'
 import api from '@/api'
 import md5 from 'md5'
-import { Base64 } from 'js-base64'
+import {Base64} from 'js-base64'
 
 export default {
     name: 'login',
     components: {},
     data() {
         return {
-            zh:'',//账户
+            zh: '',//账户
             account: '',
             passWord: '',
             verifyCode: '',
@@ -23,7 +23,7 @@ export default {
     },
     mounted() {
         this.verifyCode = new GVerify("v_container")
-        if(this.zh) {
+        if (this.zh) {
             this.account = this.zh.account
             this.passWord = Base64.decode(this.zh.passWord)
             this.rememb = true
@@ -32,9 +32,9 @@ export default {
     methods: {
         onVerify() {
             const res = this.verifyCode.validate(this.code);
-            if(res){
+            if (res) {
                 this.onLogin()
-            }else{
+            } else {
                 this.$message.error("验证码错误");
                 this.verifyCode.refresh()
             }
@@ -48,7 +48,7 @@ export default {
         //登录后的业务逻辑
         onLoginLogic(res) {
             if (res.code === 200) {
-                if(this.rememb) {
+                if (this.rememb) {
                     const zh = {
                         account: this.account,
                         passWord: Base64.encode(this.passWord)
@@ -58,7 +58,7 @@ export default {
                     this.$ls.remove('zh')
                 }
                 this.$ss.set('user', res.data)
-                this.fullScreen()   //全屏
+                this.comFull()   //全屏
                 this.$router.replace('/home')
                 // 登录成功信息
                 // this.$message({
@@ -77,6 +77,36 @@ export default {
                 rfs.call(el);
             }
             return
+        },
+        comFull(){
+            /*判断是否全屏*/
+            var isFullscreen = document.fullScreenElement//W3C
+                ||document.msFullscreenElement //IE
+                ||document.mozFullScreenElement //火狐
+                ||document.webkitFullscreenElement //谷歌
+                ||false;
+            if(!isFullscreen){
+                var el = document.documentElement;
+                if (el.requestFullscreen) {
+                    el.requestFullscreen();
+                } else if (el.mozRequestFullScreen) {
+                    el.mozRequestFullScreen();
+                } else if (el.webkitRequestFullscreen) {
+                    el.webkitRequestFullscreen();
+                } else if (el.msRequestFullscreen) {
+                    el.msRequestFullscreen();
+                }
+            }else{
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+            }
         }
     },
     watch: {}
