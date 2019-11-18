@@ -126,7 +126,7 @@
                         @size-change="handleSizeChange"
                         @current-change="handleCurrentChange"
                         :current-page="deviceData.currentPage"
-                        :page-sizes="[5, 10, 30, 50, 80, 100]"
+                        :page-sizes="[100]"
                         :page-size="pageSize"
                         layout="total, sizes, prev, pager, next, jumper"
                         :total="deviceData.totalNumber">

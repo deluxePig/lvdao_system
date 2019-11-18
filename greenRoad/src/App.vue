@@ -61,7 +61,7 @@
 
 
   ::-webkit-scrollbar{/*滚动条整体部分，其中的属性有width,height,background,border等（就和一个块级元素一样）（位置1）*/
-      width: 5px;
+      width: 10px;
       height: 1px;
   }
   ::-webkit-scrollbar-button{/*滚动条两端的按钮，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置2）*/
