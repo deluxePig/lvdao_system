@@ -38,12 +38,13 @@ const everyday ={
                 if(dataList.length>0){
                     if(dataList[0].siteLon && dataList[0].siteLon!=''){
                         bdMapObj.printArea(dataList)
-                    }else{
+                    }else {
                         bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
+                        bdMapObj.printArea(dataList)
                     }
-
                 }else{
                     bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
+                    bdMapObj.printArea(dataList)
                 }
 
 

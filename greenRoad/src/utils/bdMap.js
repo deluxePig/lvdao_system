@@ -57,7 +57,10 @@ class bdMap{
 
             }
         })
-        this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
+        if(_this[0].siteLon && _this[0].siteLon!=""){
+            this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
+        }
+
     }
     //地图上拜访记录标点
     printVisit(_this){
