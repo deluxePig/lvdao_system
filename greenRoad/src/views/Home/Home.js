@@ -79,17 +79,41 @@ export default {
         },
         /*导航——打开*/
         handleOpen(key, keyPath) {
-            // console.log("打开",key, keyPath);
+          //   console.log("打开",key, keyPath);
+            if(key == "1-1"){
+                this.chooseCity(key, keyPath)
+            }
         },
         /*导航——关闭*/
         handleClose(key, keyPath) {
-            // console.log("关闭",key, keyPath);
+           //  console.log("关闭",key, keyPath);
+            if(key == "1-1"){
+                this.chooseCity(key, keyPath)
+            }
+
+        },
+        /*选择城市*/
+        chooseCity(key, keyPath){
+            let that=this
+          //  console.log("选择城市",key, keyPath);
+            let cityIndex=keyPath[1].split("-")[1]
+            cityIndex=Number(cityIndex)-1
+         //   console.log("cityIndex",cityIndex,this.$store.state.sysCityList)
+            this.$router.push({
+                path: '/home/everyday',
+                query: {
+                    id: that.$store.state.sysCityList[cityIndex].id,
+                    name: that.$store.state.sysCityList[cityIndex].name,
+                    pId: that.$store.state.sysCityList[cityIndex].pid,
+                    pName: "中国"
+                }
+            })
         },
         /*选择城市区域*/
         locationChoose(itemChild, itemThirdChild) {
-            // console.log("选择城市区域::")
-            // console.log(itemChild)
-            // console.log(itemThirdChild)
+            console.log("选择城市区域::")
+            console.log(itemChild)
+            console.log(itemThirdChild)
             this.$router.push({
                 path: '/home/everyday',
                 query: {

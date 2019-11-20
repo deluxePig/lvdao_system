@@ -80,7 +80,7 @@
                                 <el-menu-item class="elthirdchild" v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
                                               @click="locationChoose(itemChild,itemThirdChild)"
                                               :index="(index+1).toString()+'-'+(inedxChild+1).toString()+'-'+(inedxThirdChild+1).toString()">
-                                    {{itemThirdChild.name}}
+                                    {{itemThirdChild.name}}<span style="font-size: 12px;color:#ddd;">({{itemThirdChild.total}})</span>
                                 </el-menu-item>
                             </el-submenu>
                         </el-submenu>

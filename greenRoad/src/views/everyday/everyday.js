@@ -47,7 +47,7 @@ export default {
         creatMap:function () {
             var bdmap = new BMap.Map("bdMap",{minZoom:9,maxZoom:20}); // 创建Map实例,设置地图允许的最小/大级别
             var point = new BMap.Point(119.653872,29.084135);
-            bdmap.centerAndZoom(point, 14);
+            bdmap.centerAndZoom(point, 15);
             bdmap.enableScrollWheelZoom(true)
             bdMapObj.begin(bdmap);
         },

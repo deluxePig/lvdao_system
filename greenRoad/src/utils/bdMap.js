@@ -12,7 +12,7 @@ class bdMap{
     //地图上标点(站点)
     printArea(_this) {
         let that=this;
-        let img= require("@/assets/images/markpoint.gif");
+        let img= require("@/assets/images/markpoint3.png");
         let opts = {
             width : 350,     // 信息窗口宽度
             height: 400,     // 信息窗口高度
@@ -25,7 +25,10 @@ class bdMap{
 
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
-                let myIcon = new BMap.Icon(img, new BMap.Size(30, 34))
+                let myIcon = new BMap.Icon(img, new BMap.Size(40, 50), {
+                    anchor: new BMap.Size(20, 50),
+                    imageOffset: new BMap.Size(0, 0)
+                });
                 //console.log('百度long',t.siteLon)
                 //console.log('百度lat',t.siteLat)
                 let siteBikeCeiling="— —"
