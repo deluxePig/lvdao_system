@@ -91,7 +91,15 @@ function dataHandle (value) {
     }
 }
 
+/**  校验输入的手机号是否符合格式
+ * str 要处理的手机号
+ * */
+function isvalidPhone(str) {
+    const reg = /^1[3|4|5|7|8][0-9]\d{8}$/
+    return reg.test(str)
+}
+
 
 export default {
-   urlRequest,encryptDes,decryptDes,dataHandle
+   urlRequest,encryptDes,decryptDes,dataHandle,isvalidPhone
 }

@@ -7,6 +7,7 @@ export default {
         return {
             deviceData: {
                 list: [],
+                eqSum: 0,
                 currentPage: 1,
                 totalNumber: 1,
                 totalPage: 1

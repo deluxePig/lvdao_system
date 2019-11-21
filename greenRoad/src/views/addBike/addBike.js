@@ -1,9 +1,19 @@
 import api from '@/api'
+import isvalid from '@/utils/public'
 
 export default {
     name: 'addBike',
     components: {},
     data() {
+        var validPhone=(rule, value,callback)=>{
+            if (!value){
+                callback(new Error('请输入联系人手机号'))
+            }else if (!isvalid.isvalidPhone(value)){
+                callback(new Error('请输入正确的11位手机号码'))
+            }else {
+                callback()
+            }
+        };
         return {
             bikeId: '',
             ruleForm: {
@@ -11,6 +21,7 @@ export default {
                 brandOperation: '',
                 brandAddress: '',
                 brandContactPerson: '',
+                brandContactMobile: '',
                 brandOperationNum: '',
                 brandDispatchImg: '',
                 brandBikeNum: '',
@@ -30,6 +41,9 @@ export default {
                 ],
                 brandContactPerson: [
                     {required: true, message: '请填写品牌联系人', trigger: 'blur'}
+                ]
+                ,brandContactMobile: [
+                    {required: true, validator: validPhone, trigger: 'blur'}
                 ],
                 brandOperationNum: [
                     {required: true, message: '请填写品牌运维人员数量'},
@@ -39,12 +53,12 @@ export default {
                     {required: true, message: '请填写调度车辆行驶证图(图片局域网地址)', trigger: 'blur'}
                 ],
                 brandBikeNum: [
-                    {required: true, message: '请填写品牌投放单车量'},
-                    {type: 'number', message: '品牌投放单车量必须为数字值'}
+                    {required: true, message: '请填写品牌核定共享自行车总量'},
+                    {type: 'number', message: '品牌核定共享自行车总量必须为数字值'}
                 ],
                 brandTrolleyBikeNum: [
-                    {required: true, message: '请填写品牌投放电车量'},
-                    {type: 'number', message: '品牌投放电车量必须为数字值'}
+                    {required: true, message: '请填写品牌核定共享电动车总量'},
+                    {type: 'number', message: '品牌核定共享电动车总量必须为数字值'}
                 ],
                 brandApprovalImg: [
                     {required: true, message: '请填写政府批文图(图片局域网地址)', trigger: 'blur'}
