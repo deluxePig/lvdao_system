@@ -14,7 +14,7 @@
                         <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="权限" prop="roleId">
-                        <el-select v-model="ruleForm.roleId" placeholder="请选择账户权限">
+                        <el-select v-model="ruleForm.roleId" placeholder="请选择账户权限" @change="onSelectRoleChange">
                             <el-option
                                     v-for="item in roleOp"
                                     :key="item.value"
@@ -33,7 +33,7 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="区域" prop="areaId">
+                    <el-form-item v-if="ruleForm.roleId !== 2" label="区域" prop="areaId">
                         <el-select v-model="ruleForm.areaId" placeholder="请选择账户所属区域">
                             <el-option
                                     v-for="item in areaOptions"

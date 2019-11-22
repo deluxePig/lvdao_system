@@ -97,20 +97,26 @@ export default {
             if (this.myRole === 1) {
                 return this.roleOptions
             } else if (this.myRole === 2) {
-                return this.roleOptions.filter(item => item.value > 3)
+                return this.roleOptions.filter(item => item.value > 3 && item.value < 6)
+            } else if (this.myRole === 3) {
+                return this.roleOptions.filter(item => item.value == 5)
             }
 
         }
     },
     created: function () {
         this.userId = this.$route.query.id || ''
+        this.myInfo = this.$ss.get('user')
         this.myRole = this.$ss.get('user').roleId
     },
     mounted() {
+        console.log(this.myInfo)
         this.onCityList()
         if (this.userId) {
             this.onGetUserInfo()
         }
+        //权限限制
+        this.ruleForm.roleId = this.myRole == 3?5:''
     },
     methods: {
         onCityList() {
@@ -119,6 +125,11 @@ export default {
                     this.cityOptions = res.data.map(o => {
                         return {value: o.id, label: o.name}
                     });
+                    if(this.myInfo.cityId) {
+                        this.cityOptions = this.cityOptions.filter(o => o.value == this.myInfo.cityId)
+                        this.ruleForm.cityId = this.myInfo.cityId
+                        this.onAreaList(this.myInfo.cityId)
+                    }
                     // console.log('城市列表', this.cityOptions)
                 } else {
                     this.$message.error(res.message);
@@ -170,12 +181,19 @@ export default {
             this.ruleForm.areaId = ''
             this.onAreaList(val)
         },
+        onSelectRoleChange(val) {
+            console.log('选择的权限',val)
+        },
         onAreaList(pid) {
             api.area.getAreaList(pid).then(res => {
                 if (res.code === 200) {
                     this.areaOptions = res.data.map(o => {
                         return {value: o.id, label: o.name}
                     });
+                    if(this.myInfo.areaId) {
+                        this.areaOptions = this.areaOptions.filter(o => o.value == this.myInfo.areaId)
+                        this.ruleForm.areaId = this.myInfo.areaId
+                    }
                     console.log('区域列表', this.areaOptions)
                 } else {
                     this.$message.error(res.message);

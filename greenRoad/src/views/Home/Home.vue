@@ -48,7 +48,7 @@
                     <div class="homeHeadRight-pop setting-p">
 <!--                        <p @click=""><i class="el-icon-star-off"></i>本地区投放量</p>-->
                         <p @click="onJumpPage(2)"><i class="el-icon-user"></i>账号管理</p>
-                        <p @click="onJumpPage(1)"><i class="el-icon-bicycle"></i>单车管理</p>
+                        <p @click="onJumpPage(1)"><i class="el-icon-bicycle"></i>运营企业管理</p>
                         <p @click="onJumpPage(3)"><i class="el-icon-s-flag"></i>城市区域管理</p>
                     </div>
                     <div slot="reference" class="userInfoWindow">

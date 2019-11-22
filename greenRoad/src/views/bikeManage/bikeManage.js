@@ -5,11 +5,12 @@ export default {
     components: {},
     data() {
         return {
-            bikeList: []
+            bikeList: [],
+            myRole: 0
         }
     },
     created: function () {
-
+        this.myRole = this.$ss.get('user').roleId
     },
     mounted() {
         this.onGetBrandList()    //获取单车品牌列表

@@ -6,7 +6,7 @@ export default {
     data() {
         return {
             checkAll: false,
-            cities: ['日常值守', '运营统计', '违规处罚', '设备管理', '评分评价'],
+            cities: ['日常值守', '设备管理', '运营统计', '违规处罚', '评分评价'],
             isIndeterminate: true,
             roleOptions: [{
                 value: 1,

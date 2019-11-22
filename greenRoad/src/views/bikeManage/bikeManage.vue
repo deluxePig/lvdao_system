@@ -51,7 +51,7 @@
                     </el-table-column>
                     <el-table-column fixed="right" label="操作" width="150">
                         <template slot-scope="scope">
-                            <el-button
+                            <el-button v-if="myRole < 3"
                                     size="mini"
                                     @click="handleEdit(scope.$index, scope.row)">修改</el-button>
                             <el-button
