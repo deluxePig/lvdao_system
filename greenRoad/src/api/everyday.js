@@ -13,7 +13,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("获取站点列表",response)
+           // console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
                /*  dataList=[
@@ -35,16 +35,22 @@ const everyday ={
                                   }
                               ]*/
                 bdMapObj.clean()
+             //   console.log("城市：",that.chooseCityData)
                 if(dataList.length>0){
                     if(dataList[0].siteLon && dataList[0].siteLon!=''){
-                        bdMapObj.printArea(dataList)
+                        if(that.chooseCityData.id!="330785"){
+                         bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
+                        }
+                        bdMapObj.printArea(dataList,that)
+
+
+
                     }else {
                         bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
-                        bdMapObj.printArea(dataList)
                     }
                 }else{
                     bdMapObj.Geocoder(that.chooseCityData.pName,that.chooseCityData.name,that)
-                    bdMapObj.printArea(dataList)
+
                 }
 
 
@@ -81,7 +87,7 @@ const everyday ={
             url:'/superviseServer/message/site/get',
             data:{
                 siteId:"",
-                num:99,
+                num:5,
             }
         };
         $http._axios(reqData).then(response => {

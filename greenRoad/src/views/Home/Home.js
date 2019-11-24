@@ -47,7 +47,7 @@ export default {
     },
     mounted() {
         this.timer = setInterval(this.onCautionList, 10000);
-        this.$router.push({name: "everyday"})
+       // this.$router.push({name: "everyday"})
         this.getUserCity()
 
     },

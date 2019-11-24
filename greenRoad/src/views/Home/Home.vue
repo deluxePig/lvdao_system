@@ -76,7 +76,7 @@
                             </template>
                             <el-submenu v-if="index==0" class="elchildren" v-for="(itemChild,inedxChild) in item.childrenNav"
                                         :index="(index+1).toString()+'-'+(inedxChild+1).toString()">
-                                <template slot="title">{{itemChild.name}}</template>
+                                <template slot="title">{{itemChild.name}}<span style="font-size: 12px;color:#ddd;">({{itemChild.total}})</span></template>
                                 <el-menu-item class="elthirdchild" v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
                                               @click="locationChoose(itemChild,itemThirdChild)"
                                               :index="(index+1).toString()+'-'+(inedxChild+1).toString()+'-'+(inedxThirdChild+1).toString()">

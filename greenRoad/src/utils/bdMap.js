@@ -10,7 +10,7 @@ class bdMap{
         //this.setMapLib()
     }
     //地图上标点(站点)
-    printArea(_this) {
+    printArea(_this,everythat) {
         let that=this;
         let img= require("@/assets/images/markpoint3.png");
         let opts = {
@@ -60,9 +60,14 @@ class bdMap{
 
             }
         })
-        if(_this[0].siteLon && _this[0].siteLon!=""){
-            this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
+        if(everythat.chooseCityData.id=="330785"){
+            if(_this[0].siteLon && _this[0].siteLon!=""){
+                this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
+            }else  if(_this[1].siteLon && _this[1].siteLon!=""){
+                this.baseMap.setCenter(new BMap.Point(_this[1].siteLon,_this[1].siteLat))
+            }
         }
+
 
     }
     //地图上拜访记录标点
@@ -84,7 +89,7 @@ class bdMap{
     //地图放大
     big(){
         let bignow=this.baseMap.getZoom()
-        if(bignow < 19){
+        if(bignow < 30){
             this.baseMap.zoomTo(this.baseMap.getZoom() + 1)
         }
 

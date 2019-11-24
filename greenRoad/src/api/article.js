@@ -18,7 +18,7 @@ const article ={
             data:{}
         };
         $http._axios(reqData).then(response => {
-         //   console.log("获取用户城市区域",response)
+            //console.log("获取用户城市区域",response)
             if(response.code == "200"){
                 let dataList=response.data
                 if(that.navList[0].title=="日常值守"){
@@ -30,7 +30,7 @@ const article ={
                             query: {
                                 id: dataList[0].id,
                                 name: dataList[0].name,
-                                parentName: dataList[0].pid
+                                pName: dataList[0].name
                             }
                         })
                     }else{

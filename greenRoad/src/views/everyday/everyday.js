@@ -45,7 +45,7 @@ export default {
     methods:{
         /*初始化百度地图*/
         creatMap:function () {
-            var bdmap = new BMap.Map("bdMap",{minZoom:9,maxZoom:20}); // 创建Map实例,设置地图允许的最小/大级别
+            var bdmap = new BMap.Map("bdMap",{minZoom:12,maxZoom:30}); // 创建Map实例,设置地图允许的最小/大级别
             var point = new BMap.Point(119.653872,29.084135);
             bdmap.centerAndZoom(point, 15);
             bdmap.enableScrollWheelZoom(true)
@@ -148,7 +148,7 @@ export default {
         },
         chooseCityData:{
             handler(newvalue,oldvalue){
-              // console.log("监听区域ID",newvalue)
+             //  console.log("监听区域ID",newvalue)
                 this.getNavCityData()
             },
             deep:true
