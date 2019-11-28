@@ -1,7 +1,7 @@
 <template>
     <div id="addBike">
         <div class="addBike-box">
-            <div class="addBike-title">新增账号</div>
+            <div class="addBike-title">新增企业</div>
             <div class="addBike-form">
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="160px"
                          class="demo-ruleForm">
@@ -29,9 +29,9 @@
                     <el-form-item label="核定共享电动车" prop="brandTrolleyBikeNum">
                         <el-input v-model.number="ruleForm.brandTrolleyBikeNum" placeholder="请填写品牌核定共享电动车总量"></el-input>
                     </el-form-item>
-                    <el-form-item label="调度车辆行驶证图" prop="brandDispatchImg">
-                        <el-input v-model="ruleForm.brandDispatchImg" placeholder="请填写调度车辆行驶证图(图片局域网地址)"></el-input>
-                    </el-form-item>
+<!--                    <el-form-item label="调度车辆行驶证图" prop="brandDispatchImg">-->
+<!--                        <el-input v-model="ruleForm.brandDispatchImg" placeholder="请填写调度车辆行驶证图(图片局域网地址)"></el-input>-->
+<!--                    </el-form-item>-->
                     <el-form-item label="政府批文图" prop="brandApprovalImg">
                         <el-input v-model="ruleForm.brandApprovalImg" placeholder="请填写政府批文图(图片局域网地址)"></el-input>
                     </el-form-item>

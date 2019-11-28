@@ -2,9 +2,9 @@
 <template>
     <div id="bikeManage">
         <div class="bikeManage-box">
-            <div class="bikeManage-title">单车管理</div>
+            <div class="bikeManage-title">运营企业管理</div>
             <div class="bikeManage-add">
-                <el-button size="small" type="primary" @click="onJumpPage()">新增单车</el-button>
+                <el-button size="small" type="primary" @click="onJumpPage()">新增企业</el-button>
             </div>
             <div class="bikeManage-table">
                 <el-table :header-cell-style="{background:'#FAFAFA',color:'#555'}"
@@ -39,19 +39,19 @@
 <!--                    </el-table-column>-->
                     <el-table-column
                             prop="brandBikeNum"
-                            label="核定共享自行车" width="100">
+                            :label="'核定共享\n自行车'" width="100">
                     </el-table-column>
                     <el-table-column
                             prop="brandTrolleyBikeNum"
-                            label="核定共享电动车" width="100">
+                            :label="'核定共享\n电动车'" width="100">
                     </el-table-column>
                     <el-table-column
                             prop="brandAddress" :show-overflow-tooltip='true'
                             label="联系地址">
                     </el-table-column>
-                    <el-table-column fixed="right" label="操作" width="150">
+                    <el-table-column v-if="myRole < 3" fixed="right" label="操作" width="150">
                         <template slot-scope="scope">
-                            <el-button v-if="myRole < 3"
+                            <el-button
                                     size="mini"
                                     @click="handleEdit(scope.$index, scope.row)">修改</el-button>
                             <el-button

@@ -23,7 +23,7 @@ export default {
                 brandContactPerson: '',
                 brandContactMobile: '',
                 brandOperationNum: '',
-                brandDispatchImg: '',
+                brandDispatchImg: '0',
                 brandBikeNum: '',
                 brandTrolleyBikeNum: '',
                 brandApprovalImg: '',
@@ -48,9 +48,6 @@ export default {
                 brandOperationNum: [
                     {required: true, message: '请填写品牌运维人员数量'},
                     {type: 'number', message: '品牌运维人员数量必须为数字值'}
-                ],
-                brandDispatchImg: [
-                    {required: true, message: '请填写调度车辆行驶证图(图片局域网地址)', trigger: 'blur'}
                 ],
                 brandBikeNum: [
                     {required: true, message: '请填写品牌核定共享自行车总量'},
