@@ -34,7 +34,7 @@
                          </div>-->
                       <div class="seaticListBox bicycleListBox">
                           <ul>
-                              <li v-for="(list,index) in bicycle.list">
+                              <li v-for="(list,index) in bicycle.list" v-if="list.brandRealityNum>0">
                                   <span class="title">{{list.brandName}}:</span>
                                   <span class="value">{{list.brandRealityNum}}</span>
                                   <span class="look" @click="getbicycleDtail(list)">查看</span>
@@ -48,7 +48,7 @@
                         </div>-->
                       <div class="seaticListBox electrocarListBox">
                           <ul>
-                              <li v-for="(list,index) in electrocarList.list">
+                              <li v-for="(list,index) in electrocarList.list" v-if="list.brandTrolleyBikeNum>0">
                                   <span class="title">{{list.brandName}}:</span>
                                   <span class="value">{{list.brandTrolleyBikeNum}}</span>
                                   <span class="look" @click="getbicycleDtail(list)">查看</span>

@@ -38,9 +38,14 @@ export default {
 
     },
     mounted(){
+        let that=this
         this.creatMap() //初始化地图
         this.getSitestatisticsData() //获取站点统计数据
         this.getSiteNewsData() //获取站点消息数据
+        let everInter=setInterval(function () {
+            that.getSitestatisticsData() //获取站点统计数据
+            that.getSiteNewsData() //获取站点消息数据
+        },30000)
     },
     methods:{
         /*初始化百度地图*/
@@ -127,7 +132,7 @@ export default {
             that.$layer.confirm(cont,{
                 type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                 title: data.brandName+'详情',
-                area:['700px', '440px'], //宽高
+                area:['700px', '600px'], //宽高
                 offset: 'auto',
 
             });
