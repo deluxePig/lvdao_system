@@ -5,7 +5,7 @@
       <!--搜索框-->
       <div class="mapSearchBox">
         <div class="mapSearchCon">
-            <input class="seerchInput" v-model="searchValue" placeholder="搜索停车点名称" type="search" @keyup.13="searchSite()">
+            <input class="seerchInput" v-model="searchValue" placeholder="搜索停车点名称或站点ID" type="search" @keyup.13="searchSite()">
             <div class="searchBtnBox" @click="searchSite()">
                 <i class="iconfont">&#xe614;</i>
             </div>

@@ -35,23 +35,26 @@ class bdMap{
                 if(t.siteBikeCeiling && t.siteBikeCeiling!=null){
                     siteBikeCeiling=t.siteBikeCeiling
                 }
-                let bikeHtm='',bikeEleHtm=''
+                let bikeHtm='',bikeEleHtm='',bikeNum=0,bikeEle=0,popHeight=240
                 if(t.brands.length >0){
                     $.each(t.brands,function (y,z) {
                         bikeHtm=bikeHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.brandTotal+'</span></div>'
                         bikeEleHtm=bikeEleHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.bikeEleTotal+'</span></div>'
+                        bikeNum=bikeNum+Number(z.brandTotal)
+                        bikeEle=bikeEle+Number(z.bikeEleTotal)
                     })
+                    popHeight=popHeight+35*t.brands.length
                 }
                 let marker = new BMap.Marker(new BMap.Point(t.siteLon,t.siteLat),{icon:myIcon});   // 创建标注business_number
                 let content = '<div class="bdInfoList">站点编号：'+t.siteId+'</div><div class="bdInfoList">创建时间：'+t.siteCreateTime+'</div>' +
                     '<div class="bdInfoList">道钉数量：'+t.siteCeiling+'</div>' +
                     '<div class="bdInfoList">车位数量：'+siteBikeCeiling+'</div>' +
                     '<div class="bdInfoList">现有单车数量：'+t.currentNum+'</div>' +
-                    '<div class="bdInfoList"><span class="title">自行车</span><span class="title">电动车</span></div>' +
+                    '<div class="bdInfoList"><span class="title">自行车：'+bikeNum+'</span><span class="title">电动车：'+bikeEle+'</span></div>' +
                     '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title=t.siteName+':'
-                that.addClickHandler(title,content,marker,opts)
+                that.addClickHandler(title,content,marker,opts,popHeight)
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
                     //console.log('long',getbaidu.lng)
                     console.log('lat',getbaidu.lat)
@@ -60,6 +63,7 @@ class bdMap{
 
             }
         })
+
         if(everythat.chooseCityData.id=="330785"){
             if(_this[0].siteLon && _this[0].siteLon!=""){
                 this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
@@ -115,11 +119,12 @@ class bdMap{
         this.baseMap.setCenter(new BMap.Point(lon,lat))
     }
     /* 信息窗口 */
-    addClickHandler(title,content,marker){
+    addClickHandler(title,content,marker,opttts,popHeight){
+       // console.log("popHeight:",popHeight)
         let that=this;
         let opts = {
             width : 350,     // 信息窗口宽度
-            height: 300,     // 信息窗口高度
+            height: popHeight,     // 信息窗口高度
             title : title , // 信息窗口标题
             enableMessage:false//设置允许信息窗发送短息
         }
@@ -333,7 +338,7 @@ class bdMap{
             BMapLib.AreaRestriction.setBounds(that.baseMap, b); // 已map为中心，已b为范围的地图
         } catch (e) {
             // 捕获错误异常
-            console.log(e)
+           // console.log(e)
         }
     }
     // 地址解析，根据地名查询坐标

@@ -16,24 +16,6 @@ const everyday ={
            // console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
-               /*  dataList=[
-                                  {
-                                      siteCeiling: 2,
-                                      siteCreateTime: "2019-10-21 10:22:38.0",
-                                      siteId: "100001",
-                                      siteLat: 30.253831,
-                                      siteLon: 120.186405,
-                                      siteName: "站点1",
-                                   },
-                                  {
-                                      siteCeiling: 2,
-                                      siteCreateTime: "2019-10-21 10:22:38.0",
-                                      siteId: "100001",
-                                      siteLat: 30.260257,
-                                      siteLon: 120.193878,
-                                      siteName: "站点2",
-                                  }
-                              ]*/
                 bdMapObj.clean()
              //   console.log("城市：",that.chooseCityData)
                 if(dataList.length>0){
@@ -111,7 +93,7 @@ const everyday ={
             if(response.code == "200"){
                 let dataList=response.data
                 bdMapObj.clean()
-                bdMapObj.printArea(dataList)
+                bdMapObj.printArea(dataList,that)
             }
         })
     },

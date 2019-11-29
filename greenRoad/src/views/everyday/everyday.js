@@ -119,13 +119,13 @@ export default {
                 '              <span class="title">运维人员数量：</span><span>'+data.brandOperationNum+'</span>\n' +
                 '          </div>\n' +
                 '          <div class="detailPoplist">\n' +
-                '              <span class="title">共享单车投放数量：</span><span>'+data.brandRealityNum+'</span>\n' +
+                '              <span class="title">核定共享自行车：</span><span>'+data.brandRealityNum+'</span>\n' +
                 '          </div>\n' +
                 '          <div class="detailPoplist">\n' +
-                '              <span class="title">电动车投放数量：</span><span>'+data.brandTrolleyBikeNum+'</span>\n' +
+                '              <span class="title">核定共享电动车：</span><span>'+data.brandTrolleyBikeNum+'</span>\n' +
                 '          </div>\n' +
                 '          <div class="detailPoplist">\n' +
-                '              <span class="title">核定投放量：</span><span>'+data.brandBikeNum+'</span>\n' +
+                '              <span class="title">核定投放量：</span><span>'+data.brandRealityEleNum+'</span>\n' +
                 '          </div>\n' +
                 '      </div>'
          //   console.log(cont)
