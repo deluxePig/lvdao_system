@@ -27,8 +27,8 @@
                             </div>
                             <div v-for="o in caution.list" :key="o.id" class="text item">
                                 <el-row>
-                                    <el-col :span="10"><div>{{o.cautionCreateTime}}</div></el-col>
-                                    <el-col :span="3"><div>{{o.cautionBrand}}</div></el-col>
+                                    <el-col :span="8"><div>{{o.cautionCreateTime | timeInit}}</div></el-col>
+                                    <el-col :span="5"><div>{{o.cautionBrand}}</div></el-col>
                                     <el-col :span="6"><div>{{o.siteName}}</div></el-col>
                                     <el-col :span="5"><div>{{reData[o.cautionType]}}</div></el-col>
                                 </el-row>

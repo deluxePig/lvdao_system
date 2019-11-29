@@ -83,7 +83,7 @@
 <!--                </el-row>-->
 <!--            </div>-->
 
-            <div class="deviceManage-items" v-for="item in deviceData.list" :key="item.siteId">
+            <div class="deviceManage-items" :class="moduleClass(item)" v-for="item in deviceData.list" :key="item.siteId">
                 <el-row class="device-content">
                     <el-col :span="2">
                         <div>{{item.siteName}}</div>

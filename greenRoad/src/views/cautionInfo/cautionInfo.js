@@ -53,7 +53,7 @@ export default {
             // console.log(`当前页: ${val}`);
         },
         onJumpPage() {
-            this.$router.push('/home')
+            this.$router.go(-1)
         },
         onJump(url) {
             this.$router.push(`/home/${url}`)

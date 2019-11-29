@@ -24,11 +24,29 @@ export default {
         this.onGetDeviceList()  //获取设备列表
     },
     methods: {
+        moduleClass(arr) {
+            if (arr) {
+                return this.onHighlightRule(arr)
+            } else {
+                return ''
+            }
+        },
+        onHighlightRule(arr) {
+            let className = ''
+            //标红规则
+            //规则1 缺少站点名称 || 规则2 缺少站点编号 || 规则3 缺少经纬度 || 规则4 MAC数量和编号数量和道钉数量不一致
+            if(!arr.siteName || !arr.siteId || !arr.siteLon || !arr.siteLat || arr.equipments.length !== parseInt(arr.siteCeiling)) {
+                className = 'site-Highlight'
+            }
+            return className
+        },
         onGetDeviceList() {
             api.equipment.getList(this.pageNum, this.pageSize).then(res => {
                 if (res.code === 200 && res.data) {
                     this.deviceData = res.data
                     // console.log('设备接口', this.deviceList)
+                    //跳到头部
+                    window.location.hash = "#deviceManage";
                 } else {
                     this.$message.error(res.message);
                 }
@@ -55,7 +73,7 @@ export default {
             // console.log(`当前页: ${val}`);
         },
         onDelete(id, type) {
-            const tiShi = type?'此操作将永久删除该站点, 该站点下的所有设备也将随之永久删除, 是否继续？': '此操作将永久删除该设备, 是否继续？'
+            const tiShi = type ? '此操作将永久删除该站点, 该站点下的所有设备也将随之永久删除, 是否继续？' : '此操作将永久删除该设备, 是否继续？'
             this.$confirm(tiShi, '警告', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
