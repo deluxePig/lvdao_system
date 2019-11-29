@@ -31,6 +31,7 @@ export default {
             ],
             statisticsShow:0 ,//统计区是否展开
             newsShow:0 ,//消息区是否展开
+            newsinfo:0,
             statisticsPopData:{}, //查看单车详情数据
         }
     },
@@ -45,7 +46,7 @@ export default {
         let everInter=setInterval(function () {
             that.getSitestatisticsData() //获取站点统计数据
             that.getSiteNewsData() //获取站点消息数据
-        },30000)
+        },3000)
     },
     methods:{
         /*初始化百度地图*/
@@ -144,6 +145,10 @@ export default {
         newsDetail(data){
            // console.log(data)
             this.$api.everyday.siteNewsDetail(this,data.siteId)
+        },
+        clickNews(){
+            this.newsShow=1
+            this.newsinfo=0
         }
     },
     watch:{
@@ -155,6 +160,16 @@ export default {
             handler(newvalue,oldvalue){
              //  console.log("监听区域ID",newvalue)
                 this.getNavCityData()
+            },
+            deep:true
+        },
+        newsList:{
+            handler(newvalue,oldvalue){
+                 // console.log("监听区域ID",newvalue)
+                if(this.newsShow==0){
+                    this.newsinfo=1
+                }
+
             },
             deep:true
         }

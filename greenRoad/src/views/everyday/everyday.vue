@@ -63,9 +63,10 @@
       <!--消息区-->
       <div class="newsBox mapPopBox"  :class="{newsHidden:newsShow==0}">
           <div class="popHeadBox">
+              <span class="newsIco" v-show="newsinfo==1">News</span>
               消息区
               <span class="ico iconfont small" v-if="newsShow==1" @click="newsShow=0">&#xe7af;</span>
-              <span class="ico iconfont biger" v-else  @click="newsShow=1">&#xe72f;</span>
+              <span class="ico iconfont biger" v-else  @click="clickNews()">&#xe72f;</span>
           </div>
           <div class="popConBox"  v-show="newsShow==1">
               <ul>

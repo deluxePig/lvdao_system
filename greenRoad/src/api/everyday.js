@@ -73,7 +73,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-           // console.log("获取站点消息",response)
+          //  console.log("获取站点消息",response)
             if(response.code == "200"){
                 let dataList=response.data
                 that.newsList=dataList
