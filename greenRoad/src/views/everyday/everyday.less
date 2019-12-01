@@ -156,10 +156,15 @@
       li{
         width:100%;
         line-height: 35px;
+        height: 35px;
         color:#bbb;
         font-size:14px;
         text-align: left;
         white-space: nowrap;
+        span{
+          height:100%;
+          overflow: hidden;
+        }
         .time{
           display: inline-block;
           width:1.8rem;
@@ -170,6 +175,8 @@
           display: inline-block;
           width:calc(~"100% - 4.6rem");
           text-align: center;
+          word-wrap: break-word ;
+          overflow: hidden;
         }
         .num{
           display: inline-block;
@@ -333,7 +340,7 @@
       .bickBox{
         width:50%;
         float:left;
-        height:auto;
+        height:32px;
         overflow: hidden;
         .bikeLine{
           width:100%;

@@ -38,8 +38,12 @@ class bdMap{
                 let bikeHtm='',bikeEleHtm='',bikeNum=0,bikeEle=0,popHeight=240
                 if(t.brands.length >0){
                     $.each(t.brands,function (y,z) {
-                        bikeHtm=bikeHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.brandTotal+'</span></div>'
-                        bikeEleHtm=bikeEleHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.bikeEleTotal+'</span></div>'
+                        if(z.brandTotal>0){
+                            bikeHtm=bikeHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.brandTotal+'</span></div>'
+                        }
+                       if(z.bikeEleTotal>0){
+                           bikeEleHtm=bikeEleHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.bikeEleTotal+'</span></div>'
+                       }
                         bikeNum=bikeNum+Number(z.brandTotal)
                         bikeEle=bikeEle+Number(z.bikeEleTotal)
                     })

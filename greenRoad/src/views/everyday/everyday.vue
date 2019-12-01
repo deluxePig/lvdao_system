@@ -21,10 +21,10 @@
           <div class="popConBox"  v-show="statisticsShow==1">
               <div class="totalBigBox">
                   <div class="totalBox">
-                      共享自行车投放量：{{bicycle.total}}
+                      共享自行车在线量：{{bicycle.total}}
                   </div>
                   <div class="totalBox">
-                      共享电动车投放量：{{electrocarList.total}}
+                      共享电动车在线量：{{electrocarList.total}}
                   </div>
               </div>
               <div class="groupBigBox">

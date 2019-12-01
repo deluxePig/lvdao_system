@@ -125,9 +125,6 @@ export default {
                 '          <div class="detailPoplist">\n' +
                 '              <span class="title">核定共享电动车：</span><span>'+data.brandTrolleyBikeNum+'</span>\n' +
                 '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">核定投放量：</span><span>'+data.brandRealityEleNum+'</span>\n' +
-                '          </div>\n' +
                 '      </div>'
          //   console.log(cont)
             that.$layer.confirm(cont,{
@@ -169,7 +166,6 @@ export default {
                 if(this.newsShow==0){
                     this.newsinfo=1
                 }
-
             },
             deep:true
         }
