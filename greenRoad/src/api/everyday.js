@@ -54,7 +54,7 @@ const everyday ={
                 let bicycleAll=0,electrocarListAll=0
                 $.each(dataList,function (i,n) {
                     bicycleAll=bicycleAll+n.brandRealityNum
-                    electrocarListAll=electrocarListAll+n.brandTrolleyBikeNum
+                    electrocarListAll=electrocarListAll+n.brandRealityEleNum
                 })
                 that.bicycle.list=dataList
                 that.bicycle.total=bicycleAll

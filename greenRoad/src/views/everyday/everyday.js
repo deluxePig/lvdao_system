@@ -93,7 +93,7 @@ export default {
         },
         /*查看单车*/
         getbicycleDtail(data){
-           // console.log("查看单车",data)
+            console.log("查看单车",data)
             this.statisticsPopData=data
             let that=this
            // let cont=$("#statisticsPop").html()
@@ -123,7 +123,7 @@ export default {
                 '              <span class="title">核定共享自行车：</span><span>'+data.brandRealityNum+'</span>\n' +
                 '          </div>\n' +
                 '          <div class="detailPoplist">\n' +
-                '              <span class="title">核定共享电动车：</span><span>'+data.brandTrolleyBikeNum+'</span>\n' +
+                '              <span class="title">核定共享电动车：</span><span>'+data.brandRealityEleNum+'</span>\n' +
                 '          </div>\n' +
                 '      </div>'
          //   console.log(cont)
