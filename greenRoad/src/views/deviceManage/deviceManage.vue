@@ -1,7 +1,7 @@
 <!-- 设备管理-->
 <template>
     <div id="deviceManage">
-        <div class="deviceManage-box">
+        <div id="deviceTop" class="deviceManage-box">
             <p class="deviceManage-title">设备管理</p>
             <div class="deviceManage-header">
                 <el-row>

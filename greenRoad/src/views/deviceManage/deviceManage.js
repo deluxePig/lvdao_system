@@ -46,7 +46,9 @@ export default {
                     this.deviceData = res.data
                     // console.log('设备接口', this.deviceList)
                     //跳到头部
-                    window.location.hash = "#deviceManage";
+                    let anchorElement = document.getElementById('deviceTop')
+                    // 如果对应id的锚点存在，就跳转到锚点
+                    if(anchorElement) { anchorElement.scrollIntoView(); }
                 } else {
                     this.$message.error(res.message);
                 }
