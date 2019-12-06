@@ -52,6 +52,7 @@
                     <el-form-item>
                         <el-button type="primary" @click="submitForm('ruleForm')">{{userId?'修改':'提交'}}</el-button>
                         <el-button @click="resetForm('ruleForm')">{{userId?'返回':'重置'}}</el-button>
+                        <el-button v-if="!userId" @click="onJumpBack()">返回</el-button>
                     </el-form-item>
                 </el-form>
             </div>

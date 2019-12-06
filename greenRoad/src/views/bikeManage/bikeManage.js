@@ -62,6 +62,9 @@ export default {
             } else {
                 this.$router.push('/home/addBike')
             }
+        },
+        onJumpBack() {
+            this.$router.go(-1)
         }
     },
     watch: {}

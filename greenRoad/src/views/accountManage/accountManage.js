@@ -80,6 +80,9 @@ export default {
                 this.$router.push('/home/addAccount')
             }
         },
+        onJumpBack() {
+            this.$router.go(-1)
+        },
         onJump(url) {
             this.$router.push(`/home/${url}`)
         }

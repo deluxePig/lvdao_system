@@ -131,6 +131,9 @@ export default {
             } else {
                 this.$refs[formName].resetFields();
             }
+        },
+        onJumpBack() {
+            this.$router.go(-1)
         }
     },
     watch: {}

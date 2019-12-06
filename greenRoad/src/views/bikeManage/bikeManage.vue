@@ -3,8 +3,13 @@
     <div id="bikeManage">
         <div class="bikeManage-box">
             <div class="bikeManage-title">运营企业管理</div>
-            <div class="bikeManage-add">
-                <el-button size="small" type="primary" @click="onJumpPage()">新增企业</el-button>
+            <div class="bikeManage-add clearfix">
+                <div class="add-left">
+                    <el-button size="small" @click="onJumpBack()">返 回</el-button>
+                </div>
+                <div class="add-right">
+                    <el-button size="small" type="primary" @click="onJumpPage()">新增企业</el-button>
+                </div>
             </div>
             <div class="bikeManage-table">
                 <el-table :header-cell-style="{background:'#FAFAFA',color:'#555'}"

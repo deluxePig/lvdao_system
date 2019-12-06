@@ -3,9 +3,15 @@
     <div id="accountManage">
         <div class="accountManage-box">
             <div class="accountManage-title">账号管理</div>
-            <div class="accountManage-add">
-                <el-button v-if="myRole === 1" size="small" type="primary" @click="onJump('roleManage')">角色权限修改</el-button>
-                <el-button v-if="myRole < 4" size="small" type="primary" @click="onJumpPage()">新增账号</el-button>
+            <div class="accountManage-add clearfix">
+                <div class="add-left">
+                    <el-button size="small" @click="onJumpBack()">返 回</el-button>
+                </div>
+                <div class="add-right">
+                    <el-button v-if="myRole === 1" size="small" type="primary" @click="onJump('roleManage')">角色权限修改
+                    </el-button>
+                    <el-button v-if="myRole < 4" size="small" type="primary" @click="onJumpPage()">新增账号</el-button>
+                </div>
             </div>
             <div class="accountManage-table">
                 <el-table :header-cell-style="{background:'#FAFAFA',color:'#555'}"
@@ -25,11 +31,12 @@
                             prop="roleName"
                             label="权限"
                             min-width="15">
-                    </el-table-column><el-table-column
+                    </el-table-column>
+                    <el-table-column
                             prop="mobile"
                             label="手机号"
                             min-width="20">
-                    <template slot-scope="scope">{{ scope.row.mobile?scope.row.mobile:'/' }}</template>
+                        <template slot-scope="scope">{{ scope.row.mobile?scope.row.mobile:'/' }}</template>
                     </el-table-column>
                     <el-table-column
                             prop="createTime"
@@ -41,11 +48,13 @@
                         <template slot-scope="scope">
                             <el-button
                                     size="mini"
-                                    @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+                                    @click="handleEdit(scope.$index, scope.row)">修改
+                            </el-button>
                             <el-button
                                     size="mini"
                                     type="danger"
-                                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                                    @click="handleDelete(scope.$index, scope.row)">删除
+                            </el-button>
                         </template>
                     </el-table-column>
                 </el-table>
