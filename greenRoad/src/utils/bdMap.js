@@ -22,7 +22,6 @@ class bdMap{
             closeIconZIndex:1,
             closeIconWidth:'15px'
         }
-
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
                 let myIcon = new BMap.Icon(img, new BMap.Size(40, 50), {
@@ -56,10 +55,21 @@ class bdMap{
                     '<div class="bdInfoList">现有单车数量：'+t.currentNum+'</div>' +
                     '<div class="bdInfoList"><span class="title">自行车：'+bikeNum+'</span><span class="title">电动车：'+bikeEle+'</span></div>' +
                     '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
+                let label2 = new BMap.Label(t.currentNum,{offset:new BMap.Size(13,3)});
+                label2.setStyle({
+                    color : "#fff",
+                    fontSize : "12px",
+                    height : "20px",
+                    lineHeight : "20px",
+                    fontFamily:"微软雅黑",
+                    background:"rgba(0,0,0,0)",
+                    border: 0
+                });
+                marker.setLabel(label2);
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title=t.siteName+':'
                 /*添加地图单车数量文字*/
-                let lablepoint = new BMap.Point(t.siteLon,t.siteLat);
+             /*   let lablepoint = new BMap.Point(t.siteLon,t.siteLat);
                 let opts = {
                     position : lablepoint,    // 指定文本标注所在的地理位置
                     offset   : new BMap.Size(-7, -47)    //设置文本偏移量
@@ -74,7 +84,7 @@ class bdMap{
                     background:"rgba(0,0,0,0)",
                     border: 0
             });
-                that.baseMap.addOverlay(label);
+                that.baseMap.addOverlay(label);*/
                 that.addClickHandler(title,content,marker,opts,popHeight)
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
                     //console.log('long',getbaidu.lng)
