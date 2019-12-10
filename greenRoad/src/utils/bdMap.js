@@ -12,7 +12,7 @@ class bdMap{
     //地图上标点(站点)
     printArea(_this,everythat) {
         let that=this;
-        let img= require("@/assets/images/markpoint3.png");
+        let img= require("@/assets/images/markpoint4.png");
         let opts = {
             width : 350,     // 信息窗口宽度
             height: 400,     // 信息窗口高度
@@ -58,6 +58,23 @@ class bdMap{
                     '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title=t.siteName+':'
+                /*添加地图单车数量文字*/
+                let lablepoint = new BMap.Point(t.siteLon,t.siteLat);
+                let opts = {
+                    position : lablepoint,    // 指定文本标注所在的地理位置
+                    offset   : new BMap.Size(-7, -47)    //设置文本偏移量
+                }
+                let label = new BMap.Label(t.currentNum, opts);  // 创建文本标注对象
+                label.setStyle({
+                    color : "#fff",
+                    fontSize : "12px",
+                    height : "20px",
+                    lineHeight : "20px",
+                    fontFamily:"微软雅黑",
+                    background:"rgba(0,0,0,0)",
+                    border: 0
+            });
+                that.baseMap.addOverlay(label);
                 that.addClickHandler(title,content,marker,opts,popHeight)
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
                     //console.log('long',getbaidu.lng)
@@ -78,21 +95,70 @@ class bdMap{
 
 
     }
-    //地图上拜访记录标点
-    printVisit(_this){
+    //地图上标点加文字
+    printArea2(_this,everythat){
         let that=this;
-        let img= require("@/assets/images/markpoint.gif");
+        let img= require("@/assets/images/markpoint4.png");
+        function ComplexCustomOverlay(point, text, mouseoverText){
+            this._point = point;
+            this._text = text;
+            this._overText = mouseoverText;
+        }
+        ComplexCustomOverlay.prototype = new BMap.Overlay();
+        ComplexCustomOverlay.prototype.initialize = function(){
+            this._map = that.baseMap;
+            var div = this._div = document.createElement("div");
+            div.style.position = "absolute";
+            div.style.zIndex = BMap.Overlay.getZIndex(this._point.siteLat);
+            div.style.height = "16px";
+            div.style.color = "#fff";
+            div.style.height = "16px";
+            div.style.padding = "0";
+            div.style.lineHeight = "16px";
+            div.style.whiteSpace = "nowrap";
+            div.style.MozUserSelect = "none";
+            div.style.fontSize = "12px"
+            var span = this._span = document.createElement("span");
+            div.appendChild(span);
+            span.appendChild(document.createTextNode(this._text));
+            var arrow = this._arrow = document.createElement("div");
+            arrow.style.background = "url("+img+") no-repeat";
+            arrow.style.position = "absolute";
+            arrow.style.backgroundColor = "rgba(0,0,0,0)";
+            arrow.style.zIndex = BMap.Overlay.getZIndex(this._point.siteLat+1);
+            arrow.style.width = "40px";
+            arrow.style.color = "#333";
+            arrow.style.height = "50px";
+            arrow.style.top = "-9px";
+            arrow.style.left = "-9px";
+            arrow.style.overflow = "hidden";
+            div.appendChild(arrow);
+            that.baseMap.getPanes().labelPane.appendChild(div);
+
+            return div;
+        }
+        ComplexCustomOverlay.prototype.draw = function(){
+            var map = that.baseMap;
+            var pixel = map.pointToOverlayPixel(this._point);
+            this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+            this._div.style.top  = pixel.y - 30 + "px";
+        }
         $.each(_this, function (c, t) {
-            if(t.startx_baidu != ""){
-                let myIcon = new BMap.Icon(img, new BMap.Size(23, 25))
-                let marker = new BMap.Marker(new BMap.Point(t.startx_baidu,t.starty_baidu),{icon:myIcon});  // 创建标注business_number
-                let content = '<div>商户名：'+t.business_name+'</div><div>联系人：'+t.relation_name+'</div><div>联系电话：'+t.business_number+'</div><div>地址：'+t.business_address+'</div><div>所属支行：'+t.name+'</div><div>客户经理：'+t.contact_name+'</div><div>POS机ID：'+t.pos_id+'</div><div>拜访开始时间：'+t.start_time+'</div><div>拜访结束时间：'+t.end_time+'</div>';
-                that.baseMap.addOverlay(marker)      // 将标注添加到地图中
-                let title='拜访记录'
-                that.addClickHandler(title,content,marker)
+            if(t.siteLon != ""){
+                console.log(t)
+                let myCompOverlay = new ComplexCustomOverlay(new BMap.Point(_this[0].siteLon,_this[0].siteLat), t.currentNum);
+                that.baseMap.addOverlay(myCompOverlay);
             }
         })
-        this.baseMap.setCenter(new BMap.Point(_this[0].startx_baidu,_this[0].starty_baidu))
+
+        if(everythat.chooseCityData.id=="330785"){
+            if(_this[0].siteLon && _this[0].siteLon!=""){
+                this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
+            }else  if(_this[1].siteLon && _this[1].siteLon!=""){
+                this.baseMap.setCenter(new BMap.Point(_this[1].siteLon,_this[1].siteLat))
+            }
+        }
+
     }
     //地图放大
     big(){
