@@ -89,36 +89,7 @@
               <span class="con iconfont">&#xe622;</span>
           </div>
       </div>
-      <!--统计区查看详情弹框-->
-    <!--  <div class="detailPopBox" id="statisticsPop">
-         <div class="detailPoplist">
-             <span class="title">品牌名称：</span><span>{{statisticsPopData.brandName}}</span>
-         </div>
-          <div class="detailPoplist">
-              <span class="title">品牌ID：</span><span>{{statisticsPopData.brandId}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">品牌账号：</span><span>{{statisticsPopData.brandAccount}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">品牌联系人：</span><span>{{statisticsPopData.brandContactPerson}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">品牌地址：</span><span>{{statisticsPopData.brandAddress}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">运营单位名称：</span><span>{{statisticsPopData.brandOperation}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">运维人员数量：</span><span>{{statisticsPopData.brandOperationNum}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">共享单车投放数量：</span><span>{{statisticsPopData.brandRealityNum}}</span>
-          </div>
-          <div class="detailPoplist">
-              <span class="title">电动车投放数量：</span><span>{{statisticsPopData.brandTrolleyBikeNum}}</span>
-          </div>
-      </div>-->
+
   </div>
 </template>
 

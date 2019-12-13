@@ -95,45 +95,7 @@ export default {
         getbicycleDtail(data){
             console.log("查看单车",data)
             this.statisticsPopData=data
-            let that=this
-           // let cont=$("#statisticsPop").html()
-            let cont='  <div class="detailPopBox">\n' +
-                '         <div class="detailPoplist">\n' +
-                '             <span class="title">品牌名称：</span><span>'+data.brandName+'</span>\n' +
-                '         </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">品牌ID：</span><span>'+data.brandId+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">品牌账号：</span><span>'+data.brandAccount+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">品牌联系人：</span><span>'+data.brandContactPerson+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">品牌地址：</span><span>'+data.brandAddress+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">运营单位名称：</span><span>'+data.brandOperation+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">运维人员数量：</span><span>'+data.brandOperationNum+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">核定共享自行车：</span><span>'+data.brandBikeNum+'</span>\n' +
-                '          </div>\n' +
-                '          <div class="detailPoplist">\n' +
-                '              <span class="title">核定共享电动车：</span><span>'+data.brandTrolleyBikeNum+'</span>\n' +
-                '          </div>\n' +
-                '      </div>'
-         //   console.log(cont)
-            that.$layer.confirm(cont,{
-                type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                title: data.brandName+'详情',
-                area:['700px', '600px'], //宽高
-                offset: 'auto',
-
-            });
+            this.$api.everyday.bikeDetailShow(this,data)
 
 // data参数可认为是componentName的props，同时 该方法会自动添加一个key为layerid的值， 该值为创建层的id， 可以直接用来关闭该层
 // options参数直接写到json里即可，比如title

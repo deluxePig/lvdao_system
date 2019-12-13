@@ -55,7 +55,11 @@ class bdMap{
                     '<div class="bdInfoList">现有单车数量：'+t.currentNum+'</div>' +
                     '<div class="bdInfoList"><span class="title">自行车：'+bikeNum+'</span><span class="title">电动车：'+bikeEle+'</span></div>' +
                     '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
-                let label2 = new BMap.Label(t.currentNum,{offset:new BMap.Size(13,3)});
+                let leftofft=12
+                if(t.currentNum>=10){
+                    leftofft=9
+                }
+                let label2 = new BMap.Label(t.currentNum,{offset:new BMap.Size(leftofft,3)});
                 label2.setStyle({
                     color : "#fff",
                     fontSize : "12px",
@@ -89,7 +93,6 @@ class bdMap{
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
                     //console.log('long',getbaidu.lng)
                     console.log('lat',getbaidu.lat)
-
                 })*/
 
             }
@@ -178,6 +181,11 @@ class bdMap{
         }
 
     }
+    //地图放大到指定层级
+    bigTo(bigVlue){
+        this.baseMap.zoomTo(bigVlue)
+
+    }
     //地图缩小
     small(){
         let bignow=this.baseMap.getZoom()
@@ -197,6 +205,13 @@ class bdMap{
     //定位到某个点
     toPoint(lon,lat){
         this.baseMap.setCenter(new BMap.Point(lon,lat))
+    }
+    searchName(lon,lat,name){
+        this.baseMap.setCenter(new BMap.Point(lon,lat),22)
+        let local = new BMap.LocalSearch(this.baseMap, {
+            renderOptions:{map: this.baseMap}
+        });
+        local.search(name);
     }
     /* 信息窗口 */
     addClickHandler(title,content,marker,opttts,popHeight){

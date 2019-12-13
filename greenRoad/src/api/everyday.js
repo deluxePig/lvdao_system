@@ -1,6 +1,7 @@
 
 import $http from "@/utils/http";//引入调用后台函数
 import  bdMapObj from '@/utils/bdMap';//引入地图方法
+import  everydayPopbike from '@/components/everyday_popbike.vue';//引入单车详情弹框
 
 const everyday ={
     /*获取站点列表*/
@@ -140,6 +141,37 @@ const everyday ={
                     offset: 'auto',
 
                 });
+            }
+        })
+    },
+    /*点击单车详情*/
+    bikeDetailShow(that,site){
+     //   console.log(site)
+        let reqData = {
+            url:'/superviseServer/site/brand/get',
+            data:{
+                account:site.brandAccount,
+            }
+        };
+        $http._axios(reqData).then(response => {
+            //  console.log("点击单车详情",response)
+            if(response.code == "200"){
+                let dataList=response.data
+                that.$layer.iframe({
+                    content: {
+                        content: everydayPopbike, //传递的组件对象
+                        parent: that,//当前的vue对象
+                        data:{
+                            citeDatalist:dataList
+                        }//props
+                    },
+                    area:['1000px','700px'],
+                    title:site.brandName+'详情',
+                    offset: 'auto',
+                });
+// data参数可认为是componentName的props，同时 该方法会自动添加一个key为layerid的值， 该值为创建层的id， 可以直接用来关闭该层
+// options参数直接写到json里即可，比如title
+
             }
         })
     },
