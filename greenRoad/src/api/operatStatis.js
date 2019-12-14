@@ -51,12 +51,12 @@ const operatStatis ={
             }
         };
         $http._axios(reqData).then(response => {
-           // console.log("潮汐统计",response)
+          // console.log("潮汐统计",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let xAxis=[],legendData=[],seriesData=[]
                 $.each(dataList,function (i,n) {
-                    xAxis.push(n.weekOfYear)
+                    xAxis.push(n.weekOfYear+"周")
                     if(legendData.indexOf(n.statisticsBrand) == -1){
                         legendData.push(n.statisticsBrand)
                         seriesData.push([])
@@ -112,7 +112,7 @@ const operatStatis ={
                 }
                 $.each(dataList,function (i,n) {
                     if(that.usageTimeChoose==1){
-                        xAxis.push(n.weekOfYear)
+                        xAxis.push(n.weekOfYear+"周")
                     }else{
                         xAxis.push(n.statisticsDate)
                     }

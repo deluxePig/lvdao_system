@@ -49,7 +49,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-            //console.log("获取站点（单车/电动车）统计数据",response)
+            console.log("获取站点（单车/电动车）统计数据",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let bicycleAll=0,electrocarListAll=0

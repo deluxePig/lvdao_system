@@ -36,7 +36,9 @@
                           <ul>
                               <li v-for="(list,index) in bicycle.list" v-if="list.brandRealityNum>0">
                                   <span class="title">{{list.brandName}}:</span>
-                                  <span class="value">{{list.brandRealityNum}}</span>
+                                  <span class="value">{{list.brandBikeNum}}</span>
+                                  <span class="value" :class="{ratioUp:Number(list.brandRealityNum)>Number(list.brandBikeNum),ratioDown:Number(list.brandRealityNum)<=Number(list.brandBikeNum)}">（{{(Number(list.brandRealityNum)/Number(list.brandBikeNum)*100).toFixed(1)}}%）</span>
+                                  <span class="value">站点车辆：{{list.brandRealityNum}}</span>
                                   <span class="look" @click="getbicycleDtail(list)">查看</span>
                               </li>
                           </ul>
@@ -50,7 +52,9 @@
                           <ul>
                               <li v-for="(list,index) in electrocarList.list" v-if="list.brandRealityEleNum>0">
                                   <span class="title">{{list.brandName}}:</span>
-                                  <span class="value">{{list.brandRealityEleNum}}</span>
+                                  <span class="value">{{list.brandTrolleyBikeNum}}</span>
+                                  <span class="value" :class="{ratioUp:Number(list.brandRealityEleNum)>Number(list.brandTrolleyBikeNum),ratioDown:Number(list.brandRealityEleNum)<=Number(list.brandTrolleyBikeNum)}">（{{(Number(list.brandRealityEleNum)/Number(list.brandTrolleyBikeNum)*100).toFixed(1)}}%）</span>
+                                  <span class="value">站点车辆：{{list.brandRealityEleNum}}</span>
                                   <span class="look" @click="getbicycleDtail(list)">查看</span>
                               </li>
                           </ul>
