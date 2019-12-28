@@ -146,7 +146,8 @@ const operatStatis ={
         let reqData = {
             url:'/superviseServer/statistics/site/get',
             data:{
-                date:''
+                date:'',
+                type:1
             }
         };
         $http._axios(reqData).then(response => {

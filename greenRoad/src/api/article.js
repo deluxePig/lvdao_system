@@ -32,13 +32,13 @@ const article ={
                                 name: dataList[0].name,
                                 pName: dataList[0].name
                             }
-                        })
+                        }).catch(err => {})
                     }else{
                         that.$router.push({
                             path: '/home/everyday',
                             query: {
                             }
-                        })
+                        }).catch(err => {})
                     }
 
                   //  that.navList[0].childrenNav=that.$store.sysCityList

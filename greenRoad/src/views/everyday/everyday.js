@@ -1,5 +1,6 @@
 
 import  bdMapObj from '@/utils/bdMap';//引入地图方法
+import  everydayPopnews from '@/components/everyday_popnews.vue';//引入xiaoxi详情弹框
 export default {
     name: 'everyday',
     components: {
@@ -93,7 +94,7 @@ export default {
         },
         /*查看单车*/
         getbicycleDtail(data){
-            console.log("查看单车",data)
+           // console.log("查看单车",data)
             this.statisticsPopData=data
             this.$api.everyday.bikeDetailShow(this,data)
 
@@ -102,8 +103,21 @@ export default {
         },
         /*查看消息详情*/
         newsDetail(data){
-           // console.log(data)
-            this.$api.everyday.siteNewsDetail(this,data.siteId)
+            console.log("查看消息详情",data)
+            let that=this
+          //  this.$api.everyday.siteNewsDetail(this,data.siteId)
+            that.$layer.iframe({
+                content: {
+                    content: everydayPopnews, //传递的组件对象
+                    parent: that,//当前的vue对象
+                    data:{
+                        siteId:data.siteId
+                    }//props
+                },
+                area:['1000px','700px'],
+                title:data.siteName+'消息列表',
+                offset: 'auto',
+            });
         },
         clickNews(){
             this.newsShow=1

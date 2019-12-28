@@ -2,6 +2,7 @@
 import $http from "@/utils/http";//引入调用后台函数
 import  bdMapObj from '@/utils/bdMap';//引入地图方法
 import  everydayPopbike from '@/components/everyday_popbike.vue';//引入单车详情弹框
+import  everydayPopnews from '@/components/everyday_popnews.vue';//引入xiaoxi详情弹框
 
 const everyday ={
     /*获取站点列表*/
@@ -14,7 +15,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-           // console.log("获取站点列表",response)
+          //  console.log("获取站点列表",response)
             if(response.code == "200"){
                 let dataList=response.data
                 bdMapObj.clean()
@@ -49,7 +50,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-            console.log("获取站点（单车/电动车）统计数据",response)
+          //  console.log("获取站点（单车/电动车）统计数据",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let bicycleAll=0,electrocarListAll=0
@@ -70,13 +71,14 @@ const everyday ={
             url:'/superviseServer/message/site/get',
             data:{
                 siteId:"",
-                num:5,
+                pageNum:1,
+                pageSize:5,
             }
         };
         $http._axios(reqData).then(response => {
           //  console.log("获取站点消息",response)
             if(response.code == "200"){
-                let dataList=response.data
+                let dataList=response.data.list
                 that.newsList=dataList
             }
         })
@@ -104,14 +106,15 @@ const everyday ={
             url:'/superviseServer/message/site/get',
             data:{
                 siteId:siteId,
-                num:20,
+                pageNum:1,
+                pageSize:20,
             }
         };
         $http._axios(reqData).then(response => {
-          //  console.log("点击消息详情查看该站点详情",response)
+            console.log("点击消息详情查看该站点详情",response)
             if(response.code == "200"){
-                let dataList=response.data
-                let con=''
+                let dataList=response.data.list
+              /*  let con=''
                 $.each(dataList,function (i,n) {
                     let tipcont= '<span class="newslist tip">'+n.content+'</span>'
                     if(n.content == '车辆偏多'){
@@ -140,7 +143,7 @@ const everyday ={
                     area:['700px', '440px'], //宽高
                     offset: 'auto',
 
-                });
+                });*/
             }
         })
     },

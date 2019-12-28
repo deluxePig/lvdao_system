@@ -80,7 +80,7 @@
                                 <el-menu-item class="elthirdchild" v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
                                               @click="locationChoose(itemChild,itemThirdChild)"
                                               :index="(index+1).toString()+'-'+(inedxChild+1).toString()+'-'+(inedxThirdChild+1).toString()">
-                                    {{itemThirdChild.name}}<span style="font-size: 12px;color:#ddd;">({{itemThirdChild.total}})</span>
+                                    {{itemThirdChild.name}}<span style="font-size: 12px;color:#ddd;" v-if="itemThirdChild.total>0">({{itemThirdChild.total}})</span>
                                 </el-menu-item>
                             </el-submenu>
                         </el-submenu>
@@ -97,6 +97,9 @@
                 <!-- <router-link v-bind:to="homePageRouter">路由</router-link>-->
                 <router-view></router-view>
             </div>
+        </div>
+        <div class="footBox">
+            备案/许可证编号为：浙ICP备19047427号
         </div>
     </div>
 </template>
