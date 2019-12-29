@@ -5,28 +5,22 @@ const operatStatis ={
     /*获取品牌占比*/
     getbrandData(that){
         let reqData = {
-            url:'/superviseServer/statistics/brand/pie',
+            url:'/superviseServer/brand/num',
             data:{
-                type:that.brandTimeChoose,
-                date:''
             }
         };
         $http._axios(reqData).then(response => {
-           // console.log("获取品牌占比",response)
+          // console.log("获取品牌占比",response)
             if(response.code == "200"){
                 let dataList=response.data
-                let total=0
-                $.each(dataList,function (i,n) {
-                    total=total+Number(n.statisticsNum)
-                })
                 let legendData=[],seriesData=[]
                 $.each(dataList,function (i,n) {
-                    legendData.push(n.statisticsBrand)
+                    legendData.push(n.brandName)
                     seriesData.push({
-                        value:n.statisticsNum,
-                        ratio:((Number(n.statisticsNum)/total)*100).toFixed(2),
-                        name:n.statisticsBrand,
-                        id:n.statisticsId
+                        value:n.brandBikeNum+n.brandTrolleyBikeNum,
+                        ratio:n.percent,
+                        name:n.brandName,
+                        id:n.brandName+n.brandBikeNum
                     })
                 })
                 that.indexPieData={ // 品牌占比数据
@@ -36,7 +30,7 @@ const operatStatis ={
                     valueType:'',
                     name:'访问来源',
                     unit:'辆',
-                    colorList:['#fd5277', '#8476d5', '#fcd578', '#4bd0a3','#2bcdfc','#1ba0ff','#bdbdbd'],
+                    colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd'],
                     seriesData:seriesData,
                 }
             }
@@ -45,40 +39,35 @@ const operatStatis ={
     /*潮汐统计*/
     tidalStatistics(that){
         let reqData = {
-            url:'/superviseServer/statistics/brand/get',
+            url:'/superviseServer/statistics/brand/tide',
             data:{
-                type:1,
+                type:that.waterTimeChoose,
             }
         };
         $http._axios(reqData).then(response => {
-          // console.log("潮汐统计",response)
+         //  console.log("潮汐统计",response)
             if(response.code == "200"){
                 let dataList=response.data
-                let xAxis=[],legendData=[],seriesData=[]
-                $.each(dataList,function (i,n) {
-                    xAxis.push(n.weekOfYear+"周")
-                    if(legendData.indexOf(n.statisticsBrand) == -1){
-                        legendData.push(n.statisticsBrand)
-                        seriesData.push([])
-                    }
-                })
-                $.each(dataList,function (i,n) {
-                    $.each(legendData,function (c, t) {
-                        if(n.statisticsBrand==t){
-                            seriesData[c].push(n.statisticsNum)
-                        }
+                let xAxis=dataList.xList,legendData=[],seriesData=[]
+                if(that.waterTimeChoose==1){
+                    xAxis=[]
+                    $.each(dataList.xList,function (i,n) {
+                        //获取当天是星期几
+                        let dateArray = n.split("-");
+                        let date = new Date(dateArray[0], parseInt(dateArray[1] - 1), dateArray[2]);
+                        let week = "星期" + "日一二三四五六".charAt(date.getDay());
+                        xAxis.push(week)
+
                     })
-                })
-                // console.log(xAxis)
-                // console.log(legendData)
-                // console.log(seriesData)
+                }
+
                 that.indexLinedata={ //潮汐统计
                     id:'line1',
-                    legendData:legendData,
+                    legendData:dataList.nameList,
                     unit:"",
                     colorList:['#58b9ff', 'rgba(154,181,200,.8)', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
                     xAxis:xAxis,
-                    seriesData:seriesData,
+                    seriesData:dataList.data,
                 }
             }
         })
@@ -147,11 +136,11 @@ const operatStatis ={
             url:'/superviseServer/statistics/site/get',
             data:{
                 date:'',
-                type:1
+                type:that.usageTimeChoose
             }
         };
         $http._axios(reqData).then(response => {
-           // console.log("最大使用量站点",response)
+          //  console.log("最大使用量站点",response)
             if(response.code == "200"){
                 let dataList=response.data
                 that.maxUsageList=dataList

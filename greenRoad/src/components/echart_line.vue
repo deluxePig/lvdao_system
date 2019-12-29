@@ -85,8 +85,8 @@
                         textStyle: {
                             color: '#333'
                         },
-                        top:'1%',
-                        right:"4%"
+                        top:'1px',
+                        left:"9%"
                     },
                     grid:{
                         x:'50',

@@ -184,7 +184,7 @@
                     }
                 };
                 $http._axios(reqData).then(response => {
-                    console.log("历史详情",response)
+                 //   console.log("历史详情",response)
                     if(response.code == "200"){
                         let dataList=response.data.list
                         $.each(dataList,function (c,t) {

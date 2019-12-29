@@ -46,6 +46,19 @@ const article ={
             }
         })
     },
+    /*清空告警消息*/
+    clearWrronNews(that){
+        let reqData = {
+            url:'/superviseServer/caution/clear',
+            data:{}
+        };
+        $http._axios(reqData).then(response => {
+           // console.log('清空告警消息',response)
+            if(response.code == 200){
+                that.caution.newNumber=0
+            }
+        })
+    },
 }
 
 export default article;

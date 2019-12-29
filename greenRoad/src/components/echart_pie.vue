@@ -6,8 +6,9 @@
         <div class="echartLableBox">
             <div class="echartLable" v-for="(item,index) in indexAll.seriesData">
                 <b class="ico" :style="{background:indexAll.colorList[index]}"></b>
-                <span class="name">{{item.name}}：</span>
-                <span class="value">{{item.ratio}}%</span>
+                <span class="name">{{item.name}}</span>
+                <span class="value">核定投放量：{{item.value}} </span>
+                <span class="value" style="padding-left:12px;">占比：{{item.ratio}}% </span>
             </div>
         </div>
     </div>
@@ -30,7 +31,7 @@
                         valueType:'',
                         name:'访问来源',
                         unit:'',
-                        colorList:['#fd5277', '#8476d5', '#fcd578', '#4bd0a3','#2bcdfc','#1ba0ff','#bdbdbd'],
+                        colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd'],
                         seriesData:[
                             {value:335,ratio:"30", name:'哈罗',id:'111'},
                             {value:310,ratio:"30", name:'膜拜',id:'222'},
@@ -72,13 +73,13 @@
                         }
                     },
                     legend: {
-                        show:false,
-                        right:"0px",
-                        top:"0px",
+                        show:true,
+                        right:"3px",
+                        top:"3px",
                         itemGap:5,
-                        itemWidth:0,
+                        /*  itemWidth:0,
                         itemHeight:0,
-                        textStyle:{
+                      textStyle:{
                             color:"#3691d2",
                             fontSize:12,
                             borderColor:"#3691d2",
@@ -88,7 +89,7 @@
                             lineHeight:16
                         },
                         inactiveColor:'#eee',
-                        icon:'stack',
+                        icon:'stack',*/
                         data:that.indexAll.legendData
                     },
                     calculable : true,
@@ -189,17 +190,16 @@
         z-index:85;
     }
     .echartLable{
-        width:50%;
-        float:left;
-        line-height: 0.3rem;
-        font-size:0.13rem;
-        color:#bbb;
+        width:100%;
+        line-height: 0.35rem;
+        font-size:0.17rem;
+        color:#aaa;
         text-align: left;
     }
     .echartLable .ico{
         display: inline-block;
-        width:8px;
-        height:8px;
+        width:12px;
+        height:12px;
         border-radius: 50%;
         margin-right:2px;
         vertical-align: initial;

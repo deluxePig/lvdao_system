@@ -15,7 +15,7 @@ const area = {
             url: '/superviseServer/caution/list',
             data: {
                 pageNum: num,
-                pageSize: size
+                pageSize: size,
             }
         }
         return $http._axios(reqData)

@@ -28,6 +28,13 @@ export default {
 
                 ],
             },
+            waterTimeChooseList:[ //潮汐统计时间选择列表
+                {name:"日",value:0},
+                {name:"周",value:1},
+                {name:"月",value:2},
+                {name:"年",value:3},
+            ],
+            waterTimeChoose:0,//品牌占比选中的时间
             indexLinedata:{ //潮汐统计
                 id:'line1',
                 legendData:['潮汐统计'],
@@ -76,10 +83,15 @@ export default {
             this.brandTimeChoose=data.value
             this.$api.operatStatis.getbrandData(this)
         },
-        /*使用量统计时间选择*/
+        /*最大使用量统计时间选择*/
         usageTimeClick:function (data) {
             this.usageTimeChoose=data.value
-            this.$api.operatStatis.usedStatic(this)
+            this.$api.operatStatis.maxUsedStatic(this)
+        },
+        /*潮汐统计统计时间选择*/
+        waterTimeClick:function (data) {
+            this.waterTimeChoose=data.value
+            this.$api.operatStatis.tidalStatistics(this)
         },
     },
     watch:{

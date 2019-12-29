@@ -67,6 +67,7 @@ export default {
         onCautionList(){
             api.area.cautionList(1, 5).then(res => {
                 if (res.code === 200) {
+                  //  console.log("告警消息",res)
                     this.caution = res.data
                 } else if (res.code === 20112){
                     this.$message.error(res.message);
@@ -172,6 +173,7 @@ export default {
             }
         },
         onJump(url) {
+            api.article.clearWrronNews(this)
             this.$router.push(`/home/${url}`)
         }
     },
