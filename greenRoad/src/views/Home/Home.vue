@@ -98,9 +98,9 @@
                 <router-view></router-view>
             </div>
         </div>
-        <div class="footBox">
+      <!--  <div class="footBox">
             备案/许可证编号为：浙ICP备19047427号
-        </div>
+        </div>-->
     </div>
 </template>
 

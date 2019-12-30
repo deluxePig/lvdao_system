@@ -25,65 +25,73 @@ class bdMap{
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
                 /*高德坐标转换百度坐标*/
-                that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
-                    // console.log('long',getbaidu.lng)
-                    // console.log('lat',getbaidu.lat)
+                let X_PI = Math.PI * 3000.0 / 180.0;
+                let x = t.siteLon, y = t.siteLat;
+                let z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * X_PI);
+                let theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * X_PI);
+                let bd_lng = z * Math.cos(theta) + 0.0066;
+                let bd_lat = z * Math.sin(theta) + 0.0059;
 
-                    let myIcon = new BMap.Icon(img, new BMap.Size(40, 50), {
-                        anchor: new BMap.Size(20, 50),
-                        imageOffset: new BMap.Size(0, 0)
-                    });
-                    let siteBikeCeiling="— —"
-                    if(t.siteBikeCeiling && t.siteBikeCeiling!=null){
-                        siteBikeCeiling=t.siteBikeCeiling
-                    }
-                    let bikeHtm='',bikeEleHtm='',bikeNum=0,bikeEle=0,popHeight=240
-                    if(t.brands.length >0){
-                        $.each(t.brands,function (y,z) {
-                            if(z.brandTotal>0){
-                                bikeHtm=bikeHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.brandTotal+'</span></div>'
-                            }
-                            if(z.bikeEleTotal>0){
-                                bikeEleHtm=bikeEleHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.bikeEleTotal+'</span></div>'
-                            }
-                            bikeNum=bikeNum+Number(z.brandTotal)
-                            bikeEle=bikeEle+Number(z.bikeEleTotal)
-                        })
-                        popHeight=popHeight+35*t.brands.length
-                    }
-                    let marker = new BMap.Marker(new BMap.Point(getbaidu.lng,getbaidu.lat),{icon:myIcon});   // 创建标注business_number
-                    let content = '<div class="bdInfoList">站点编号：'+t.siteId+'</div><div class="bdInfoList">创建时间：'+t.siteCreateTime+'</div>' +
-                        '<div class="bdInfoList">道钉数量：'+t.siteCeiling+'</div>' +
-                        '<div class="bdInfoList">车位数量：'+siteBikeCeiling+'</div>' +
-                        '<div class="bdInfoList">现有单车数量：'+t.currentNum+'</div>' +
-                        '<div class="bdInfoList"><span class="title">自行车：'+bikeNum+'</span><span class="title">电动车：'+bikeEle+'</span></div>' +
-                        '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
-                    let leftofft=12
-                    if(t.currentNum>=10){
-                        leftofft=9
-                    }
-                    let font_color="#fff"
-                    if(t.currentNum==0){
-                        font_color="rgb(236, 229, 14)"
-                    }else if(t.currentNum>=t.siteBikeCeiling){
-                        font_color="#ec1010"
-                    }
-                    let label2 = new BMap.Label(t.currentNum,{offset:new BMap.Size(leftofft,3)});
-                    label2.setStyle({
-                        color : font_color,
-                        fontSize : "12px",
-                        height : "20px",
-                        lineHeight : "20px",
-                        fontFamily:"微软雅黑",
-                        background:"rgba(0,0,0,0)",
-                        border: 0
-                    });
-                    marker.setLabel(label2);
-                    that.baseMap.addOverlay(marker)      // 将标注添加到地图中
-                    let title=t.siteName+':'
-                    that.addClickHandler(title,content,marker,opts,popHeight)
+                // console.log('long',getbaidu.lng)
+                // console.log('lat',bd_lat)
 
-                })
+                let myIcon = new BMap.Icon(img, new BMap.Size(40, 50), {
+                    anchor: new BMap.Size(20, 50),
+                    imageOffset: new BMap.Size(0, 0)
+                });
+                let siteBikeCeiling="— —"
+                if(t.siteBikeCeiling && t.siteBikeCeiling!=null){
+                    siteBikeCeiling=t.siteBikeCeiling
+                }
+                let bikeHtm='',bikeEleHtm='',bikeNum=0,bikeEle=0,popHeight=240
+                if(t.brands.length >0){
+                    $.each(t.brands,function (y,z) {
+                        if(z.brandTotal>0){
+                            bikeHtm=bikeHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.brandTotal+'</span></div>'
+                        }
+                        if(z.bikeEleTotal>0){
+                            bikeEleHtm=bikeEleHtm+'<div class="bikeLine"><span class="title">'+z.bikeBrand+'</span><span class="num">'+z.bikeEleTotal+'</span></div>'
+                        }
+                        bikeNum=bikeNum+Number(z.brandTotal)
+                        bikeEle=bikeEle+Number(z.bikeEleTotal)
+                    })
+                    popHeight=popHeight+35*t.brands.length
+                }
+                let marker = new BMap.Marker(new BMap.Point(bd_lng,bd_lat),{icon:myIcon});   // 创建标注business_number
+                let content = '<div class="bdInfoList">站点编号：'+t.siteId+'</div><div class="bdInfoList">创建时间：'+t.siteCreateTime+'</div>' +
+                    '<div class="bdInfoList">道钉数量：'+t.siteCeiling+'</div>' +
+                    '<div class="bdInfoList">车位数量：'+siteBikeCeiling+'</div>' +
+                    '<div class="bdInfoList">现有单车数量：'+t.currentNum+'</div>' +
+                    '<div class="bdInfoList"><span class="title">自行车：'+bikeNum+'</span><span class="title">电动车：'+bikeEle+'</span></div>' +
+                    '<div class="bdInfoList bickbigBox"><div class="bickBox leftbickBox">'+bikeHtm+'</div><div class="bickBox">'+bikeEleHtm+'</div></div>';
+                let leftofft=12
+                if(t.currentNum>=10){
+                    leftofft=9
+                }
+                let font_color="#fff"
+                if(t.currentNum==0){
+                    font_color="rgb(236, 229, 14)"
+                }else if(t.currentNum>=t.siteBikeCeiling){
+                    font_color="#ec1010"
+                }
+                let label2 = new BMap.Label(t.currentNum,{offset:new BMap.Size(leftofft,3)});
+                label2.setStyle({
+                    color : font_color,
+                    fontSize : "12px",
+                    height : "20px",
+                    lineHeight : "20px",
+                    fontFamily:"微软雅黑",
+                    background:"rgba(0,0,0,0)",
+                    border: 0
+                });
+                marker.setLabel(label2);
+                that.baseMap.addOverlay(marker)      // 将标注添加到地图中
+                let title=t.siteName+':'
+                that.addClickHandler(title,content,marker,opts,popHeight)
+              /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
+
+
+                })*/
 
             }
         })
@@ -110,7 +118,7 @@ class bdMap{
         ComplexCustomOverlay.prototype = new BMap.Overlay();
         ComplexCustomOverlay.prototype.initialize = function(){
             this._map = that.baseMap;
-            var div = this._div = document.createElement("div");
+            let div = this._div = document.createElement("div");
             div.style.position = "absolute";
             div.style.zIndex = BMap.Overlay.getZIndex(this._point.siteLat);
             div.style.height = "16px";
