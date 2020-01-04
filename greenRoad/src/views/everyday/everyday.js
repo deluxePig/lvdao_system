@@ -30,8 +30,8 @@ export default {
             },
             newsList:[ // 消息列表
             ],
-            statisticsShow:0 ,//统计区是否展开
-            newsShow:0 ,//消息区是否展开
+            statisticsShow:1 ,//统计区是否展开
+            newsShow:1 ,//消息区是否展开
             newsinfo:0,
             statisticsPopData:{}, //查看单车详情数据
         }
@@ -54,7 +54,7 @@ export default {
         creatMap:function () {
             var bdmap = new BMap.Map("bdMap",{minZoom:12,maxZoom:30}); // 创建Map实例,设置地图允许的最小/大级别
             var point = new BMap.Point(119.653872,29.084135);
-            bdmap.centerAndZoom(point, 15);
+            bdmap.centerAndZoom(point, 16);
             bdmap.enableScrollWheelZoom(true)
             bdMapObj.begin(bdmap);
         },
@@ -114,7 +114,7 @@ export default {
                         siteId:data.siteId
                     }//props
                 },
-                area:['1000px','700px'],
+                area:['860px','500px'],
                 title:data.siteName+'消息列表',
                 offset: 'auto',
             });

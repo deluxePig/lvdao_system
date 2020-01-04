@@ -68,16 +68,17 @@ class bdMap{
                 if(t.currentNum>=10){
                     leftofft=9
                 }
-                let font_color="#fff"
+                let font_color="#77a91a"
                 if(t.currentNum==0){
-                    font_color="rgb(236, 229, 14)"
+                    font_color="#e28206"
                 }else if(t.currentNum>=t.siteBikeCeiling){
-                    font_color="#ec1010"
+                    font_color="#a02121"
                 }
                 let label2 = new BMap.Label(t.currentNum,{offset:new BMap.Size(leftofft,3)});
                 label2.setStyle({
                     color : font_color,
-                    fontSize : "12px",
+                    fontSize : "13px",
+                    fontWeight : "600",
                     height : "20px",
                     lineHeight : "20px",
                     fontFamily:"微软雅黑",
@@ -202,7 +203,14 @@ class bdMap{
     }
     //定位到某个点
     toPoint(lon,lat){
-        this.baseMap.setCenter(new BMap.Point(lon,lat))
+        /*高德坐标转换百度坐标*/
+        let X_PI = Math.PI * 3000.0 / 180.0;
+        let x = lon, y = lat;
+        let z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * X_PI);
+        let theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * X_PI);
+        let bd_lng = z * Math.cos(theta) + 0.0066;
+        let bd_lat = z * Math.sin(theta) + 0.0059;
+        this.baseMap.setCenter(new BMap.Point(bd_lng,bd_lat))
     }
     searchName(lon,lat,name){
         this.baseMap.setCenter(new BMap.Point(lon,lat),22)

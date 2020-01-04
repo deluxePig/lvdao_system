@@ -77,10 +77,10 @@
                             <el-submenu v-if="index==0" class="elchildren" v-for="(itemChild,inedxChild) in item.childrenNav"
                                         :index="(index+1).toString()+'-'+(inedxChild+1).toString()">
                                 <template slot="title">{{itemChild.name}}<span style="font-size: 12px;color:#ddd;">({{itemChild.total}})</span></template>
-                                <el-menu-item class="elthirdchild" v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
+                                <el-menu-item class="elthirdchild" v-if="itemThirdChild.total>0" v-for="(itemThirdChild,inedxThirdChild) in itemChild.areas"
                                               @click="locationChoose(itemChild,itemThirdChild)"
                                               :index="(index+1).toString()+'-'+(inedxChild+1).toString()+'-'+(inedxThirdChild+1).toString()">
-                                    {{itemThirdChild.name}}<span style="font-size: 12px;color:#ddd;" v-if="itemThirdChild.total>0">({{itemThirdChild.total}})</span>
+                                    {{itemThirdChild.name}}<span style="font-size: 12px;color:#ddd;" >({{itemThirdChild.total}})</span>
                                 </el-menu-item>
                             </el-submenu>
                         </el-submenu>

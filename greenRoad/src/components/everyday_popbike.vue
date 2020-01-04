@@ -65,6 +65,7 @@
                  bdMapObj.toPoint(data.siteLon,data.siteLat)
                // bdMapObj.searchName(data.siteLon,data.siteLat,data.siteName)
                 bdMapObj.bigTo(22)
+                this.$layer.closeAll();
             }
         },
         computed: {

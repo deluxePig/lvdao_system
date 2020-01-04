@@ -50,7 +50,7 @@ const everyday ={
             }
         };
         $http._axios(reqData).then(response => {
-          //  console.log("获取站点（单车/电动车）统计数据",response)
+           // console.log("获取站点（单车/电动车）统计数据",response)
             if(response.code == "200"){
                 let dataList=response.data
                 let bicycleAll=0,electrocarListAll=0
@@ -168,7 +168,7 @@ const everyday ={
                             citeDatalist:dataList
                         }//props
                     },
-                    area:['1000px','700px'],
+                    area:['860px','500px'],
                     title:site.brandName+'详情',
                     offset: 'auto',
                 });

@@ -8,7 +8,7 @@
         <div class="newMessageBox" v-if="showPage==1">
             <div class="newsGroup">
                 <div class="title">
-                    <span class="siteName">站点：{{newMessage.siteName}}</span>
+                    <span class="siteName" @click="sitedClick(newMessage)">站点：{{newMessage.siteName}}</span>
                     <span class="siteAllNum">总量：{{newMessage.bikeNum}}</span>
                     <span class="tip" :class="{tip2:newMessage.content=='车辆偏多',tip3:newMessage.content=='满桩'}">({{newMessage.content}})</span>
                     <span class="time">{{newMessage.createTime}}</span>
@@ -33,7 +33,7 @@
             <div class="histroyBox">
                 <div class="newsGroup" v-for="(item,index) in messageList">
                     <div class="title">
-                        <span class="siteName">站点：{{item.siteName}}</span>
+                        <span class="siteName" @click="sitedClick(item)">站点：{{item.siteName}}</span>
                         <span class="siteAllNum">总量：{{item.bikeNum}}</span>
                         <span class="tip" :class="{tip2:item.content=='车辆偏多',tip3:item.content=='满桩'}">({{item.content}})</span>
                         <span class="time">{{item.createTime}}</span>
@@ -133,9 +133,11 @@
             /*地图跳转*/
             sitedClick(data){
                // console.log(data)
+                return false
                  bdMapObj.toPoint(data.siteLon,data.siteLat)
                // bdMapObj.searchName(data.siteLon,data.siteLat,data.siteName)
                 bdMapObj.bigTo(22)
+                this.$layer.closeAll();
             },
             /*选择消息/历史消息*/
             chooseNews(type){
@@ -276,6 +278,7 @@
                         padding:0 5px;
                         color:#333;
                         margin-right:15px;
+                        cursor: pointer;
                     }
                     .tip{
                         display: inline-block;
