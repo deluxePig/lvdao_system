@@ -36,7 +36,7 @@
                         </el-card>
                     </div>
                     <div slot="reference" class="userInfoWindow" >
-                        <el-badge :value="caution.newNumber" style="line-height: 25px;margin: 6px 12px 0 10px;">
+                        <el-badge :hidden="!caution.newNumber" :value="caution.newNumber" style="line-height: 25px;margin: 6px 12px 0 10px;">
                             <i class="el-icon-bell" style="font-size: 16px"></i>
                         </el-badge>
                     </div>

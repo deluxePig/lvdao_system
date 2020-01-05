@@ -45,7 +45,7 @@
                       </div>
                   </div>
                   <div class="login-footer">
-                      <span>主办单位：金华市治堵办，技术支持：浙江助简科技有限公司</span><br>
+                      <span>浙江助简科技有限公司 <a href="http://www.beian.miit.gov.cn"> 浙ICP备19047427</a></span><br>
                       <span>建议IE10 1024*768以上分辨率浏览本网站</span>
                   </div>
               </div>
