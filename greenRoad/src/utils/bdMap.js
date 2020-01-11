@@ -22,6 +22,7 @@ class bdMap{
             closeIconZIndex:1,
             closeIconWidth:'15px'
         }
+        let filng="",filat="";
         $.each(_this, function (c, t) {
             if(t.siteLon != ""){
                 /*高德坐标转换百度坐标*/
@@ -31,7 +32,10 @@ class bdMap{
                 let theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * X_PI);
                 let bd_lng = z * Math.cos(theta) + 0.0066;
                 let bd_lat = z * Math.sin(theta) + 0.0059;
-
+                if(c==0){
+                    filng=bd_lng
+                    filat=bd_lat;
+                }
                 // console.log('long',getbaidu.lng)
                 // console.log('lat',bd_lat)
 
@@ -89,6 +93,8 @@ class bdMap{
                 that.baseMap.addOverlay(marker)      // 将标注添加到地图中
                 let title=t.siteName+':'
                 that.addClickHandler(title,content,marker,opts,popHeight)
+
+
               /*  that.changeGPS(t.siteLon,t.siteLat).then(getbaidu=>{
 
 
@@ -97,13 +103,20 @@ class bdMap{
             }
         })
 
-        if(everythat.chooseCityData.id=="330785"){
-            if(_this[0].siteLon && _this[0].siteLon!=""){
-                this.baseMap.setCenter(new BMap.Point(_this[0].siteLon,_this[0].siteLat))
-            }else  if(_this[1].siteLon && _this[1].siteLon!=""){
-                this.baseMap.setCenter(new BMap.Point(_this[1].siteLon,_this[1].siteLat))
+        if(everythat !=""){
+            if(everythat.chooseCityData.id=="330785"){
+                if(_this[0].siteLon && _this[0].siteLon!=""){
+                    this.baseMap.setCenter(new BMap.Point(filng,filat))
+                }else  if(_this[1].siteLon && _this[1].siteLon!=""){
+                    this.baseMap.setCenter(new BMap.Point(_this[1].siteLon,_this[1].siteLat))
+                }
             }
+        }else{
+            this.baseMap.setCenter(new BMap.Point(filng,filat))
         }
+
+
+
 
 
     }

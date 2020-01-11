@@ -132,12 +132,24 @@
         methods: {
             /*地图跳转*/
             sitedClick(data){
-               // console.log(data)
-                return false
-                 bdMapObj.toPoint(data.siteLon,data.siteLat)
-               // bdMapObj.searchName(data.siteLon,data.siteLat,data.siteName)
-                bdMapObj.bigTo(22)
-                this.$layer.closeAll();
+                let that=this
+                bdMapObj.clean()
+                let reqData = {
+                    url:'/superviseServer/site/search',
+                    data:{
+                        siteName:data.siteId,
+                    }
+                };
+                $http._axios(reqData).then(response => {
+                   // console.log("搜索站点",response)
+                    if(response.code == "200"){
+                        let dataList=response.data
+                        bdMapObj.printArea(dataList,"")
+                        bdMapObj.bigTo(22)
+                        that.$layer.closeAll();
+                    }
+                })
+
             },
             /*选择消息/历史消息*/
             chooseNews(type){
@@ -180,7 +192,7 @@
                 let reqData = {
                     url:'/superviseServer/message/site/get',
                     data:{
-                        siteId:that.siteId,
+                        siteId:"",
                         pageNum:that.pageChange.currentPage1,
                         pageSize:that.pageChange.page_size,
                     }

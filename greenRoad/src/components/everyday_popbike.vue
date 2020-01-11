@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import $http from "@/utils/http";//引入调用后台函数
     import  bdMapObj from '@/utils/bdMap';//引入地图方法
     export default {
         name: 'dg-bar',
@@ -61,11 +62,24 @@
         },
         methods: {
             sitedClick(data){
-               // console.log(data)
-                 bdMapObj.toPoint(data.siteLon,data.siteLat)
-               // bdMapObj.searchName(data.siteLon,data.siteLat,data.siteName)
-                bdMapObj.bigTo(22)
-                this.$layer.closeAll();
+                let that=this
+                bdMapObj.clean()
+                let reqData = {
+                    url:'/superviseServer/site/search',
+                    data:{
+                        siteName:data.siteId,
+                    }
+                };
+                $http._axios(reqData).then(response => {
+                  //  console.log("搜索站点",response)
+                    if(response.code == "200"){
+                        let dataList=response.data
+                        bdMapObj.printArea(dataList,"")
+                        bdMapObj.bigTo(22)
+                        that.$layer.closeAll();
+                    }
+                })
+
             }
         },
         computed: {
