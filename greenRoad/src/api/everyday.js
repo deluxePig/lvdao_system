@@ -91,12 +91,13 @@ const everyday ={
                 siteName:that.searchValue,
             }
         };
+        bdMapObj.clean()
         $http._axios(reqData).then(response => {
             //console.log("搜索站点",response)
             if(response.code == "200"){
                 let dataList=response.data
-                bdMapObj.clean()
-                bdMapObj.printArea(dataList,that)
+                bdMapObj.printArea(dataList,"")
+                bdMapObj.bigTo(22)
             }
         })
     },

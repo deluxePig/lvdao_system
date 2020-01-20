@@ -73,6 +73,8 @@
                 $http._axios(reqData).then(response => {
                   //  console.log("搜索站点",response)
                     if(response.code == "200"){
+
+
                         let dataList=response.data
                         bdMapObj.printArea(dataList,"")
                         bdMapObj.bigTo(22)
@@ -169,7 +171,7 @@
                         cursor: pointer;
                     }
                     .sitedId:hover{
-                        background:#aff0cb;
+                        background:#aff0cb !important;
                     }
                 }
                 .detailTableTr.two{

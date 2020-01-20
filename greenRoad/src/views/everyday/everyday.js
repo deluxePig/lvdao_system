@@ -41,6 +41,7 @@ export default {
     },
     mounted(){
         let that=this
+        this.chooseCityData=this.$route.query
         this.creatMap() //初始化地图
         this.getSitestatisticsData() //获取站点统计数据
         this.getSiteNewsData() //获取站点消息数据

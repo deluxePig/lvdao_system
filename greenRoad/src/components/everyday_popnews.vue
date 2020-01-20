@@ -285,7 +285,7 @@
                     font-size:0.17rem;
                     .siteName{
                         display: inline-block;
-                        font-size:0.2rem;
+                        font-size:0.16rem;
                         font-weight:600;
                         padding:0 5px;
                         color:#333;
@@ -317,7 +317,7 @@
                         width:50%;
                         float:left;
                         .total{
-                            font-size:0.19rem;
+                            font-size:0.16rem;
                             color:#333;
                             font-weight:600;
                             line-height: 32px;
