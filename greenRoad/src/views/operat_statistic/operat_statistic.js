@@ -23,7 +23,7 @@ export default {
                 valueType:'',
                 name:'访问来源',
                 unit:'辆',
-                colorList:['#fd5277', '#8476d5', '#fcd578', '#4bd0a3','#2bcdfc','#1ba0ff','#bdbdbd'],
+                colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd','#2bcdfc','#1ba0ff','#bdbdbd'],
                 seriesData:[
 
                 ],
@@ -39,7 +39,7 @@ export default {
                 id:'line1',
                 legendData:['潮汐统计'],
                 unit:"",
-                colorList:['#58b9ff', 'rgba(154,181,200,.8)', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
+                colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd','#a3c7d5','#c4ccce','#bdbdbd'],
                 xAxis:[],
                 seriesData:[
                 ],
@@ -48,7 +48,7 @@ export default {
                 id:'bar1',
                 legendData:['上月','本月'],
                 unit:"次",
-                colorList:['#95d4ff', '#1ba0ff', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
+                colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd','#a3c7d5','#c4ccce','#bdbdbd'],
                 xAxis:["06-01","06-02","06-03","06-04","06-05","06-06","06-07"],
                 seriesData:[
                     [45,45,63,55,25,76,45], //上月的数据

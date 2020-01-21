@@ -104,15 +104,20 @@ class bdMap{
         })
 
         if(everythat !=""){
-            if(everythat.chooseCityData.id=="330785"){
+            if(_this[0].siteLon && _this[0].siteLon!=""){
+                this.baseMap.setCenter(new BMap.Point(filng,filat),16)
+            }else  if(_this[1].siteLon && _this[1].siteLon!=""){
+                this.baseMap.setCenter(new BMap.Point(_this[1].siteLon,_this[1].siteLat),16)
+            }
+           /* if(everythat.chooseCityData.id=="330785"){
                 if(_this[0].siteLon && _this[0].siteLon!=""){
                     this.baseMap.setCenter(new BMap.Point(filng,filat))
                 }else  if(_this[1].siteLon && _this[1].siteLon!=""){
                     this.baseMap.setCenter(new BMap.Point(_this[1].siteLon,_this[1].siteLat))
                 }
-            }
+            }*/
         }else{
-            this.baseMap.setCenter(new BMap.Point(filng,filat))
+            this.baseMap.setCenter(new BMap.Point(filng,filat),16)
         }
 
 

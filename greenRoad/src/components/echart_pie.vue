@@ -6,7 +6,7 @@
         <div class="echartLableBox">
             <div class="echartLable" v-for="(item,index) in indexAll.seriesData">
                 <b class="ico" :style="{background:indexAll.colorList[index]}"></b>
-                <span class="name">{{item.name}}</span>
+                <span class="name">{{item.name}}</span>—
                 <span class="value">核定投放量：{{item.value}} </span>
                 <span class="value" style="padding-left:12px;">占比：{{item.ratio}}% </span>
             </div>

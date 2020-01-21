@@ -65,7 +65,7 @@ const operatStatis ={
                     id:'line1',
                     legendData:dataList.nameList,
                     unit:"",
-                    colorList:['#58b9ff', 'rgba(154,181,200,.8)', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
+                    colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd','#c4ccce','#bdbdbd'],
                     xAxis:xAxis,
                     seriesData:dataList.data,
                 }
@@ -123,7 +123,7 @@ const operatStatis ={
                     id:'bar1',
                         legendData:legendData,
                         unit:"次",
-                        colorList:['#95d4ff', '#1ba0ff', '#d85330', '#8fabc3','#a3c7d5','#c4ccce','#bdbdbd'],
+                        colorList:['#fd5277', '#fcd578','#2bcdfc','#1ba0ff','#bdbdbd','#c4ccce','#bdbdbd'],
                         xAxis:xAxis,
                         seriesData:seriesData
                 }

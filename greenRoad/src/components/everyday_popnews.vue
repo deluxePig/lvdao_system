@@ -168,7 +168,7 @@
                     }
                 };
                 $http._axios(reqData).then(response => {
-                  //  console.log("点击消息详情查看该站点详情",response)
+                  // console.log("点击消息详情查看该站点详情",response)
                     if(response.code == "200"){
                         let dataList=response.data.list[0]
                         let bick_total=0,elbick_total=0
